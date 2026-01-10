@@ -7,6 +7,7 @@ import { Experience } from './components/Experience';
 import { Certifications } from './components/Certifications';
 import { Publications } from './components/Publications';
 import { Philanthropy } from './components/Philanthropy';
+import { Gallery } from './components/Gallery';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
@@ -22,6 +23,7 @@ export default function App() {
         <Certifications />
         <Publications />
         <Philanthropy />
+        <Gallery />
         <Contact />
       </main>
       <Footer />

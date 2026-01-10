@@ -29,6 +29,7 @@ export function Header() {
     { label: 'Certifications', id: 'certifications' },
     { label: 'Publications', id: 'publications' },
     { label: 'Philanthropy', id: 'philanthropy' },
+    { label: 'Gallery', id: 'gallery' },
     { label: 'Contact', id: 'contact' },
   ];
 
