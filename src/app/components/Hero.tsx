@@ -25,20 +25,36 @@ export function Hero() {
 
           {/* Content */}
           <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 mb-3">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 mb-8">
               Nishanth Kumar Pathi
             </h1>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-light text-[#001f3f] mb-6">
-              Cyber & Cloud Security Operations Professional
-            </h2>
-            <p className="text-lg text-[#6C757D] mb-2">
-              Advisor | Consultant | Architect | Leader
-            </p>
-            <p className="text-base text-gray-600 max-w-2xl mb-8">
-              10+ years of experience in cybersecurity, specializing in cross-domain security solutions, 
-              cloud security architecture, DevSecOps, data privacy, and security governance. Proven track 
-              record in leading security transformations and delivering measurable business value.
-            </p>
+
+            {/* Areas of Expertise */}
+            <div className="mb-8">
+              <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3 text-center lg:text-left">
+                Areas of Expertise
+              </h3>
+              <div className="flex flex-wrap gap-2 justify-center lg:justify-start max-w-3xl">
+                {[
+                  'Cyber Security Engineering',
+                  'Data Privacy Engineering',
+                  'Cloud Automation Engineering',
+                  'Site Reliability Engineering',
+                  'Chaos Engineering',
+                  'DevSecOps',
+                  'DataSecOps',
+                  'CloudNativeOps',
+                  'FinOps'
+                ].map((area, index) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-gradient-to-r from-[#001f3f] to-[#17A2B8] text-white text-sm rounded-full shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                  >
+                    {area}
+                  </span>
+                ))}
+              </div>
+            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
