@@ -49,7 +49,7 @@ export function About() {
     <section id="about" className="py-20 bg-[#F8F9FA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">About Me</h2>
+          <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">What I Bring to the Table</h2>
           <div className="w-20 h-1 bg-[#2596be] mx-auto"></div>
         </div>
 

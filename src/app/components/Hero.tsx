@@ -97,7 +97,7 @@ export function Hero() {
                 onClick={() => scrollToSection('contact')}
                 className="px-8 py-3 border-2 border-[#2596be] text-[#2596be] rounded-md hover:bg-[#2596be] hover:text-white transition-colors"
               >
-                Contact Me
+                Let's Talk
               </button>
               <a
                 href="https://blog.nishanthkp.com"
