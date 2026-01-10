@@ -53,26 +53,6 @@ export function About() {
           <div className="w-20 h-1 bg-[#2596be] mx-auto"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto mb-16">
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            I am a seasoned cybersecurity professional with over 10 years of experience architecting and 
-            implementing comprehensive security solutions across diverse industries. My expertise spans 
-            network security, cloud security, DevSecOps, identity and access management, data privacy, 
-            and security governance.
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Throughout my career, I have successfully led security transformations that delivered significant 
-            business value, including cost savings of over $132,000 in ISO 27001 implementation, $100,000 
-            reduction in educational costs, and rapid incident resolution saving potential losses. I combine 
-            deep technical expertise with strategic thinking to align security initiatives with business objectives.
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            As a certified professional (CIPM, CIPT, CISA, CISM, AWS Solutions Architect), published researcher, 
-            and active community contributor, I am passionate about advancing the field of cybersecurity through 
-            innovation, education, and mentorship.
-          </p>
-        </div>
-
         {/* Highlights Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {highlights.map((item, index) => (
