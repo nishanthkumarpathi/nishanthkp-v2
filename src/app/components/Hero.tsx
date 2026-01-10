@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, BookOpen } from 'lucide-react';
+import { Github, Linkedin, Mail, BookOpen, Globe } from 'lucide-react';
 import headshotImage from '../../assets/nishanth_headshot.png';
 
 export function Hero() {
@@ -9,6 +9,19 @@ export function Hero() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const countries = [
+    'Algeria',
+    'Abu Dhabi',
+    'Bahrain',
+    'Dubai',
+    'Egypt',
+    'India',
+    'Morocco',
+    'Qatar',
+    'Saudi Arabia',
+    'Singapore',
+  ];
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center bg-white pt-16">
@@ -29,10 +42,10 @@ export function Hero() {
               Nishanth Kumar Pathi
             </h1>
 
-            {/* Areas of Expertise */}
+            {/* Areas of Specialization */}
             <div className="mb-8">
               <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3 text-center lg:text-left">
-                Areas of Expertise
+                Areas of Specialization
               </h3>
               <div className="flex flex-wrap gap-2 justify-center lg:justify-start max-w-3xl">
                 {[
@@ -48,9 +61,31 @@ export function Hero() {
                 ].map((area, index) => (
                   <span
                     key={index}
-                    className="px-4 py-2 bg-gradient-to-r from-[#001f3f] to-[#17A2B8] text-white text-sm rounded-full shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="px-4 py-2 bg-gradient-to-r from-[#2596be] to-[#1a7a9e] text-white text-sm rounded-full shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                   >
                     {area}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* International Experience */}
+            <div className="bg-white p-6 rounded-lg shadow-sm mb-8">
+              <h3 className="text-lg font-medium text-[#2596be] mb-4 flex items-center">
+                <Globe className="mr-2" size={20} />
+                International Experience
+              </h3>
+              <p className="text-gray-700 text-sm mb-4">
+                I have had the privilege of working with organizations and clients across multiple countries, 
+                bringing diverse perspectives and cross-cultural expertise to security solutions:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {countries.map((country, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 bg-[#F8F9FA] text-gray-700 text-sm rounded-md border border-gray-200"
+                  >
+                    {country}
                   </span>
                 ))}
               </div>
@@ -60,7 +95,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-8 py-3 border-2 border-[#001f3f] text-[#001f3f] rounded-md hover:bg-[#001f3f] hover:text-white transition-colors"
+                className="px-8 py-3 border-2 border-[#2596be] text-[#2596be] rounded-md hover:bg-[#2596be] hover:text-white transition-colors"
               >
                 Contact Me
               </button>
@@ -68,7 +103,7 @@ export function Hero() {
                 href="https://blog.nishanthkp.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-3 bg-[#007BFF] text-white rounded-md hover:bg-[#0056b3] transition-colors inline-flex items-center justify-center"
+                className="px-8 py-3 bg-[#2596be] text-white rounded-md hover:bg-[#1a7a9e] transition-colors inline-flex items-center justify-center"
               >
                 <BookOpen size={18} className="mr-2" />
                 Blog
@@ -81,7 +116,7 @@ export function Hero() {
                 href="https://www.linkedin.com/in/nishanthkumarpathi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-[#007BFF] transition-colors"
+                className="text-gray-600 hover:text-[#2596be] transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={24} />
@@ -90,7 +125,7 @@ export function Hero() {
                 href="https://x.com/nishanthkumarp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-[#007BFF] transition-colors"
+                className="text-gray-600 hover:text-[#2596be] transition-colors"
                 aria-label="X (Twitter)"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -101,7 +136,7 @@ export function Hero() {
                 href="https://github.com/nishanthkumarpathi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-[#007BFF] transition-colors"
+                className="text-gray-600 hover:text-[#2596be] transition-colors"
                 aria-label="GitHub"
               >
                 <Github size={24} />
@@ -110,7 +145,7 @@ export function Hero() {
                 href="https://www.youtube.com/nishanthkumarpathi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-[#007BFF] transition-colors"
+                className="text-gray-600 hover:text-[#2596be] transition-colors"
                 aria-label="YouTube"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -119,7 +154,7 @@ export function Hero() {
               </a>
               <a
                 href="mailto:pathinishanth@gmail.com"
-                className="text-gray-600 hover:text-[#007BFF] transition-colors"
+                className="text-gray-600 hover:text-[#2596be] transition-colors"
                 aria-label="Email"
               >
                 <Mail size={24} />

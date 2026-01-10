@@ -43,7 +43,7 @@ export function Header() {
           {/* Logo */}
           <button
             onClick={() => scrollToSection('hero')}
-            className="text-xl font-medium text-[#001f3f] hover:text-[#003366] transition-colors"
+            className="text-xl font-medium text-[#2596be] hover:text-[#1a7a9e] transition-colors"
           >
             Nishanth Kumar Pathi
           </button>

@@ -55,7 +55,7 @@ export function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">Get In Touch</h2>
-          <div className="w-20 h-1 bg-[#001f3f] mx-auto"></div>
+          <div className="w-20 h-1 bg-[#2596be] mx-auto"></div>
           <p className="mt-6 text-lg text-[#6C757D] max-w-2xl mx-auto">
             Interested in consulting services, training programs, or collaboration opportunities? 
             I'd love to hear from you. Let's discuss how I can help secure your organization.
@@ -69,15 +69,15 @@ export function Contact() {
             <div className="space-y-6 mb-8">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-start">
-                  <div className="w-12 h-12 bg-[#001f3f]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <info.icon className="text-[#001f3f]" size={20} />
+                  <div className="w-12 h-12 bg-[#2596be]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <info.icon className="text-[#2596be]" size={20} />
                   </div>
                   <div className="ml-4">
                     <p className="text-sm text-[#6C757D] mb-1">{info.label}</p>
                     {info.link ? (
                       <a
                         href={info.link}
-                        className="text-gray-900 hover:text-[#007BFF] transition-colors"
+                        className="text-gray-900 hover:text-[#2596be] transition-colors"
                         target={info.link.startsWith('http') ? '_blank' : undefined}
                         rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                       >
@@ -95,23 +95,23 @@ export function Contact() {
               <h4 className="text-lg font-medium text-gray-900 mb-4">Professional Services</h4>
               <ul className="space-y-2">
                 <li className="flex items-start text-gray-700">
-                  <span className="text-[#17A2B8] mr-2">▪</span>
+                  <span className="text-[#2596be] mr-2">▪</span>
                   <span>Cybersecurity Consulting & Advisory</span>
                 </li>
                 <li className="flex items-start text-gray-700">
-                  <span className="text-[#17A2B8] mr-2">▪</span>
+                  <span className="text-[#2596be] mr-2">▪</span>
                   <span>Security Architecture & Assessment</span>
                 </li>
                 <li className="flex items-start text-gray-700">
-                  <span className="text-[#17A2B8] mr-2">▪</span>
+                  <span className="text-[#2596be] mr-2">▪</span>
                   <span>Professional Training & Workshops</span>
                 </li>
                 <li className="flex items-start text-gray-700">
-                  <span className="text-[#17A2B8] mr-2">▪</span>
+                  <span className="text-[#2596be] mr-2">▪</span>
                   <span>Cloud Security Implementation</span>
                 </li>
                 <li className="flex items-start text-gray-700">
-                  <span className="text-[#17A2B8] mr-2">▪</span>
+                  <span className="text-[#2596be] mr-2">▪</span>
                   <span>Compliance & Governance</span>
                 </li>
               </ul>
@@ -143,7 +143,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2596be] focus:border-transparent"
                   placeholder="Your full name"
                 />
               </div>
@@ -158,7 +158,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2596be] focus:border-transparent"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -173,7 +173,7 @@ export function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2596be] focus:border-transparent"
                   placeholder="What can I help you with?"
                 />
               </div>
@@ -188,13 +188,13 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] focus:border-transparent resize-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2596be] focus:border-transparent resize-none"
                   placeholder="Please provide details about your inquiry..."
                 />
               </div>
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-[#17A2B8] text-white rounded-md hover:bg-[#138496] transition-colors flex items-center justify-center"
+                className="w-full px-6 py-3 bg-[#2596be] text-white rounded-md hover:bg-[#1a7a9e] transition-colors flex items-center justify-center"
               >
                 <Send size={18} className="mr-2" />
                 Send Message

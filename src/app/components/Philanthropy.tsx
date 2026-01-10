@@ -57,7 +57,7 @@ export function Philanthropy() {
           <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">
             Community & Philanthropy
           </h2>
-          <div className="w-20 h-1 bg-[#001f3f] mx-auto"></div>
+          <div className="w-20 h-1 bg-[#2596be] mx-auto"></div>
           <p className="mt-6 text-lg text-[#6C757D] max-w-3xl mx-auto">
             Giving back to the community through mentorship, volunteering, and knowledge sharing
           </p>
@@ -65,7 +65,7 @@ export function Philanthropy() {
 
         {/* Quote */}
         <div className="max-w-3xl mx-auto mb-16 text-center">
-          <div className="bg-gradient-to-r from-[#001f3f] to-[#003366] text-white p-8 rounded-lg">
+          <div className="bg-gradient-to-r from-[#2596be] to-[#1a7a9e] text-white p-8 rounded-lg">
             <Heart className="mx-auto mb-4 text-[#17A2B8]" size={32} />
             <p className="text-lg italic mb-4">
               "Security is not just a profession—it's a responsibility to protect and educate. 
@@ -92,7 +92,7 @@ export function Philanthropy() {
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
                     <div>
                       <h3 className="text-xl font-medium text-gray-900 mb-1">{activity.role}</h3>
-                      <p className="text-[#001f3f] font-medium">{activity.organization}</p>
+                      <p className="text-[#2596be] font-medium">{activity.organization}</p>
                     </div>
                     <span className="text-sm text-[#6C757D] mt-2 sm:mt-0">{activity.period}</span>
                   </div>
@@ -110,19 +110,19 @@ export function Philanthropy() {
         {/* Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="text-center p-6 bg-[#F8F9FA] rounded-lg">
-            <div className="text-3xl font-light text-[#001f3f] mb-2">5+</div>
+            <div className="text-3xl font-light text-[#2596be] mb-2">5+</div>
             <div className="text-sm text-[#6C757D]">Community Organizations</div>
           </div>
           <div className="text-center p-6 bg-[#F8F9FA] rounded-lg">
-            <div className="text-3xl font-light text-[#001f3f] mb-2">20+</div>
+            <div className="text-3xl font-light text-[#2596be] mb-2">20+</div>
             <div className="text-sm text-[#6C757D]">Workshops Organized</div>
           </div>
           <div className="text-center p-6 bg-[#F8F9FA] rounded-lg">
-            <div className="text-3xl font-light text-[#001f3f] mb-2">15+</div>
+            <div className="text-3xl font-light text-[#2596be] mb-2">15+</div>
             <div className="text-sm text-[#6C757D]">Students Mentored</div>
           </div>
           <div className="text-center p-6 bg-[#F8F9FA] rounded-lg">
-            <div className="text-3xl font-light text-[#001f3f] mb-2">10+</div>
+            <div className="text-3xl font-light text-[#2596be] mb-2">10+</div>
             <div className="text-sm text-[#6C757D]">Non-Profits Secured</div>
           </div>
         </div>

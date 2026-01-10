@@ -74,7 +74,7 @@ export function Certifications() {
           <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">
             Certifications & Credentials
           </h2>
-          <div className="w-20 h-1 bg-[#001f3f] mx-auto"></div>
+          <div className="w-20 h-1 bg-[#2596be] mx-auto"></div>
           <p className="mt-6 text-lg text-[#6C757D] max-w-3xl mx-auto">
             Industry-recognized certifications demonstrating expertise across cybersecurity, 
             cloud security, privacy, and compliance domains
@@ -85,7 +85,7 @@ export function Certifications() {
         <div className="space-y-12">
           {categories.map((category, catIndex) => (
             <div key={catIndex}>
-              <h3 className="text-2xl font-medium text-[#001f3f] mb-6 flex items-center">
+              <h3 className="text-2xl font-medium text-[#2596be] mb-6 flex items-center">
                 <Award className="mr-2" size={24} />
                 {category}
               </h3>
@@ -95,10 +95,10 @@ export function Certifications() {
                   .map((cert, index) => (
                     <div
                       key={index}
-                      className="bg-[#F8F9FA] p-6 rounded-lg border-l-4 border-[#17A2B8] hover:shadow-md transition-shadow"
+                      className="bg-[#F8F9FA] p-6 rounded-lg border-l-4 border-[#2596be] hover:shadow-md transition-shadow"
                     >
-                      <div className="flex items-start mb-3">
-                        <CheckCircle className="text-[#17A2B8] mr-2 flex-shrink-0 mt-1" size={20} />
+                      <div className="flex items-start">
+                        <CheckCircle className="text-[#2596be] mr-2 flex-shrink-0 mt-1" size={20} />
                         <h4 className="font-medium text-gray-900">{cert.name}</h4>
                       </div>
                       <div className="text-sm text-[#6C757D] ml-7">
@@ -113,7 +113,7 @@ export function Certifications() {
         </div>
 
         {/* Summary Stats */}
-        <div className="mt-16 bg-gradient-to-r from-[#001f3f] to-[#003366] text-white p-8 rounded-lg">
+        <div className="mt-16 bg-gradient-to-r from-[#2596be] to-[#1a7a9e] text-white p-8 rounded-lg">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
               <div className="text-4xl font-light mb-2">{certifications.length}+</div>

@@ -93,7 +93,7 @@ export function Skills() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">Technical Skills</h2>
-          <div className="w-20 h-1 bg-[#001f3f] mx-auto"></div>
+          <div className="w-20 h-1 bg-[#2596be] mx-auto"></div>
           <p className="mt-6 text-lg text-[#6C757D] max-w-3xl mx-auto">
             Comprehensive expertise across security tools, cloud platforms, automation frameworks, 
             and industry standards
@@ -103,7 +103,7 @@ export function Skills() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {skillCategories.map((category, index) => (
             <div key={index} className="bg-[#F8F9FA] p-8 rounded-lg">
-              <h3 className="text-2xl font-medium text-[#001f3f] mb-6">{category.category}</h3>
+              <h3 className="text-2xl font-medium text-[#2596be] mb-6">{category.category}</h3>
               <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill, skillIndex) => (
                   <span

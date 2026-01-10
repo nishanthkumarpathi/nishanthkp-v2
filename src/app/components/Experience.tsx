@@ -69,7 +69,7 @@ export function Experience() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">Professional Experience</h2>
-          <div className="w-20 h-1 bg-[#001f3f] mx-auto"></div>
+          <div className="w-20 h-1 bg-[#2596be] mx-auto"></div>
           <p className="mt-6 text-lg text-[#6C757D] max-w-3xl mx-auto">
             Over a decade of progressive experience in cybersecurity across multiple industries and geographies
           </p>
@@ -81,7 +81,7 @@ export function Experience() {
               <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
                 <div className="flex-1">
                   <h3 className="text-2xl font-medium text-gray-900 mb-2">{exp.title}</h3>
-                  <div className="flex items-center text-[#001f3f] mb-1">
+                  <div className="flex items-center text-[#2596be] mb-1">
                     <Briefcase size={18} className="mr-2" />
                     <span className="font-medium">{exp.company}</span>
                   </div>
@@ -107,7 +107,7 @@ export function Experience() {
 
               {exp.achievements && (
                 <div className="pt-4 border-t border-gray-200">
-                  <h4 className="text-sm font-medium text-[#001f3f] mb-2 flex items-center">
+                  <h4 className="text-sm font-medium text-[#2596be] mb-2 flex items-center">
                     <DollarSign size={16} className="mr-1" />
                     Key Achievements:
                   </h4>
