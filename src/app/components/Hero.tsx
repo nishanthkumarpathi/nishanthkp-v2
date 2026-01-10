@@ -1,6 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Mail, FileText, BookOpen } from 'lucide-react';
-import headshotImage from 'figma:asset/26e380590cd7ca16484b5952e77c520542462d13.png';
+import headshotImage from '../../assets/nishanth_headshot.png';
 
 export function Hero() {
   const scrollToSection = (id: string) => {
