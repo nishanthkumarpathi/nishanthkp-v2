@@ -37,12 +37,6 @@ export function Contact() {
       link: 'mailto:pathinishanth@gmail.com',
     },
     {
-      icon: Phone,
-      label: 'Phone',
-      value: '+973-38310280',
-      link: 'tel:+97338310280',
-    },
-    {
       icon: MapPin,
       label: 'Location',
       value: 'Manama, Bahrain',

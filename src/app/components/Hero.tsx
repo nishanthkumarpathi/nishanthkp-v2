@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, FileText, BookOpen } from 'lucide-react';
+import { Github, Linkedin, Mail, BookOpen } from 'lucide-react';
 import headshotImage from '../../assets/nishanth_headshot.png';
 
 export function Hero() {
@@ -42,14 +42,6 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-              <a
-                href="/resume.pdf"
-                download
-                className="px-8 py-3 bg-[#17A2B8] text-white rounded-md hover:bg-[#138496] transition-colors inline-flex items-center justify-center"
-              >
-                <FileText size={18} className="mr-2" />
-                View Resume
-              </a>
               <button
                 onClick={() => scrollToSection('contact')}
                 className="px-8 py-3 border-2 border-[#001f3f] text-[#001f3f] rounded-md hover:bg-[#001f3f] hover:text-white transition-colors"
@@ -70,7 +62,7 @@ export function Hero() {
             {/* Social Links */}
             <div className="flex justify-center lg:justify-start gap-4">
               <a
-                href="https://linkedin.com/in/nishanthkumarp"
+                href="https://www.linkedin.com/in/nishanthkumarpathi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-[#007BFF] transition-colors"
@@ -87,6 +79,26 @@ export function Hero() {
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a
+                href="https://github.com/nishanthkumarpathi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#007BFF] transition-colors"
+                aria-label="GitHub"
+              >
+                <Github size={24} />
+              </a>
+              <a
+                href="https://www.youtube.com/nishanthkumarpathi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-[#007BFF] transition-colors"
+                aria-label="YouTube"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               </a>
               <a

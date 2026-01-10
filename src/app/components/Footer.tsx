@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Mail } from 'lucide-react';
+import { Linkedin, Mail, Github } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -7,7 +7,7 @@ export function Footer() {
   const socialLinks = [
     { 
       icon: Linkedin, 
-      href: 'https://linkedin.com/in/nishanthkumarp', 
+      href: 'https://www.linkedin.com/in/nishanthkumarpathi', 
       label: 'LinkedIn' 
     },
     { 
@@ -18,6 +18,20 @@ export function Footer() {
       ), 
       href: 'https://x.com/nishanthkumarp', 
       label: 'X (Twitter)' 
+    },
+    { 
+      icon: Github, 
+      href: 'https://github.com/nishanthkumarpathi', 
+      label: 'GitHub' 
+    },
+    { 
+      icon: () => (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      ), 
+      href: 'https://www.youtube.com/nishanthkumarpathi', 
+      label: 'YouTube' 
     },
     { 
       icon: Mail, 
@@ -72,7 +86,6 @@ export function Footer() {
             <h4 className="text-lg font-medium mb-4">Connect</h4>
             <div className="space-y-2 mb-4">
               <p className="text-white/70 text-sm">pathinishanth@gmail.com</p>
-              <p className="text-white/70 text-sm">+973-38310280</p>
               <p className="text-white/70 text-sm">Manama, Bahrain</p>
             </div>
             <div className="flex gap-4">
@@ -102,6 +115,9 @@ export function Footer() {
               </a>
               <a href="https://blog.nishanthkp.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 Blog
+              </a>
+              <a href="https://training.nishanthkp.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                Training
               </a>
               <a href="https://nishanthkp.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 Website
