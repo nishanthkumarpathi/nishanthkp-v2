@@ -1,0 +1,135 @@
+import React from 'react';
+import { Award, CheckCircle } from 'lucide-react';
+
+export function Certifications() {
+  const certifications = [
+    {
+      name: 'Certified Information Privacy Manager (CIPM)',
+      issuer: 'IAPP',
+      year: '2023',
+      category: 'Privacy',
+    },
+    {
+      name: 'Certified Information Privacy Technologist (CIPT)',
+      issuer: 'IAPP',
+      year: '2023',
+      category: 'Privacy',
+    },
+    {
+      name: 'Certified Information Systems Auditor (CISA)',
+      issuer: 'ISACA',
+      year: '2022',
+      category: 'Audit & Governance',
+    },
+    {
+      name: 'Certified Information Security Manager (CISM)',
+      issuer: 'ISACA',
+      year: '2021',
+      category: 'Security Management',
+    },
+    {
+      name: 'AWS Certified Solutions Architect – Professional',
+      issuer: 'Amazon Web Services',
+      year: '2022',
+      category: 'Cloud Security',
+    },
+    {
+      name: 'AWS Certified Security – Specialty',
+      issuer: 'Amazon Web Services',
+      year: '2021',
+      category: 'Cloud Security',
+    },
+    {
+      name: 'Microsoft Certified: Azure Security Engineer Associate',
+      issuer: 'Microsoft',
+      year: '2021',
+      category: 'Cloud Security',
+    },
+    {
+      name: 'Certified Ethical Hacker (CEH)',
+      issuer: 'EC-Council',
+      year: '2019',
+      category: 'Penetration Testing',
+    },
+    {
+      name: 'CompTIA Security+',
+      issuer: 'CompTIA',
+      year: '2018',
+      category: 'Security Fundamentals',
+    },
+    {
+      name: 'ISO 27001 Lead Implementer',
+      issuer: 'PECB',
+      year: '2020',
+      category: 'Compliance',
+    },
+  ];
+
+  const categories = Array.from(new Set(certifications.map(cert => cert.category)));
+
+  return (
+    <section id="certifications" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">
+            Certifications & Credentials
+          </h2>
+          <div className="w-20 h-1 bg-[#001f3f] mx-auto"></div>
+          <p className="mt-6 text-lg text-[#6C757D] max-w-3xl mx-auto">
+            Industry-recognized certifications demonstrating expertise across cybersecurity, 
+            cloud security, privacy, and compliance domains
+          </p>
+        </div>
+
+        {/* Certifications by Category */}
+        <div className="space-y-12">
+          {categories.map((category, catIndex) => (
+            <div key={catIndex}>
+              <h3 className="text-2xl font-medium text-[#001f3f] mb-6 flex items-center">
+                <Award className="mr-2" size={24} />
+                {category}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {certifications
+                  .filter(cert => cert.category === category)
+                  .map((cert, index) => (
+                    <div
+                      key={index}
+                      className="bg-[#F8F9FA] p-6 rounded-lg border-l-4 border-[#17A2B8] hover:shadow-md transition-shadow"
+                    >
+                      <div className="flex items-start mb-3">
+                        <CheckCircle className="text-[#17A2B8] mr-2 flex-shrink-0 mt-1" size={20} />
+                        <h4 className="font-medium text-gray-900">{cert.name}</h4>
+                      </div>
+                      <div className="text-sm text-[#6C757D] ml-7">
+                        <p className="mb-1">{cert.issuer}</p>
+                        <p className="text-xs">{cert.year}</p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Summary Stats */}
+        <div className="mt-16 bg-gradient-to-r from-[#001f3f] to-[#003366] text-white p-8 rounded-lg">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-light mb-2">{certifications.length}+</div>
+              <div className="text-sm text-white/80">Professional Certifications</div>
+            </div>
+            <div>
+              <div className="text-4xl font-light mb-2">{categories.length}</div>
+              <div className="text-sm text-white/80">Security Domains</div>
+            </div>
+            <div>
+              <div className="text-4xl font-light mb-2">10+</div>
+              <div className="text-sm text-white/80">Years Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
