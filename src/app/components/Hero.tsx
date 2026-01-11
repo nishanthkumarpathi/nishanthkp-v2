@@ -17,12 +17,14 @@ export function Hero() {
   ];
 
   const specializations = [
-    'Cyber Security',
-    'Data Privacy',
-    'Cloud Automation',
-    'SRE',
-    'Chaos Eng.',
+    'Cyber Security Engineering',
+    'Data Privacy Engineering',
+    'Cloud Automation Engineering',
+    'Site Reliability Engineering',
+    'Chaos Engineering',
     'DevSecOps',
+    'DataSecOps',
+    'CloudNativeOps',
     'FinOps'
   ];
 
@@ -78,14 +80,17 @@ export function Hero() {
               </span>
             </motion.h1>
 
-            {/* Areas of Specialization - Compact */}
+            {/* Areas of Specialization - Enhanced Design */}
             <motion.div variants={itemVariants} className="mb-6">
-              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+              <div className="flex flex-wrap gap-2.5 justify-center lg:justify-start max-w-2xl">
                 {specializations.map((area, index) => (
                   <motion.span
                     key={index}
-                    whileHover={{ scale: 1.05 }}
-                    className="px-3 py-1 bg-white border border-gray-200 text-gray-600 text-xs font-medium rounded-full shadow-sm hover:border-[#2596be]/30 transition-colors cursor-default"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.3 + index * 0.05, duration: 0.3 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="px-4 py-1.5 bg-gradient-to-r from-white to-blue-50/50 border border-gray-200 text-gray-700 text-sm font-medium rounded-full shadow-sm hover:shadow-md hover:border-[#2596be]/50 hover:from-blue-50/70 hover:to-blue-100/50 transition-all duration-200 cursor-default"
                   >
                     {area}
                   </motion.span>
