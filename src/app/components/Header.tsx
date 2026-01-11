@@ -23,8 +23,12 @@ export function Header() {
 
   const navItems = [
     { label: 'Home', id: 'hero' },
+    { label: 'About', id: 'about' },
     { label: 'Publications', id: 'publications' },
     { label: 'Gallery', id: 'gallery' },
+    { label: 'Collaborations', id: 'collaborations' },
+    { label: 'Community', id: 'community' },
+    { label: 'Research', id: 'research' },
     { label: 'Contact', id: 'contact' },
   ];
 

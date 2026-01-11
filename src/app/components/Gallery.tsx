@@ -56,15 +56,25 @@ const events: Event[] = Array.from({ length: 15 }).flatMap((_, i) =>
 );
 
 export function Gallery() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'center' });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
   return (
-    <section id="gallery" className="py-24 bg-white overflow-hidden">
-      <div className="max-w-[1920px] mx-auto">
+    <section id="gallery" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12 px-4"
+          className="text-center mb-16"
         >
           <h2 className="text-4xl font-light text-gray-900 mb-6">Speaking Engagements & Events</h2>
           <div className="w-24 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
@@ -73,13 +83,36 @@ export function Gallery() {
           </p>
         </motion.div>
 
-        {/* Horizontal Scroll Container */}
-        <div className="flex overflow-x-auto pb-12 pt-4 px-4 sm:px-6 lg:px-8 space-x-8 snap-x snap-mandatory scrollbar-hide">
-          {events.map((event, index) => (
-            <div key={event.id} className="snap-center shrink-0 w-[85vw] sm:w-[500px]">
-              <EventCard event={event} index={index} />
+        {/* Carousel Container with Navigation */}
+        <div className="relative px-12 md:px-16 lg:px-20">
+          {/* Left Navigation Button */}
+          <button
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white hover:bg-gray-50 rounded-full shadow-lg border-2 border-gray-300 transition-all hover:border-[#2596be]"
+            aria-label="Previous event"
+          >
+            <ChevronLeft size={28} className="text-gray-800" />
+          </button>
+
+          {/* Right Navigation Button */}
+          <button
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white hover:bg-gray-50 rounded-full shadow-lg border-2 border-gray-300 transition-all hover:border-[#2596be]"
+            aria-label="Next event"
+          >
+            <ChevronRight size={28} className="text-gray-800" />
+          </button>
+
+          {/* Embla Carousel */}
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-6 md:gap-8">
+              {events.map((event, index) => (
+                <div key={event.id} className="flex-[0_0_100%] md:flex-[0_0_calc(50%-16px)] lg:flex-[0_0_calc(33.333%-22px)] min-w-0">
+                  <EventCard event={event} index={index} />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
@@ -139,25 +172,14 @@ function EventCard({ event, index }: { event: Event; index: number }) {
       </div>
 
       {/* Content */}
-      <div className="p-8 flex-1 flex flex-col">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">{event.title}</h3>
-
-        <div className="space-y-3 mb-6">
-          <div className="flex items-center text-gray-500">
-            <Calendar size={18} className="mr-3 text-gray-400" />
-            <span className="text-sm font-medium">{event.date} • {event.location}</span>
-          </div>
-          <div className="flex items-center text-gray-500">
-            <Users size={18} className="mr-3 text-gray-400" />
-            <span className="text-sm font-medium">{event.attendees}</span>
-          </div>
-        </div>
+      <div className="p-6 flex-1 flex flex-col">
+        <p className="text-xs font-bold text-[#2596be] uppercase tracking-wider mb-3">{event.date}</p>
+        <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">{event.title}</h3>
 
         <div className="mt-auto">
-          <p className="text-sm font-bold text-gray-800 mb-3">Topics Presented:</p>
           <div className="flex flex-wrap gap-2">
             {event.topics.map((topic, i) => (
-              <span key={i} className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-[#2596be] text-white shadow-sm">
+              <span key={i} className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-blue-50 text-[#2596be] border border-blue-200">
                 {topic}
               </span>
             ))}

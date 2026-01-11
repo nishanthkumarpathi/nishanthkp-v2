@@ -3,6 +3,9 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Publications } from './components/Publications';
 import { Gallery } from './components/Gallery';
+import { OrganizationalCollaborations } from './components/OrganizationalCollaborations';
+import { CommunityEngagement } from './components/CommunityEngagement';
+import { ProfessionalExperience } from './components/ProfessionalExperience';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
@@ -12,8 +15,11 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <ProfessionalExperience />
         <Publications />
         <Gallery />
+        <OrganizationalCollaborations />
+        <CommunityEngagement />
         <Contact />
       </main>
       <Footer />

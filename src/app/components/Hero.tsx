@@ -178,12 +178,6 @@ export function Hero() {
               </div>
 
               {/* Floating aesthetic elements */}
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="absolute -bottom-2 -left-2 bg-white px-4 py-2 rounded-xl shadow-lg border border-gray-100 hidden sm:block z-20"
-              >
-                <span className="text-xs font-bold text-[#2596be]">10+ Countries</span>
-              </motion.div>
             </div>
           </motion.div>
 
@@ -191,40 +185,39 @@ export function Hero() {
       </div>
 
       {/* Stats Bar */}
-      <div className="absolute bottom-0 left-0 w-full bg-[#0B1C3E] text-white py-6 z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-center text-center">
+      <div className="absolute bottom-8 left-0 right-0 z-30 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-[#0B1C3E] text-white py-6 px-8 rounded-2xl shadow-xl">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center justify-center text-center">
 
-            <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
-              <span className="text-3xl font-bold text-[#2596be]">10+</span>
-              <span className="text-xs text-gray-300 mt-1">Years Leading Security</span>
+              <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
+                <span className="text-3xl font-bold text-[#2596be]">10+</span>
+                <span className="text-xs text-gray-300 mt-1">Years Leading Security</span>
+              </div>
+
+
+
+              <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
+                <span className="text-3xl font-bold text-[#2596be]">$132K+</span>
+                <span className="text-xs text-gray-300 mt-1">Cost Savings Delivered</span>
+              </div>
+
+              <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
+                <span className="text-3xl font-bold">50+</span>
+                <span className="text-xs text-gray-300 mt-1">Enterprise Projects</span>
+              </div>
+
+              <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
+                <span className="text-3xl font-bold">10+</span>
+                <span className="text-xs text-gray-300 mt-1">Professional Certifications</span>
+              </div>
+
+              <div className="flex flex-col items-center">
+                <span className="text-3xl font-bold">7</span>
+                <span className="text-xs text-gray-300 mt-1">Security Domains</span>
+              </div>
+
             </div>
-
-            <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
-              <span className="text-3xl font-bold">10+</span>
-              <span className="text-xs text-gray-300 mt-1">Countries</span>
-            </div>
-
-            <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
-              <span className="text-3xl font-bold text-[#2596be]">$132K+</span>
-              <span className="text-xs text-gray-300 mt-1">Cost Savings Delivered</span>
-            </div>
-
-            <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
-              <span className="text-3xl font-bold">50+</span>
-              <span className="text-xs text-gray-300 mt-1">Enterprise Projects</span>
-            </div>
-
-            <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
-              <span className="text-3xl font-bold">10+</span>
-              <span className="text-xs text-gray-300 mt-1">Professional Certifications</span>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <span className="text-3xl font-bold">7</span>
-              <span className="text-xs text-gray-300 mt-1">Security Domains</span>
-            </div>
-
           </div>
         </div>
       </div>
