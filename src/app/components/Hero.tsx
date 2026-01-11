@@ -3,6 +3,8 @@ import { Github, Linkedin, Mail, BookOpen, Globe, ArrowRight } from 'lucide-reac
 import { motion } from 'motion/react';
 import headshotImage from '../../assets/nishanth_headshot.png';
 
+import { WorldMap } from './WorldMap';
+
 export function Hero() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -11,10 +13,7 @@ export function Hero() {
     }
   };
 
-  const countries = [
-    'Algeria', 'Abu Dhabi', 'Bahrain', 'Dubai', 'Egypt',
-    'India', 'Morocco', 'Qatar', 'Saudi Arabia', 'Singapore',
-  ];
+
 
   const specializations = [
     'Cyber Security Engineering',
@@ -37,7 +36,7 @@ export function Hero() {
         delayChildren: 0.1,
       }
     }
-  };
+  } as const;
 
   const itemVariants = {
     hidden: { opacity: 0, y: 15 },
@@ -46,13 +45,16 @@ export function Hero() {
       y: 0,
       transition: { duration: 0.4, ease: "easeOut" }
     }
-  };
+  } as const;
 
   return (
     <section id="hero" className="h-screen max-h-[1080px] min-h-[600px] flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50/30 overflow-hidden relative pt-16 lg:pt-0">
+      {/* Background Map - Cyber/Tech Aesthetic */}
+      <WorldMap className="absolute inset-0 w-full h-full opacity-60" />
+
       {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-teal-100/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 z-10" />
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-teal-100/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 z-10" />
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 lg:gap-16">
@@ -98,18 +100,25 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* International Experience - Redesigned as Compact Row */}
-            <motion.div variants={itemVariants} className="mb-8">
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 text-sm text-gray-600 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-100 inline-flex shadow-sm">
-                <div className="flex items-center font-medium text-[#2596be]">
-                  <Globe size={16} className="mr-2" />
-                  <span>Global Exp.</span>
+            {/* International Experience - Global Map Highlight */}
+            <motion.div variants={itemVariants} className="mb-8 relative z-20">
+              <div className="flex items-center gap-3 inline-flex">
+                <div className="relative">
+                  <Globe size={18} className="text-[#2596be]" />
+                  <span className="absolute top-0 right-0 w-2 h-2 bg-green-400 rounded-full border border-white"></span>
                 </div>
-                <div className="hidden sm:block w-px h-4 bg-gray-300"></div>
-                <div className="max-w-md text-center sm:text-left">
-                  <span className="text-gray-500">
-                    Trusted by organizations across <span className="font-semibold text-gray-700">{countries.length}+ countries</span>
-                  </span>
+                <div className="flex flex-col">
+                  <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 block">International Experience</span>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      'Algeria', 'Bahrain', 'Egypt', 'India', 'Morocco',
+                      'Qatar', 'Saudi Arabia', 'Singapore', 'UAE (Dubai & Abu Dhabi)'
+                    ].map((country) => (
+                      <span key={country} className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-[#0B1C3E] shadow-sm hover:border-[#2596be]/30 hover:bg-blue-50/30 transition-colors">
+                        {country}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -178,11 +187,50 @@ export function Hero() {
                 whileHover={{ scale: 1.1 }}
                 className="absolute -bottom-2 -left-2 bg-white px-4 py-2 rounded-xl shadow-lg border border-gray-100 hidden sm:block z-20"
               >
-                <span className="text-xs font-bold text-[#2596be]">{countries.length}+ Countries</span>
+                <span className="text-xs font-bold text-[#2596be]">10+ Countries</span>
               </motion.div>
             </div>
           </motion.div>
 
+        </div>
+      </div>
+
+      {/* Stats Bar */}
+      <div className="absolute bottom-0 left-0 w-full bg-[#0B1C3E] text-white py-6 z-30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-center text-center">
+
+            <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
+              <span className="text-3xl font-bold text-[#2596be]">10+</span>
+              <span className="text-xs text-gray-300 mt-1">Years Leading Security</span>
+            </div>
+
+            <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
+              <span className="text-3xl font-bold">10+</span>
+              <span className="text-xs text-gray-300 mt-1">Countries</span>
+            </div>
+
+            <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
+              <span className="text-3xl font-bold text-[#2596be]">$132K+</span>
+              <span className="text-xs text-gray-300 mt-1">Cost Savings Delivered</span>
+            </div>
+
+            <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
+              <span className="text-3xl font-bold">50+</span>
+              <span className="text-xs text-gray-300 mt-1">Enterprise Projects</span>
+            </div>
+
+            <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
+              <span className="text-3xl font-bold">10+</span>
+              <span className="text-xs text-gray-300 mt-1">Professional Certifications</span>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <span className="text-3xl font-bold">7</span>
+              <span className="text-xs text-gray-300 mt-1">Security Domains</span>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
