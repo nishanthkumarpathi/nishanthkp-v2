@@ -31,12 +31,6 @@ export function Contact() {
 
   const contactInfo = [
     {
-      icon: Mail,
-      label: 'Email',
-      value: 'pathinishanth@gmail.com',
-      link: 'mailto:pathinishanth@gmail.com',
-    },
-    {
       icon: MapPin,
       label: 'Location',
       value: 'Manama, Bahrain',

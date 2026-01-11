@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight, Tag } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, Users } from 'lucide-react';
 import { motion } from 'motion/react';
 import eventSpeaker from '../../assets/event_speaker.png';
 import eventPanel from '../../assets/event_panel.png';
@@ -10,55 +10,75 @@ interface Event {
   id: string;
   title: string;
   date: string;
+  location: string;
+  attendees: string;
   topics: string[];
   images: string[];
 }
 
-const events: Event[] = [
+// Generate 45 dummy events for testing horizontal scroll
+const baseEvents: Event[] = [
   {
     id: '1',
-    title: 'Keynote: The Future of Cloud Security',
-    date: 'Dec 2024',
-    topics: ['Cloud Security', 'AI', 'Future Tech'],
-    images: [eventSpeaker, eventPanel, eventWorkshop], // Rotating same images for demo
+    title: 'Cloud Security Best Practices Summit',
+    date: 'November 2024',
+    location: 'Dubai, UAE',
+    attendees: '200+ Security Professionals',
+    topics: ['Multi-Cloud Security', 'Zero Trust Architecture', 'Cloud Posture Management'],
+    images: [eventSpeaker, eventPanel, eventWorkshop],
   },
   {
     id: '2',
-    title: 'Panel: DevSecOps at Scale',
-    date: 'Oct 2024',
-    topics: ['DevSecOps', 'Culture', 'Automation'],
-    images: [eventPanel, eventWorkshop, eventSpeaker],
+    title: 'DevSecOps & Cloud Native Security Workshop',
+    date: 'September 2024',
+    location: 'Riyadh, Saudi Arabia',
+    attendees: '150+ Developers & DevOps Engineers',
+    topics: ['DevSecOps Pipeline Security', 'Container Security', 'Kubernetes Security'],
+    images: [eventWorkshop, eventSpeaker, eventPanel],
   },
   {
     id: '3',
-    title: 'Workshop: Chaos Engineering 101',
-    date: 'Aug 2024',
-    topics: ['Chaos Engineering', 'Resilience', 'Hands-on'],
-    images: [eventWorkshop, eventSpeaker, eventPanel],
+    title: 'Cybersecurity Leadership Panel',
+    date: 'August 2024',
+    location: 'London, UK',
+    attendees: '100+ C-Level Executives',
+    topics: ['Governance Risk Compliance', 'AI in Security', 'Boardroom Strategy'],
+    images: [eventPanel, eventWorkshop, eventSpeaker],
   },
 ];
 
+const events: Event[] = Array.from({ length: 15 }).flatMap((_, i) =>
+  baseEvents.map((event, j) => ({
+    ...event,
+    id: `${i}-${j}`,
+    title: `${event.title} ${i > 0 ? `(Vol. ${i + 1})` : ''}`, // Differentiate titles slightly
+  }))
+);
+
 export function Gallery() {
   return (
-    <section id="gallery" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="gallery" className="py-24 bg-white overflow-hidden">
+      <div className="max-w-[1920px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 px-4"
         >
-          <h2 className="text-3xl font-light text-gray-900 mb-4">Speaking Gallery</h2>
-          <div className="w-20 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Highlights from conferences, workshops, and panels where I've shared insights on security and engineering.
+          <h2 className="text-4xl font-light text-gray-900 mb-6">Speaking Engagements & Events</h2>
+          <div className="w-24 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
+          <p className="text-gray-500 text-lg max-w-3xl mx-auto font-light">
+            Sharing insights and expertise at international conferences, workshops, and panel discussions
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Horizontal Scroll Container */}
+        <div className="flex overflow-x-auto pb-12 pt-4 px-4 sm:px-6 lg:px-8 space-x-8 snap-x snap-mandatory scrollbar-hide">
           {events.map((event, index) => (
-            <EventCard key={event.id} event={event} index={index} />
+            <div key={event.id} className="snap-center shrink-0 w-[85vw] sm:w-[500px]">
+              <EventCard event={event} index={index} />
+            </div>
           ))}
         </div>
       </div>
@@ -83,10 +103,10 @@ function EventCard({ event, index }: { event: Event; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col h-full"
+      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col h-full"
     >
       {/* Carousel */}
-      <div className="relative group h-48 sm:h-56 bg-gray-100">
+      <div className="relative group h-64 bg-gray-100">
         <div className="overflow-hidden h-full" ref={emblaRef}>
           <div className="flex h-full">
             {event.images.map((img, idx) => (
@@ -101,35 +121,43 @@ function EventCard({ event, index }: { event: Event; index: number }) {
           </div>
         </div>
         
-        {/* Navigation Buttons - Show on hover */}
+        {/* Navigation Buttons */}
         <button
           onClick={scrollPrev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-1.5 rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity z-10"
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity z-10 text-gray-800"
           aria-label="Previous image"
         >
-          <ChevronLeft size={20} className="text-gray-800" />
+          <ChevronLeft size={24} />
         </button>
         <button
           onClick={scrollNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-1.5 rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity z-10"
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity z-10 text-gray-800"
           aria-label="Next image"
         >
-          <ChevronRight size={20} className="text-gray-800" />
+          <ChevronRight size={24} />
         </button>
       </div>
 
       {/* Content */}
-      <div className="p-6 flex-1 flex flex-col">
-        <div className="flex items-center justify-between mb-2">
-           <span className="text-xs font-semibold text-[#2596be] uppercase tracking-wider">{event.date}</span>
+      <div className="p-8 flex-1 flex flex-col">
+        <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">{event.title}</h3>
+
+        <div className="space-y-3 mb-6">
+          <div className="flex items-center text-gray-500">
+            <Calendar size={18} className="mr-3 text-gray-400" />
+            <span className="text-sm font-medium">{event.date} • {event.location}</span>
+          </div>
+          <div className="flex items-center text-gray-500">
+            <Users size={18} className="mr-3 text-gray-400" />
+            <span className="text-sm font-medium">{event.attendees}</span>
+          </div>
         </div>
-        <h3 className="text-xl font-semibold text-gray-900 mb-3">{event.title}</h3>
-        
+
         <div className="mt-auto">
-          <div className="flex flex-wrap gap-2 mt-4">
+          <p className="text-sm font-bold text-gray-800 mb-3">Topics Presented:</p>
+          <div className="flex flex-wrap gap-2">
             {event.topics.map((topic, i) => (
-              <span key={i} className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-blue-50 text-blue-700">
-                <Tag size={12} className="mr-1" />
+              <span key={i} className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-[#2596be] text-white shadow-sm">
                 {topic}
               </span>
             ))}

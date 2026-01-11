@@ -3,8 +3,6 @@ import { Github, Linkedin, Mail, BookOpen, Globe, ArrowRight } from 'lucide-reac
 import { motion } from 'motion/react';
 import headshotImage from '../../assets/nishanth_headshot.png';
 
-import { WorldMap } from './WorldMap';
-
 export function Hero() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -49,9 +47,6 @@ export function Hero() {
 
   return (
     <section id="hero" className="h-screen max-h-[1080px] min-h-[600px] flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50/30 overflow-hidden relative pt-16 lg:pt-0">
-      {/* Background Map - Cyber/Tech Aesthetic */}
-      <WorldMap className="absolute inset-0 w-full h-full opacity-60" />
-
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 z-10" />
       <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-teal-100/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 z-10" />
