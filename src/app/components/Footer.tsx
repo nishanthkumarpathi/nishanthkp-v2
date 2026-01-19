@@ -33,11 +33,6 @@ export function Footer() {
       href: 'https://www.youtube.com/nishanthkumarpathi', 
       label: 'YouTube' 
     },
-    { 
-      icon: Mail, 
-      href: 'mailto:pathinishanth@gmail.com', 
-      label: 'Email' 
-    },
   ];
 
   const links = [
@@ -85,7 +80,6 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-medium mb-4">Connect</h4>
             <div className="space-y-2 mb-4">
-              <p className="text-white/70 text-sm">pathinishanth@gmail.com</p>
               <p className="text-white/70 text-sm">Manama, Bahrain</p>
             </div>
             <div className="flex gap-4">

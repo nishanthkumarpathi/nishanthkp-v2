@@ -106,7 +106,7 @@ export function Hero() {
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 block">International Experience</span>
                   <div className="flex flex-wrap gap-2">
                     {[
-                      'Algeria', 'Bahrain', 'Egypt', 'India', 'Morocco',
+                      'Algeria', 'Bahrain', 'India',
                       'Qatar', 'Saudi Arabia', 'Singapore', 'UAE (Dubai & Abu Dhabi)'
                     ].map((country) => (
                       <span key={country} className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-[#0B1C3E] shadow-sm hover:border-[#2596be]/30 hover:bg-blue-50/30 transition-colors">
@@ -156,7 +156,7 @@ export function Hero() {
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               } label="YouTube" />
-              <SocialLink href="mailto:pathinishanth@gmail.com" icon={<Mail size={20} />} label="Email" />
+
             </motion.div>
           </motion.div>
 
@@ -198,7 +198,7 @@ export function Hero() {
 
 
               <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
-                <span className="text-3xl font-bold text-[#2596be]">$132K+</span>
+                <span className="text-3xl font-bold text-[#2596be]">$4M+</span>
                 <span className="text-xs text-gray-300 mt-1">Cost Savings Delivered</span>
               </div>
 
@@ -208,7 +208,7 @@ export function Hero() {
               </div>
 
               <div className="flex flex-col items-center border-r border-gray-700/50 last:border-0">
-                <span className="text-3xl font-bold">10+</span>
+                <span className="text-3xl font-bold">20+</span>
                 <span className="text-xs text-gray-300 mt-1">Professional Certifications</span>
               </div>
 

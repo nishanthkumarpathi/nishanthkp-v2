@@ -22,7 +22,7 @@ const stats = [
     color: 'bg-green-500',
   },
   {
-    value: '15',
+    value: '15+',
     label: 'Organizations as Consultant',
     icon: Building2,
     color: 'bg-orange-500',
