@@ -45,29 +45,27 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#2596be] text-white py-8 sm:py-12">
+    <footer className="bg-[#2596be] text-white py-6 sm:py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {/* Brand */}
-          <div>
-            <h3 className="text-xl font-medium mb-4">Nishanth Kumar Pathi</h3>
-            <p className="text-white/70 text-sm">
-              Cyber & Cloud Security Operations Professional
-            </p>
-            <p className="text-white/70 text-sm mt-2">
+          <div className="lg:col-span-1">
+            <h3 className="text-lg font-medium mb-2">Nishanth Kumar Pathi</h3>
+            <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
+              Cyber & Cloud Security Operations Professional.<br />
               Advisor | Consultant | Architect | Leader
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-medium mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="text-base font-medium mb-3">Quick Links</h4>
+            <ul className="space-y-1">
               {links.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-white/70 hover:text-white transition-colors text-sm"
+                    className="text-white/80 hover:text-white transition-colors text-xs sm:text-sm"
                   >
                     {link.label}
                   </a>
@@ -76,13 +74,11 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact & Social */}
+          {/* Connect */}
           <div>
-            <h4 className="text-lg font-medium mb-4">Connect</h4>
-            <div className="space-y-2 mb-4">
-              <p className="text-white/70 text-sm">Manama, Bahrain</p>
-            </div>
-            <div className="flex gap-4">
+            <h4 className="text-base font-medium mb-3">Connect</h4>
+            <p className="text-white/80 text-xs sm:text-sm mb-3">Manama, Bahrain</p>
+            <div className="flex gap-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -92,7 +88,7 @@ export function Footer() {
                   className="text-white/80 hover:text-white transition-colors"
                   aria-label={social.label}
                 >
-                  <social.icon size={20} />
+                  <social.icon size={18} />
                 </a>
               ))}
             </div>
@@ -100,10 +96,10 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 sm:pt-8 border-t border-white/20">
-          <div className="flex flex-col md:flex-row justify-between items-center text-xs sm:text-sm text-white/70 gap-4">
+        <div className="pt-4 sm:pt-6 border-t border-white/20">
+          <div className="flex flex-col md:flex-row justify-between items-center text-xs text-white/70 gap-3">
             <p>© {currentYear} Nishanth Kumar Pathi. All rights reserved.</p>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+            <div className="flex flex-wrap justify-center gap-4">
               <a href="#" className="hover:text-white transition-colors">
                 Privacy Policy
               </a>

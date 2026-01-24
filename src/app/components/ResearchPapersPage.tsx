@@ -120,6 +120,32 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
 
               {/* Paper Content */}
               <div className="p-6 sm:p-8">
+                {/* Authors */}
+                <div className="mb-8">
+                  <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                    Authors
+                  </h4>
+                  <div className="flex flex-wrap gap-2 text-gray-700">
+                    {selectedPaper.authors.map((author, i) => (
+                      <span key={i} className="flex items-center">
+                        {author.profileUrl ? (
+                          <a
+                            href={author.profileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#2596be] hover:underline font-medium"
+                          >
+                            {author.name}
+                          </a>
+                        ) : (
+                          <span className="font-medium">{author.name}</span>
+                        )}
+                        {i < selectedPaper.authors.length - 1 && <span className="mr-1">,</span>}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
                 {/* Abstract */}
                 <div className="mb-8">
                   <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">

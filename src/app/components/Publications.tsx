@@ -3,6 +3,11 @@ import { FileText, Award, ExternalLink, BookOpen, GraduationCap, ChevronLeft, Ch
 import { motion } from 'motion/react';
 import useEmblaCarousel from 'embla-carousel-react';
 
+interface Author {
+  name: string;
+  profileUrl?: string;
+}
+
 interface ResearchPaper {
   title: string;
   type: string;
@@ -13,7 +18,105 @@ interface ResearchPaper {
   fullContent?: string;
   certificates?: string[];
   images?: string[];
+  authors: Author[];
 }
+
+// ... (Publications component code) ...
+
+// Updated Carousel Card Rendering (inside map)
+// <div className="flex items-start mb-3">...</div>
+// <div className="text-sm text-gray-600 mb-2">
+//   <span className="font-medium text-gray-900">Authored by:</span>{' '}
+//   {paper.authors.map((author, i) => (
+//     <span key={i}>
+//       {author.profileUrl ? (
+//         <a href={author.profileUrl} target="_blank" rel="noopener noreferrer" className="text-[#2596be] hover:underline">
+//           {author.name}
+//         </a>
+//       ) : (
+//         <span className="text-gray-700">{author.name}</span>
+//       )}
+//       {i < paper.authors.length - 1 ? ', ' : ''}
+//     </span>
+//   ))}
+// </div>
+// <p className="text-gray-700 text-sm mb-4 line-clamp-3">{paper.description}</p> 
+
+// ...
+
+// Data Population
+export const researchPapers: ResearchPaper[] = [
+  {
+    title: 'Proactive Cybersecurity Risk Assessment and Implementation in ICS Protocols for Operational Technology',
+    type: 'Research Paper',
+    publisher: 'Springer Journal',
+    description: 'This study introduces a proactive cybersecurity risk assessment methodology tailored for Industrial Control Systems (ICS) protocols, aiming to secure Operational Technology (OT) infrastructure against evolving threats.',
+    link: 'https://doi.org/10.1007/978-981-95-2872-1_43',
+    year: '2026',
+    fullContent: 'Published on 5th Jan 2026. This study introduces a proactive cybersecurity risk assessment methodology tailored for Industrial Control Systems (ICS) protocols, aiming to secure Operational Technology (OT) infrastructure against evolving threats.',
+    authors: [
+      { name: 'B. Marimuthu' },
+      { name: 'Nishanth Kumar', profileUrl: 'https://nishanthkp.com' },
+      { name: 'Shinu Abhi', profileUrl: 'https://www.linkedin.com/in/shinu-abhi-phd-711a339/' }
+    ]
+  },
+  {
+    title: 'Cyber Resilience for Containerized Workloads: A NIST-Based Approach to Incident Management and Recovery',
+    type: 'Research Paper',
+    publisher: 'Springer Journal',
+    description: 'This paper proposes a robust incident management and recovery framework for containerized workloads based on NIST standards, ensuring enhanced cyber resilience in dynamic cloud-native environments.',
+    link: 'https://doi.org/10.1007/978-981-95-0681-1_3',
+    year: '2025',
+    fullContent: 'Published on 1st Dec 2025. This paper proposes a robust incident management and recovery framework for containerized workloads based on NIST standards, ensuring enhanced cyber resilience in dynamic cloud-native environments.',
+    authors: [
+      { name: 'Saritha Nagaraju', profileUrl: 'https://www.linkedin.com/in/saritha82/' },
+      { name: 'Nishanth Kumar Pathi', profileUrl: 'https://nishanthkp.com' },
+      { name: 'Rashmi Agarwal', profileUrl: 'https://www.linkedin.com/in/rashmi-agarwal-phd-4190a57/' }
+    ]
+  },
+  {
+    title: 'A Framework for Automating Compliance as Code Using AWS Config and Ansible',
+    type: 'Research Paper',
+    publisher: 'Springer Journal',
+    description: 'This research presents an automated "Compliance as Code" framework utilizing AWS Config and Ansible to streamline regulatory adherence and security governance in cloud environments.',
+    link: 'https://doi.org/10.1007/978-981-96-6254-8_43',
+    year: '2025',
+    fullContent: 'Published on 26th Sep 2025. This research presents an automated "Compliance as Code" framework utilizing AWS Config and Ansible to streamline regulatory adherence and security governance in cloud environments.',
+    authors: [
+      { name: 'Lokendra Sondhiya', profileUrl: 'https://www.linkedin.com/in/lokendrasondhiya/' },
+      { name: 'Nishanth Kumar Pathi', profileUrl: 'https://nishanthkp.com' },
+      { name: 'Rashmi Agarwal', profileUrl: 'https://www.linkedin.com/in/rashmi-agarwal-phd-4190a57/' }
+    ]
+  },
+  {
+    title: 'Automated IoT Security Configuration Audit Framework in AWS Cloud for Real-Time Threat Detection',
+    type: 'Research Paper',
+    publisher: 'IEEE Journal',
+    description: 'An automated security configuration audit framework for IoT ecosystems on AWS Cloud, designed to enable real-time threat detection and mitigation through continuous monitoring.',
+    link: 'https://doi.org/10.1109/ETCC65847.2025.11108388',
+    year: '2025',
+    fullContent: 'Published on 12th Aug 2025. An automated security configuration audit framework for IoT ecosystems on AWS Cloud, designed to enable real-time threat detection and mitigation through continuous monitoring.',
+    authors: [
+      { name: 'Rahul Mohan', profileUrl: 'https://www.linkedin.com/in/rahul-mohan-909a6695/' },
+      { name: 'Nishanth Kumar Pathi', profileUrl: 'https://nishanthkp.com' },
+      { name: 'Rashmi Agarwal', profileUrl: 'https://www.linkedin.com/in/rashmi-agarwal-phd-4190a57/' }
+    ]
+  },
+  {
+    title: 'Enhancing BYOD Security: A Risk Assessment Framework for Corporate Resources',
+    type: 'Research Paper',
+    publisher: 'Springer Journal',
+    description: 'This paper proposes a comprehensive risk assessment framework to enhance Bring Your Own Device (BYOD) security, safeguarding corporate resources while maintaining user flexibility.',
+    link: 'https://doi.org/10.1007/978-981-97-6588-1_36',
+    year: '2024',
+    fullContent: 'Published on 23rd Oct 2024. This paper proposes a comprehensive risk assessment framework to enhance Bring Your Own Device (BYOD) security, safeguarding corporate resources while maintaining user flexibility.',
+    authors: [
+      { name: 'A. N. Datta', profileUrl: 'https://www.linkedin.com/in/datta-aluru-narayana-994396117/' },
+      { name: 'Shinu Abhi', profileUrl: 'https://www.linkedin.com/in/shinu-abhi-phd-711a339/' },
+      { name: 'Nishanth Kumar', profileUrl: 'https://nishanthkp.com' }
+    ]
+  }
+];
 
 interface PublicationsProps {
   onViewAllPapers?: () => void;
@@ -35,65 +138,75 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
 
   const papers: ResearchPaper[] = [
     {
-      title: 'Securing a SaaS Application on AWS: Best Practices and Implementation',
+      title: 'Proactive Cybersecurity Risk Assessment and Implementation in ICS Protocols for Operational Technology',
       type: 'Research Paper',
-      publisher: 'Springer',
-      description:
-        'Comprehensive research on security architecture patterns for SaaS applications deployed on AWS, covering IAM, data encryption, network security, and compliance frameworks.',
-      link: '#',
-      year: '2023',
-      fullContent: 'This research paper explores comprehensive security architecture patterns for Software as a Service (SaaS) applications deployed on Amazon Web Services (AWS). The study covers Identity and Access Management (IAM), data encryption strategies, network security configurations, and compliance frameworks. Key findings include best practices for implementing least-privilege access, encryption at rest and in transit, VPC security configurations, and achieving SOC 2 compliance.',
+      publisher: 'Springer Journal',
+      description: 'This study introduces a proactive cybersecurity risk assessment methodology tailored for Industrial Control Systems (ICS) protocols, aiming to secure Operational Technology (OT) infrastructure against evolving threats.',
+      link: 'https://doi.org/10.1007/978-981-95-2872-1_43',
+      year: '2026',
+      fullContent: 'Published on 5th Jan 2026. This study introduces a proactive cybersecurity risk assessment methodology tailored for Industrial Control Systems (ICS) protocols, aiming to secure Operational Technology (OT) infrastructure against evolving threats.',
+      authors: [
+        { name: 'B. Marimuthu' },
+        { name: 'Nishanth Kumar', profileUrl: 'https://nishanthkp.com' },
+        { name: 'Shinu Abhi', profileUrl: 'https://www.linkedin.com/in/shinu-abhi-phd-711a339/' }
+      ]
     },
     {
-      title: 'DevSecOps Integration in Cloud-Native Applications',
-      type: 'Technical Paper',
-      publisher: 'IEEE',
-      description:
-        'Analysis of security integration practices in CI/CD pipelines for cloud-native applications, with focus on automated security testing and continuous compliance.',
-      link: '#',
-      year: '2022',
-      fullContent: 'This technical paper analyzes security integration practices in Continuous Integration/Continuous Deployment (CI/CD) pipelines for cloud-native applications. The research focuses on automated security testing methodologies including SAST, DAST, and SCA tools, as well as continuous compliance monitoring. The paper provides practical implementation strategies for integrating security gates into DevOps workflows without impacting deployment velocity.',
-    },
-    {
-      title: 'Zero Trust Architecture for Enterprise Networks',
+      title: 'Cyber Resilience for Containerized Workloads: A NIST-Based Approach to Incident Management and Recovery',
       type: 'Research Paper',
-      publisher: 'ACM',
-      description:
-        'Framework for implementing Zero Trust security model in enterprise environments, addressing identity verification, micro-segmentation, and continuous monitoring.',
-      link: '#',
-      year: '2022',
-      fullContent: 'This research presents a comprehensive framework for implementing Zero Trust Architecture (ZTA) in enterprise network environments. The paper addresses key pillars including identity verification, device authentication, micro-segmentation strategies, and continuous monitoring techniques. Case studies demonstrate successful ZTA implementations across various industry verticals.',
+      publisher: 'Springer Journal',
+      description: 'This paper proposes a robust incident management and recovery framework for containerized workloads based on NIST standards, ensuring enhanced cyber resilience in dynamic cloud-native environments.',
+      link: 'https://doi.org/10.1007/978-981-95-0681-1_3',
+      year: '2025',
+      fullContent: 'Published on 1st Dec 2025. This paper proposes a robust incident management and recovery framework for containerized workloads based on NIST standards, ensuring enhanced cyber resilience in dynamic cloud-native environments.',
+      authors: [
+        { name: 'Saritha Nagaraju', profileUrl: 'https://www.linkedin.com/in/saritha82/' },
+        { name: 'Nishanth Kumar Pathi', profileUrl: 'https://nishanthkp.com' },
+        { name: 'Rashmi Agarwal', profileUrl: 'https://www.linkedin.com/in/rashmi-agarwal-phd-4190a57/' }
+      ]
     },
     {
-      title: 'Machine Learning for Threat Detection in Cloud Environments',
+      title: 'A Framework for Automating Compliance as Code Using AWS Config and Ansible',
       type: 'Research Paper',
-      publisher: 'Springer',
-      description:
-        'Application of machine learning algorithms for real-time threat detection and anomaly identification in cloud infrastructure.',
-      link: '#',
-      year: '2021',
-      fullContent: 'This paper explores the application of machine learning algorithms for real-time threat detection and anomaly identification in cloud infrastructure. The research evaluates various ML models including supervised learning for known threat detection and unsupervised learning for zero-day threat identification. Performance benchmarks demonstrate significant improvements in detection accuracy and response time.',
+      publisher: 'Springer Journal',
+      description: 'This research presents an automated "Compliance as Code" framework utilizing AWS Config and Ansible to streamline regulatory adherence and security governance in cloud environments.',
+      link: 'https://doi.org/10.1007/978-981-96-6254-8_43',
+      year: '2025',
+      fullContent: 'Published on 26th Sep 2025. This research presents an automated "Compliance as Code" framework utilizing AWS Config and Ansible to streamline regulatory adherence and security governance in cloud environments.',
+      authors: [
+        { name: 'Lokendra Sondhiya', profileUrl: 'https://www.linkedin.com/in/lokendrasondhiya/' },
+        { name: 'Nishanth Kumar Pathi', profileUrl: 'https://nishanthkp.com' },
+        { name: 'Rashmi Agarwal', profileUrl: 'https://www.linkedin.com/in/rashmi-agarwal-phd-4190a57/' }
+      ]
     },
     {
-      title: 'Container Security Best Practices for Kubernetes',
-      type: 'Technical Paper',
-      publisher: 'CNCF',
-      description:
-        'Comprehensive guide to securing containerized applications in Kubernetes environments, covering image security, runtime protection, and network policies.',
-      link: '#',
-      year: '2021',
-      fullContent: 'This technical guide provides comprehensive security best practices for containerized applications running in Kubernetes environments. Topics covered include container image security scanning, runtime protection mechanisms, network policy implementation, secrets management, and RBAC configuration. The paper includes practical examples and configuration templates.',
-    },
-    {
-      title: 'API Security in Microservices Architecture',
+      title: 'Automated IoT Security Configuration Audit Framework in AWS Cloud for Real-Time Threat Detection',
       type: 'Research Paper',
-      publisher: 'IEEE',
-      description:
-        'Security patterns and practices for protecting APIs in distributed microservices systems, including authentication, rate limiting, and threat mitigation.',
-      link: '#',
-      year: '2020',
-      fullContent: 'This research paper examines security patterns and practices for protecting Application Programming Interfaces (APIs) in distributed microservices architectures. The study covers authentication mechanisms (OAuth 2.0, JWT), rate limiting strategies, input validation, and common threat mitigation techniques. Implementation examples demonstrate security controls for RESTful and GraphQL APIs.',
+      publisher: 'IEEE Journal',
+      description: 'An automated security configuration audit framework for IoT ecosystems on AWS Cloud, designed to enable real-time threat detection and mitigation through continuous monitoring.',
+      link: 'https://doi.org/10.1109/ETCC65847.2025.11108388',
+      year: '2025',
+      fullContent: 'Published on 12th Aug 2025. An automated security configuration audit framework for IoT ecosystems on AWS Cloud, designed to enable real-time threat detection and mitigation through continuous monitoring.',
+      authors: [
+        { name: 'Rahul Mohan', profileUrl: 'https://www.linkedin.com/in/rahul-mohan-909a6695/' },
+        { name: 'Nishanth Kumar Pathi', profileUrl: 'https://nishanthkp.com' },
+        { name: 'Rashmi Agarwal', profileUrl: 'https://www.linkedin.com/in/rashmi-agarwal-phd-4190a57/' }
+      ]
     },
+    {
+      title: 'Enhancing BYOD Security: A Risk Assessment Framework for Corporate Resources',
+      type: 'Research Paper',
+      publisher: 'Springer Journal',
+      description: 'This paper proposes a comprehensive risk assessment framework to enhance Bring Your Own Device (BYOD) security, safeguarding corporate resources while maintaining user flexibility.',
+      link: 'https://doi.org/10.1007/978-981-97-6588-1_36',
+      year: '2024',
+      fullContent: 'Published on 23rd Oct 2024. This paper proposes a comprehensive risk assessment framework to enhance Bring Your Own Device (BYOD) security, safeguarding corporate resources while maintaining user flexibility.',
+      authors: [
+        { name: 'A. N. Datta', profileUrl: 'https://www.linkedin.com/in/datta-aluru-narayana-994396117/' },
+        { name: 'Shinu Abhi', profileUrl: 'https://www.linkedin.com/in/shinu-abhi-phd-711a339/' },
+        { name: 'Nishanth Kumar', profileUrl: 'https://nishanthkp.com' }
+      ]
+    }
   ];
 
   const scrollPrev = () => emblaApi?.scrollPrev();
@@ -187,7 +300,7 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
                   key={index}
                   className="flex-none w-[280px] sm:w-[300px] md:w-[340px] bg-white p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100"
                 >
-                  <div className="flex items-start mb-3">
+                  <div className="flex items-start mb-2">
                     <FileText className="text-[#2596be] mr-2 flex-shrink-0 mt-1" size={20} />
                     <div>
                       <h4 className="font-medium text-gray-900 mb-1 line-clamp-2">{paper.title}</h4>
@@ -196,6 +309,30 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
                       </p>
                     </div>
                   </div>
+
+                  {/* Authors Section */}
+                  <div className="text-xs text-gray-600 mb-3">
+                    <span className="font-medium text-gray-900">Authored by:</span>{' '}
+                    {paper.authors.map((author, i) => (
+                      <span key={i}>
+                        {author.profileUrl ? (
+                          <a
+                            href={author.profileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#2596be] hover:underline"
+                            onClick={(e) => e.stopPropagation()} // Prevent card click
+                          >
+                            {author.name}
+                          </a>
+                        ) : (
+                          <span className="text-gray-700">{author.name}</span>
+                        )}
+                        {i < paper.authors.length - 1 ? ', ' : ''}
+                      </span>
+                    ))}
+                  </div>
+
                   <p className="text-gray-700 text-sm mb-4 line-clamp-3">{paper.description}</p>
                   <button
                     onClick={onViewAllPapers}
@@ -215,65 +352,3 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
 }
 
 // Export papers data for use in ResearchPapersPage
-export const researchPapers: ResearchPaper[] = [
-  {
-    title: 'Securing a SaaS Application on AWS: Best Practices and Implementation',
-    type: 'Research Paper',
-    publisher: 'Springer',
-    description:
-      'Comprehensive research on security architecture patterns for SaaS applications deployed on AWS, covering IAM, data encryption, network security, and compliance frameworks.',
-    link: '#',
-    year: '2023',
-    fullContent: 'This research paper explores comprehensive security architecture patterns for Software as a Service (SaaS) applications deployed on Amazon Web Services (AWS). The study covers Identity and Access Management (IAM), data encryption strategies, network security configurations, and compliance frameworks. Key findings include best practices for implementing least-privilege access, encryption at rest and in transit, VPC security configurations, and achieving SOC 2 compliance.',
-  },
-  {
-    title: 'DevSecOps Integration in Cloud-Native Applications',
-    type: 'Technical Paper',
-    publisher: 'IEEE',
-    description:
-      'Analysis of security integration practices in CI/CD pipelines for cloud-native applications, with focus on automated security testing and continuous compliance.',
-    link: '#',
-    year: '2022',
-    fullContent: 'This technical paper analyzes security integration practices in Continuous Integration/Continuous Deployment (CI/CD) pipelines for cloud-native applications. The research focuses on automated security testing methodologies including SAST, DAST, and SCA tools, as well as continuous compliance monitoring. The paper provides practical implementation strategies for integrating security gates into DevOps workflows without impacting deployment velocity.',
-  },
-  {
-    title: 'Zero Trust Architecture for Enterprise Networks',
-    type: 'Research Paper',
-    publisher: 'ACM',
-    description:
-      'Framework for implementing Zero Trust security model in enterprise environments, addressing identity verification, micro-segmentation, and continuous monitoring.',
-    link: '#',
-    year: '2022',
-    fullContent: 'This research presents a comprehensive framework for implementing Zero Trust Architecture (ZTA) in enterprise network environments. The paper addresses key pillars including identity verification, device authentication, micro-segmentation strategies, and continuous monitoring techniques. Case studies demonstrate successful ZTA implementations across various industry verticals.',
-  },
-  {
-    title: 'Machine Learning for Threat Detection in Cloud Environments',
-    type: 'Research Paper',
-    publisher: 'Springer',
-    description:
-      'Application of machine learning algorithms for real-time threat detection and anomaly identification in cloud infrastructure.',
-    link: '#',
-    year: '2021',
-    fullContent: 'This paper explores the application of machine learning algorithms for real-time threat detection and anomaly identification in cloud infrastructure. The research evaluates various ML models including supervised learning for known threat detection and unsupervised learning for zero-day threat identification. Performance benchmarks demonstrate significant improvements in detection accuracy and response time.',
-  },
-  {
-    title: 'Container Security Best Practices for Kubernetes',
-    type: 'Technical Paper',
-    publisher: 'CNCF',
-    description:
-      'Comprehensive guide to securing containerized applications in Kubernetes environments, covering image security, runtime protection, and network policies.',
-    link: '#',
-    year: '2021',
-    fullContent: 'This technical guide provides comprehensive security best practices for containerized applications running in Kubernetes environments. Topics covered include container image security scanning, runtime protection mechanisms, network policy implementation, secrets management, and RBAC configuration. The paper includes practical examples and configuration templates.',
-  },
-  {
-    title: 'API Security in Microservices Architecture',
-    type: 'Research Paper',
-    publisher: 'IEEE',
-    description:
-      'Security patterns and practices for protecting APIs in distributed microservices systems, including authentication, rate limiting, and threat mitigation.',
-    link: '#',
-    year: '2020',
-    fullContent: 'This research paper examines security patterns and practices for protecting Application Programming Interfaces (APIs) in distributed microservices architectures. The study covers authentication mechanisms (OAuth 2.0, JWT), rate limiting strategies, input validation, and common threat mitigation techniques. Implementation examples demonstrate security controls for RESTful and GraphQL APIs.',
-  },
-];

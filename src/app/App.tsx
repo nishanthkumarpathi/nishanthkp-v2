@@ -73,7 +73,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <Footer />
       {/* Replaced independent scroll buttons with unified SectionNavigator */}
       <SectionNavigation />
     </div>
