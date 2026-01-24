@@ -10,7 +10,7 @@ import { Footer } from './components/Footer';
 import { ResearchPapersPage } from './components/ResearchPapersPage';
 import { GalleryPage } from './components/GalleryPage';
 import { BackToTop } from './components/BackToTop';
-import { ScrollToNext } from './components/ScrollToNext';
+import { SectionNavigation } from './components/SectionNavigation';
 
 export default function App() {
   const [showResearchPapers, setShowResearchPapers] = useState(false);
@@ -73,8 +73,9 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <BackToTop />
-      <ScrollToNext />
+      <Footer />
+      {/* Replaced independent scroll buttons with unified SectionNavigator */}
+      <SectionNavigation />
     </div>
   );
 }
