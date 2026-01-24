@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Target, Lightbulb, Users, BookOpen, Award } from 'lucide-react';
+import { Target, Lightbulb, Users } from 'lucide-react';
 
 const orgs = [
   {
@@ -24,27 +24,6 @@ const orgs = [
     mentions: ['Banking Sector Professionals', 'Professional Training', 'Certification Programs', 'Workshops'],
     icon: Users,
   }
-];
-
-const stats = [
-  {
-    value: '3+',
-    label: 'Organizations',
-    subtext: 'Active collaboration with industry-leading organizations',
-    icon: Users,
-  },
-  {
-    value: '200+',
-    label: 'Students Trained',
-    subtext: 'Delivered comprehensive cybersecurity education',
-    icon: BookOpen,
-  },
-  {
-    value: '20+',
-    label: 'Workshops',
-    subtext: 'Organized hands-on training sessions and seminars',
-    icon: Award,
-  },
 ];
 
 export function CollaborationsAndCommunity() {
@@ -110,38 +89,6 @@ export function CollaborationsAndCommunity() {
                     ))}
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Community Impact Stats */}
-        <div>
-          <motion.h3
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-xl sm:text-2xl font-light text-gray-900 mb-6 sm:mb-8"
-          >
-            Community Impact
-          </motion.h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-[#001f3f] rounded-xl p-6 sm:p-8 lg:p-10 text-center text-white flex flex-col items-center justify-center hover:bg-[#002a52] transition-colors"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#2596be]/20 rounded-full flex items-center justify-center mb-4 sm:mb-6 text-[#2596be]">
-                  <stat.icon size={20} className="sm:w-6 sm:h-6" />
-                </div>
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">{stat.value}</div>
-                <div className="text-base sm:text-lg font-medium mb-2 sm:mb-4">{stat.label}</div>
-                <p className="text-gray-300 text-xs sm:text-sm max-w-xs">{stat.subtext}</p>
               </motion.div>
             ))}
           </div>

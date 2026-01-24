@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
-export function Header() {
+interface HeaderProps {
+  onNavigateHome?: (sectionId?: string) => void;
+}
+
+export function Header({ onNavigateHome }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -14,15 +18,23 @@ export function Header() {
   }, []);
 
   const scrollToSection = (id: string) => {
+    setIsMobileMenuOpen(false);
+    
+    // If we're on a sub-page, navigate home first then scroll
+    if (onNavigateHome) {
+      onNavigateHome(id);
+      return;
+    }
+    
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
     }
   };
 
   const navItems = [
     { label: 'Home', id: 'hero' },
+    { label: 'About', id: 'about' },
     { label: 'Gallery', id: 'gallery' },
     { label: 'Publications', id: 'publications' },
     { label: 'Collaborations', id: 'collaborations-community' },

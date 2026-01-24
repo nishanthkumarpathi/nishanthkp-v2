@@ -22,24 +22,6 @@ interface PublicationsProps {
 export function Publications({ onViewAllPapers }: PublicationsProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' });
 
-  const stats = [
-    {
-      value: '1',
-      label: 'Patent',
-      icon: Award,
-    },
-    {
-      value: '6+',
-      label: 'Published Research Papers',
-      icon: BookOpen,
-    },
-    {
-      value: '10+',
-      label: 'Students Mentored',
-      icon: GraduationCap,
-    },
-  ];
-
   const patents = [
     {
       title: 'OAuth and OpenID Connect Security Framework',
@@ -114,23 +96,6 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
     },
   ];
 
-  const acknowledgments = [
-    {
-      title: 'OWASP Security Research Acknowledgment',
-      organization: 'OWASP Foundation',
-      description:
-        'Recognized for contributions to OWASP security research and documentation, particularly in the areas of API security and secure coding practices.',
-      year: '2022',
-    },
-    {
-      title: 'Cloud Security Alliance Contributor',
-      organization: 'CSA',
-      description:
-        'Contributed to Cloud Security Alliance best practices documentation and guidance on cloud security posture management.',
-      year: '2021',
-    },
-  ];
-
   const scrollPrev = () => emblaApi?.scrollPrev();
   const scrollNext = () => emblaApi?.scrollNext();
 
@@ -144,33 +109,13 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
           className="text-center mb-10 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4">
-            Research, Publications & Mentorship
+            Research & Publications
           </h2>
           <div className="w-20 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
           <p className="mt-6 text-lg text-[#6C757D] max-w-3xl mx-auto">
-            Contributing to cybersecurity knowledge through research, patents, publications, and mentoring the next generation
+            Contributing to cybersecurity knowledge through research, patents, and publications
           </p>
         </motion.div>
-
-        {/* Stats Section - Made smaller */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-10 sm:mb-16">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-[#001f3f] rounded-xl p-4 sm:p-6 text-center text-white flex flex-col items-center justify-center hover:bg-[#002a52] transition-colors min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]"
-            >
-              <div className="mb-2 sm:mb-3 text-[#2596be]">
-                <stat.icon size={20} strokeWidth={1.5} />
-              </div>
-              <div className="text-xl sm:text-2xl font-bold mb-1">{stat.value}</div>
-              <div className="text-[10px] sm:text-xs font-medium text-gray-300">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
 
         {/* Patents */}
         <div className="mb-8 sm:mb-12">
@@ -262,35 +207,6 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* Acknowledgments */}
-        <div>
-          <h3 className="text-xl sm:text-2xl font-medium text-[#2596be] mb-4 sm:mb-6 flex items-center">
-            <Award className="mr-2" size={20} />
-            Industry Acknowledgments
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {acknowledgments.map((ack, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-center mb-3">
-                  <div className="w-10 h-10 bg-[#2596be]/10 rounded-full flex items-center justify-center mr-3">
-                    <Award className="text-[#2596be]" size={20} />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900">{ack.title}</h4>
-                    <p className="text-sm text-[#6C757D]">
-                      {ack.organization} • {ack.year}
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-700 text-sm">{ack.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </div>

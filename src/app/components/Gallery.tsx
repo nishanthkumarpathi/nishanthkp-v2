@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 
 // Import all 33 photos
@@ -106,17 +106,7 @@ export function Gallery({ onViewFullGallery }: GalleryProps) {
           viewport={{ once: true }}
           className="text-center mb-10 sm:mb-16"
         >
-          <div className="flex items-center justify-center gap-4 mb-4 sm:mb-6">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900">Speaking Engagements & Events</h2>
-            {onViewFullGallery && (
-              <button
-                onClick={onViewFullGallery}
-                className="text-sm text-[#2596be] hover:text-[#1a7a9e] transition-colors font-medium hover:underline whitespace-nowrap"
-              >
-                View Full Gallery →
-              </button>
-            )}
-          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6">Speaking Engagements & Events</h2>
           <div className="w-24 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
           <p className="text-gray-500 text-lg max-w-3xl mx-auto font-light">
             Sharing insights and expertise at international conferences, workshops, and panel discussions
@@ -154,6 +144,19 @@ export function Gallery({ onViewFullGallery }: GalleryProps) {
             </div>
           </div>
         </div>
+
+        {/* View Full Gallery Link */}
+        {onViewFullGallery && (
+          <div className="text-center mt-10 sm:mt-12">
+            <button
+              onClick={onViewFullGallery}
+              className="inline-flex items-center text-[#2596be] hover:text-[#1a7a9e] transition-colors"
+            >
+              <ExternalLink size={16} className="mr-1" />
+              View Full Gallery Here
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -173,7 +176,7 @@ function PhotoCard({ photo, index }: { photo: Photo; index: number }) {
         <img
           src={photo.src}
           alt={photo.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
 

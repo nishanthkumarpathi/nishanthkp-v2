@@ -178,58 +178,21 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Stats Bar - Now part of the flow, not absolute */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 relative z-20">
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-center text-[#0B1C3E] text-sm sm:text-base lg:text-lg font-semibold mb-2 tracking-wide">What I Bring to the Table</h3>
-          <div className="w-12 sm:w-16 h-1 bg-[#2596be] mx-auto mb-3 sm:mb-4 rounded-full"></div>
-          <div className="bg-[#0B1C3E] text-white py-4 sm:py-5 lg:py-6 px-4 sm:px-6 lg:px-8 rounded-xl sm:rounded-2xl shadow-xl">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 items-center justify-center text-center">
-
-              <div className="flex flex-col items-center">
-                <span className="text-2xl sm:text-3xl font-bold text-[#2596be]">15+</span>
-                <span className="text-[10px] sm:text-xs text-gray-300 mt-1 leading-tight">Years of Professional Experience</span>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <span className="text-2xl sm:text-3xl font-bold text-[#2596be]">$5M+</span>
-                <span className="text-[10px] sm:text-xs text-gray-300 mt-1 leading-tight">Cyber Security & Governance Budget</span>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <span className="text-2xl sm:text-3xl font-bold">6+</span>
-                <span className="text-[10px] sm:text-xs text-gray-300 mt-1 leading-tight">Countries</span>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <span className="text-2xl sm:text-3xl font-bold">30+</span>
-                <span className="text-[10px] sm:text-xs text-gray-300 mt-1 leading-tight">Projects Delivered</span>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <span className="text-2xl sm:text-3xl font-bold">15+</span>
-                <span className="text-[10px] sm:text-xs text-gray-300 mt-1 leading-tight">Organizations as Consultant</span>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <span className="text-2xl sm:text-3xl font-bold">20+</span>
-                <span className="text-[10px] sm:text-xs text-gray-300 mt-1 leading-tight">Professional Certifications</span>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Scroll Down Arrow */}
       <motion.button
-        onClick={() => scrollToSection('publications')}
-        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-[#2596be] hover:text-[#1a7a9e] transition-colors focus:outline-none"
+        onClick={() => {
+          const element = document.getElementById('about');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-[#2596be] hover:text-[#1a7a9e] transition-colors focus:outline-none flex flex-col items-center"
         aria-label="Scroll to next section"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
+        <span className="text-xs sm:text-sm font-medium text-gray-600 mb-1">What I Bring to the Table</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

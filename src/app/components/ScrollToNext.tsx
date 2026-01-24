@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-// Define the order of sections
+// Define the order of sections - must match App.tsx order
 const sections = [
   'hero',
-  'publications',
+  'about',
   'gallery',
-  'collaborations',
-  'community',
+  'publications',
+  'collaborations-community',
   'contact',
 ];
 
