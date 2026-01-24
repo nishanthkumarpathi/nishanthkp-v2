@@ -69,7 +69,7 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
                         <FileText size={16} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className={`text-sm font-medium truncate ${
+                        <h3 className={`text-sm font-medium line-clamp-2 text-left ${
                           selectedIndex === index ? 'text-[#2596be]' : 'text-gray-900'
                         }`}>
                           {paper.title}
