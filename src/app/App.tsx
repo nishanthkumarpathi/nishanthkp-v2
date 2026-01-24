@@ -3,8 +3,7 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Publications } from './components/Publications';
 import { Gallery } from './components/Gallery';
-import { OrganizationalCollaborations } from './components/OrganizationalCollaborations';
-import { CommunityEngagement } from './components/CommunityEngagement';
+import { CollaborationsAndCommunity } from './components/CollaborationsAndCommunity';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ResearchPapersPage } from './components/ResearchPapersPage';
@@ -45,8 +44,7 @@ export default function App() {
         <Hero />
         <Publications onViewAllPapers={() => setShowResearchPapers(true)} />
         <Gallery onViewFullGallery={() => setShowGallery(true)} />
-        <OrganizationalCollaborations />
-        <CommunityEngagement />
+        <CollaborationsAndCommunity />
         <Contact />
       </main>
       <Footer />

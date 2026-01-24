@@ -23,11 +23,10 @@ export function Header() {
 
   const navItems = [
     { label: 'Home', id: 'hero' },
-    { label: 'Publications', id: 'publications' },
     { label: 'Gallery', id: 'gallery' },
-    { label: 'Collaborations', id: 'collaborations' },
-    { label: 'Community', id: 'community' },
-    { label: 'Research', id: 'research' },
+    { label: 'Publications', id: 'publications' },
+    { label: 'Collaborations', id: 'collaborations-community' },
+    { label: 'Blog', id: 'blog', href: 'https://blog.nishanthkp.com/' },
     { label: 'Contact', id: 'contact' },
   ];
 
@@ -50,13 +49,25 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-6">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-gray-700 hover:text-[#007BFF] transition-colors text-sm"
-              >
-                {item.label}
-              </button>
+              item.href ? (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-[#007BFF] transition-colors text-sm font-medium"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-gray-700 hover:text-[#007BFF] transition-colors text-sm font-medium"
+                >
+                  {item.label}
+                </button>
+              )
             ))}
           </nav>
 
@@ -73,13 +84,25 @@ export function Header() {
         {isMobileMenuOpen && (
           <nav className="lg:hidden pb-4 pt-2 border-t border-gray-200">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left py-2 text-gray-700 hover:text-[#007BFF] transition-colors"
-              >
-                {item.label}
-              </button>
+              item.href ? (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-[#007BFF] transition-colors font-medium"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full text-left py-2 text-gray-700 hover:text-[#007BFF] transition-colors"
+                >
+                  {item.label}
+                </button>
+              )
             ))}
           </nav>
         )}
