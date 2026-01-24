@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { ArrowLeft, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 // Import all 33 photos
 import photo1 from '../../assets/1 Arab International Cyber Security Summit.jpg';
@@ -81,106 +80,122 @@ const photos: Photo[] = [
   { id: '33', src: photo33, title: 'Data Privacy Training Program in Partnership with BIBF & IAPP' },
 ];
 
-interface GalleryProps {
-  onViewFullGallery?: () => void;
+interface GalleryPageProps {
+  onBack: () => void;
 }
 
-export function Gallery({ onViewFullGallery }: GalleryProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'center' });
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+export function GalleryPage({ onBack }: GalleryPageProps) {
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
 
   return (
-    <section id="gallery" className="py-12 sm:py-16 lg:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#F8F9FA] pt-20">
+      {/* Header */}
+      <div className="bg-white shadow-sm sticky top-16 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <button
+            onClick={onBack}
+            className="inline-flex items-center text-[#2596be] hover:text-[#1a7a9e] transition-colors font-medium"
+          >
+            <ArrowLeft size={20} className="mr-2" />
+            Back to Portfolio
+          </button>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {/* Page Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-16"
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-8 sm:mb-12"
         >
-          <div className="flex items-center justify-center gap-4 mb-4 sm:mb-6">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900">Speaking Engagements & Events</h2>
-            {onViewFullGallery && (
-              <button
-                onClick={onViewFullGallery}
-                className="text-sm text-[#2596be] hover:text-[#1a7a9e] transition-colors font-medium hover:underline whitespace-nowrap"
-              >
-                View Full Gallery →
-              </button>
-            )}
-          </div>
-          <div className="w-24 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
-          <p className="text-gray-500 text-lg max-w-3xl mx-auto font-light">
-            Sharing insights and expertise at international conferences, workshops, and panel discussions
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4">
+            Speaking Engagements & Events
+          </h1>
+          <div className="w-20 h-1 bg-[#2596be] mx-auto rounded-full mb-4 sm:mb-6"></div>
+          <p className="text-base sm:text-lg text-[#6C757D] max-w-2xl mx-auto">
+            A collection of moments from international conferences, workshops, and panel discussions
           </p>
         </motion.div>
 
-        {/* Carousel Container with Navigation */}
-        <div className="relative px-8 sm:px-12 md:px-16 lg:px-20">
-          {/* Left Navigation Button */}
-          <button
-            onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white hover:bg-gray-50 rounded-full shadow-lg border-2 border-gray-300 transition-all hover:border-[#2596be]"
-            aria-label="Previous event"
-          >
-            <ChevronLeft size={28} className="text-gray-800" />
-          </button>
-
-          {/* Right Navigation Button */}
-          <button
-            onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white hover:bg-gray-50 rounded-full shadow-lg border-2 border-gray-300 transition-all hover:border-[#2596be]"
-            aria-label="Next event"
-          >
-            <ChevronRight size={28} className="text-gray-800" />
-          </button>
-
-          {/* Embla Carousel */}
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-6 md:gap-8">
-              {photos.map((photo, index) => (
-                <div key={photo.id} className="flex-[0_0_100%] md:flex-[0_0_calc(50%-16px)] lg:flex-[0_0_calc(33.333%-22px)] min-w-0">
-                  <PhotoCard photo={photo} index={index} />
+        {/* Masonry-style Grid */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+          {photos.map((photo, index) => (
+            <motion.div
+              key={photo.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.03 }}
+              className="break-inside-avoid"
+            >
+              <div
+                onClick={() => setSelectedPhoto(photo)}
+                className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={photo.src}
+                    alt={photo.title}
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <h3 className="text-white font-medium text-sm leading-tight">
+                        {photo.title}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </section>
-  );
-}
 
-function PhotoCard({ photo, index }: { photo: Photo; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: Math.min(index * 0.1, 0.3) }}
-      viewport={{ once: true }}
-      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col h-full"
-    >
-      {/* Photo */}
-      <div className="relative h-48 sm:h-56 md:h-64 bg-gray-100">
-        <img
-          src={photo.src}
-          alt={photo.title}
-          className="w-full h-full object-cover"
-        />
-      </div>
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            onClick={() => setSelectedPhoto(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative max-w-5xl max-h-[90vh] w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedPhoto(null)}
+                className="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors"
+              >
+                <X size={32} />
+              </button>
 
-      {/* Content */}
-      <div className="p-5 flex-1 flex flex-col">
-        <h3 className="text-base font-semibold text-gray-900 leading-tight">{photo.title}</h3>
-      </div>
-    </motion.div>
+              {/* Image */}
+              <img
+                src={selectedPhoto.src}
+                alt={selectedPhoto.title}
+                className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+              />
+
+              {/* Title */}
+              <div className="mt-4 text-center">
+                <h3 className="text-white text-lg font-medium">
+                  {selectedPhoto.title}
+                </h3>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

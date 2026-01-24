@@ -8,11 +8,24 @@ import { CommunityEngagement } from './components/CommunityEngagement';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ResearchPapersPage } from './components/ResearchPapersPage';
+import { GalleryPage } from './components/GalleryPage';
 import { BackToTop } from './components/BackToTop';
 import { ScrollToNext } from './components/ScrollToNext';
 
 export default function App() {
   const [showResearchPapers, setShowResearchPapers] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
+
+  if (showGallery) {
+    return (
+      <div className="font-[Roboto,sans-serif]">
+        <Header />
+        <GalleryPage onBack={() => setShowGallery(false)} />
+        <Footer />
+        <BackToTop />
+      </div>
+    );
+  }
 
   if (showResearchPapers) {
     return (
@@ -31,7 +44,7 @@ export default function App() {
       <main>
         <Hero />
         <Publications onViewAllPapers={() => setShowResearchPapers(true)} />
-        <Gallery />
+        <Gallery onViewFullGallery={() => setShowGallery(true)} />
         <OrganizationalCollaborations />
         <CommunityEngagement />
         <Contact />
