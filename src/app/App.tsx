@@ -5,10 +5,11 @@ import { Publications } from './components/Publications';
 import { Gallery } from './components/Gallery';
 import { OrganizationalCollaborations } from './components/OrganizationalCollaborations';
 import { CommunityEngagement } from './components/CommunityEngagement';
-import { ProfessionalExperience } from './components/ProfessionalExperience';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ResearchPapersPage } from './components/ResearchPapersPage';
+import { BackToTop } from './components/BackToTop';
+import { ScrollToNext } from './components/ScrollToNext';
 
 export default function App() {
   const [showResearchPapers, setShowResearchPapers] = useState(false);
@@ -19,6 +20,7 @@ export default function App() {
         <Header />
         <ResearchPapersPage onBack={() => setShowResearchPapers(false)} />
         <Footer />
+        <BackToTop />
       </div>
     );
   }
@@ -28,7 +30,6 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <ProfessionalExperience />
         <Publications onViewAllPapers={() => setShowResearchPapers(true)} />
         <Gallery />
         <OrganizationalCollaborations />
@@ -36,6 +37,8 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
+      <ScrollToNext />
     </div>
   );
 }

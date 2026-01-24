@@ -67,16 +67,16 @@ export function Gallery() {
   }, [emblaApi]);
 
   return (
-    <section id="gallery" className="py-24 bg-white">
+    <section id="gallery" className="py-12 sm:py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-4xl font-light text-gray-900 mb-6">Speaking Engagements & Events</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6">Speaking Engagements & Events</h2>
           <div className="w-24 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
           <p className="text-gray-500 text-lg max-w-3xl mx-auto font-light">
             Sharing insights and expertise at international conferences, workshops, and panel discussions
@@ -84,7 +84,7 @@ export function Gallery() {
         </motion.div>
 
         {/* Carousel Container with Navigation */}
-        <div className="relative px-12 md:px-16 lg:px-20">
+        <div className="relative px-8 sm:px-12 md:px-16 lg:px-20">
           {/* Left Navigation Button */}
           <button
             onClick={scrollPrev}
@@ -139,7 +139,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
       className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col h-full"
     >
       {/* Carousel */}
-      <div className="relative group h-64 bg-gray-100">
+      <div className="relative group h-48 sm:h-56 md:h-64 bg-gray-100">
         <div className="overflow-hidden h-full" ref={emblaRef}>
           <div className="flex h-full">
             {event.images.map((img, idx) => (

@@ -135,15 +135,15 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
   const scrollNext = () => emblaApi?.scrollNext();
 
   return (
-    <section id="publications" className="py-20 bg-[#F8F9FA]">
+    <section id="publications" className="py-12 sm:py-16 lg:py-20 bg-[#F8F9FA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4">
             Research, Publications & Mentorship
           </h2>
           <div className="w-20 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
@@ -153,7 +153,7 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
         </motion.div>
 
         {/* Stats Section - Made smaller */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-10 sm:mb-16">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -161,32 +161,32 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-[#001f3f] rounded-xl p-6 text-center text-white flex flex-col items-center justify-center hover:bg-[#002a52] transition-colors min-h-[140px]"
+              className="bg-[#001f3f] rounded-xl p-4 sm:p-6 text-center text-white flex flex-col items-center justify-center hover:bg-[#002a52] transition-colors min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]"
             >
-              <div className="mb-3 text-[#2596be]">
-                <stat.icon size={24} strokeWidth={1.5} />
+              <div className="mb-2 sm:mb-3 text-[#2596be]">
+                <stat.icon size={20} strokeWidth={1.5} />
               </div>
-              <div className="text-2xl font-bold mb-1">{stat.value}</div>
-              <div className="text-xs font-medium text-gray-300">{stat.label}</div>
+              <div className="text-xl sm:text-2xl font-bold mb-1">{stat.value}</div>
+              <div className="text-[10px] sm:text-xs font-medium text-gray-300">{stat.label}</div>
             </motion.div>
           ))}
         </div>
 
         {/* Patents */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-medium text-[#2596be] mb-6 flex items-center">
-            <Award className="mr-2" size={24} />
+        <div className="mb-8 sm:mb-12">
+          <h3 className="text-xl sm:text-2xl font-medium text-[#2596be] mb-4 sm:mb-6 flex items-center">
+            <Award className="mr-2" size={20} />
             Patents
           </h3>
           <div className="space-y-6">
             {patents.map((patent, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow border-l-4 border-[#2596be]"
+                className="bg-white p-4 sm:p-6 lg:p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow border-l-4 border-[#2596be]"
               >
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 sm:mb-4">
                   <div className="flex-1">
-                    <h4 className="text-xl font-medium text-gray-900 mb-2">{patent.title}</h4>
+                    <h4 className="text-lg sm:text-xl font-medium text-gray-900 mb-2">{patent.title}</h4>
                     <span className="inline-block px-3 py-1 bg-[#2596be]/10 text-[#2596be] text-sm rounded-md mb-3">
                       {patent.type}
                     </span>
@@ -211,10 +211,10 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
         </div>
 
         {/* Research Papers Carousel */}
-        <div className="mb-12">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-medium text-[#2596be] flex items-center">
-              <BookOpen className="mr-2" size={24} />
+        <div className="mb-8 sm:mb-12">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <h3 className="text-xl sm:text-2xl font-medium text-[#2596be] flex items-center">
+              <BookOpen className="mr-2" size={20} />
               Research Papers
             </h3>
             <div className="flex gap-2">
@@ -236,11 +236,11 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
           </div>
 
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-6">
+            <div className="flex gap-4 sm:gap-6">
               {papers.map((paper, index) => (
                 <div
                   key={index}
-                  className="flex-none w-[340px] bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                  className="flex-none w-[280px] sm:w-[300px] md:w-[340px] bg-white p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100"
                 >
                   <div className="flex items-start mb-3">
                     <FileText className="text-[#2596be] mr-2 flex-shrink-0 mt-1" size={20} />
@@ -267,11 +267,11 @@ export function Publications({ onViewAllPapers }: PublicationsProps) {
 
         {/* Acknowledgments */}
         <div>
-          <h3 className="text-2xl font-medium text-[#2596be] mb-6 flex items-center">
-            <Award className="mr-2" size={24} />
+          <h3 className="text-xl sm:text-2xl font-medium text-[#2596be] mb-4 sm:mb-6 flex items-center">
+            <Award className="mr-2" size={20} />
             Industry Acknowledgments
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {acknowledgments.map((ack, index) => (
               <div
                 key={index}

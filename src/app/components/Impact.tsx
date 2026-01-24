@@ -35,15 +35,15 @@ export function Impact() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-light text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4 sm:mb-6"
           >
             Leadership Impact & <span className="font-semibold">Achievements</span>
           </motion.h2>
@@ -64,7 +64,7 @@ export function Impact() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {achievements.map((item, index) => (
             <motion.div
               key={index}
@@ -73,12 +73,12 @@ export function Impact() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.08)] transition-all border border-gray-100"
+              className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.08)] transition-all border border-gray-100"
             >
-              <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-gray-200`}>
+              <div className={`w-12 h-12 sm:w-14 sm:h-14 ${item.color} rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg shadow-gray-200`}>
                 {item.icon}
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-2">{item.value}</h3>
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{item.value}</h3>
               <p className="text-sm font-bold text-gray-800 uppercase tracking-wide mb-4">{item.label}</p>
               <p className="text-sm text-gray-500 leading-relaxed">
                 {item.description}

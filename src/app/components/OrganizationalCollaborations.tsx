@@ -28,21 +28,21 @@ const orgs = [
 
 export function OrganizationalCollaborations() {
   return (
-    <section id="collaborations" className="py-20 bg-white">
+    <section id="collaborations" className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-3xl font-light text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <span className="text-[#2596be] text-4xl">♡</span> Organizational Collaborations
+          <h2 className="text-2xl sm:text-3xl font-light text-gray-900 mb-4 flex items-center justify-center gap-2 sm:gap-3">
+            <span className="text-[#2596be] text-2xl sm:text-4xl">♡</span> Organizational Collaborations
           </h2>
           <div className="w-20 h-1 bg-[#2596be] mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {orgs.map((org, index) => (
             <motion.div
               key={index}
@@ -50,11 +50,11 @@ export function OrganizationalCollaborations() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group"
+              className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-[#2596be]"></div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-1">{org.name}</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">{org.name}</h3>
               <p className="text-[#2596be] font-medium text-sm mb-6">{org.role}</p>
 
               <p className="text-gray-600 mb-8 leading-relaxed text-sm">

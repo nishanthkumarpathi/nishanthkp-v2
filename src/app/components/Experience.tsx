@@ -65,22 +65,22 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-[#F8F9FA]">
+    <section id="experience" className="py-12 sm:py-16 lg:py-20 bg-[#F8F9FA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">Professional Experience</h2>
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4">Professional Experience</h2>
           <div className="w-20 h-1 bg-[#2596be] mx-auto"></div>
           <p className="mt-6 text-lg text-[#6C757D] max-w-3xl mx-auto">
             Over a decade of progressive experience in cybersecurity across multiple industries and geographies
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto space-y-8">
+        <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
           {experiences.map((exp, index) => (
-            <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div key={index} className="bg-white p-4 sm:p-6 lg:p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
               <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
                 <div className="flex-1">
-                  <h3 className="text-2xl font-medium text-gray-900 mb-2">{exp.title}</h3>
+                  <h3 className="text-xl sm:text-2xl font-medium text-gray-900 mb-2">{exp.title}</h3>
                   <div className="flex items-center text-[#2596be] mb-1">
                     <Briefcase size={18} className="mr-2" />
                     <span className="font-medium">{exp.company}</span>

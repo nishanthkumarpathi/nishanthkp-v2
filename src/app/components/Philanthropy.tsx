@@ -51,10 +51,10 @@ export function Philanthropy() {
   ];
 
   return (
-    <section id="philanthropy" className="py-20 bg-white">
+    <section id="philanthropy" className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-4">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4">
             Community & Philanthropy
           </h2>
           <div className="w-20 h-1 bg-[#2596be] mx-auto"></div>
@@ -64,10 +64,10 @@ export function Philanthropy() {
         </div>
 
         {/* Quote */}
-        <div className="max-w-3xl mx-auto mb-16 text-center">
-          <div className="bg-gradient-to-r from-[#2596be] to-[#1a7a9e] text-white p-8 rounded-lg">
-            <Heart className="mx-auto mb-4 text-[#17A2B8]" size={32} />
-            <p className="text-lg italic mb-4">
+        <div className="max-w-3xl mx-auto mb-10 sm:mb-16 text-center">
+          <div className="bg-gradient-to-r from-[#2596be] to-[#1a7a9e] text-white p-4 sm:p-6 lg:p-8 rounded-lg">
+            <Heart className="mx-auto mb-3 sm:mb-4 text-[#17A2B8]" size={28} />
+            <p className="text-base sm:text-lg italic mb-3 sm:mb-4">
               "Security is not just a profession—it's a responsibility to protect and educate. 
               Through community involvement and mentorship, we can build a safer digital world for everyone."
             </p>
@@ -76,22 +76,22 @@ export function Philanthropy() {
         </div>
 
         {/* Activities */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {activities.map((activity, index) => (
             <div
               key={index}
-              className="bg-[#F8F9FA] p-6 rounded-lg hover:shadow-md transition-shadow"
+              className="bg-[#F8F9FA] p-4 sm:p-6 rounded-lg hover:shadow-md transition-shadow"
             >
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
+              <div className="flex flex-col md:flex-row md:items-start gap-4 sm:gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-[#17A2B8]/10 rounded-lg flex items-center justify-center">
-                    <activity.icon className="text-[#17A2B8]" size={28} />
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#17A2B8]/10 rounded-lg flex items-center justify-center">
+                    <activity.icon className="text-[#17A2B8]" size={24} />
                   </div>
                 </div>
                 <div className="flex-1">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 sm:mb-3">
                     <div>
-                      <h3 className="text-xl font-medium text-gray-900 mb-1">{activity.role}</h3>
+                      <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-1">{activity.role}</h3>
                       <p className="text-[#2596be] font-medium">{activity.organization}</p>
                     </div>
                     <span className="text-sm text-[#6C757D] mt-2 sm:mt-0">{activity.period}</span>
@@ -108,22 +108,22 @@ export function Philanthropy() {
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="text-center p-6 bg-[#F8F9FA] rounded-lg">
-            <div className="text-3xl font-light text-[#2596be] mb-2">5+</div>
-            <div className="text-sm text-[#6C757D]">Community Organizations</div>
+        <div className="mt-10 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+          <div className="text-center p-4 sm:p-6 bg-[#F8F9FA] rounded-lg">
+            <div className="text-2xl sm:text-3xl font-light text-[#2596be] mb-1 sm:mb-2">5+</div>
+            <div className="text-xs sm:text-sm text-[#6C757D]">Community Organizations</div>
           </div>
-          <div className="text-center p-6 bg-[#F8F9FA] rounded-lg">
-            <div className="text-3xl font-light text-[#2596be] mb-2">20+</div>
-            <div className="text-sm text-[#6C757D]">Workshops Organized</div>
+          <div className="text-center p-4 sm:p-6 bg-[#F8F9FA] rounded-lg">
+            <div className="text-2xl sm:text-3xl font-light text-[#2596be] mb-1 sm:mb-2">20+</div>
+            <div className="text-xs sm:text-sm text-[#6C757D]">Workshops Organized</div>
           </div>
-          <div className="text-center p-6 bg-[#F8F9FA] rounded-lg">
-            <div className="text-3xl font-light text-[#2596be] mb-2">15+</div>
-            <div className="text-sm text-[#6C757D]">Students Mentored</div>
+          <div className="text-center p-4 sm:p-6 bg-[#F8F9FA] rounded-lg">
+            <div className="text-2xl sm:text-3xl font-light text-[#2596be] mb-1 sm:mb-2">15+</div>
+            <div className="text-xs sm:text-sm text-[#6C757D]">Students Mentored</div>
           </div>
-          <div className="text-center p-6 bg-[#F8F9FA] rounded-lg">
-            <div className="text-3xl font-light text-[#2596be] mb-2">10+</div>
-            <div className="text-sm text-[#6C757D]">Non-Profits Secured</div>
+          <div className="text-center p-4 sm:p-6 bg-[#F8F9FA] rounded-lg">
+            <div className="text-2xl sm:text-3xl font-light text-[#2596be] mb-1 sm:mb-2">10+</div>
+            <div className="text-xs sm:text-sm text-[#6C757D]">Non-Profits Secured</div>
           </div>
         </div>
       </div>
