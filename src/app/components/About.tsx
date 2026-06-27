@@ -1,99 +1,21 @@
-import React from 'react';
 import { motion } from 'motion/react';
-import { Award, BookOpen, GraduationCap, Users, Calendar, Briefcase, DollarSign, Globe, CheckCircle, Building2, FileBadge } from 'lucide-react';
+import { Award, BookOpen, Users, Calendar, Briefcase, DollarSign, Globe, CheckCircle, Building2, FileBadge } from 'lucide-react';
+import { aboutItems } from '../data/about';
+
+const iconMap = {
+  briefcase: Briefcase,
+  dollarSign: DollarSign,
+  globe: Globe,
+  checkCircle: CheckCircle,
+  building2: Building2,
+  fileBadge: FileBadge,
+  award: Award,
+  bookOpen: BookOpen,
+  users: Users,
+  calendar: Calendar,
+};
 
 export function About() {
-  const items = [
-    {
-      value: '15+',
-      label: 'Years of Experience',
-      subtext: 'Deep expertise in cybersecurity, governance, and cloud engineering global markets.',
-      icon: Briefcase,
-      className: 'md:col-span-2 bg-[#2596be] text-white',
-      iconColor: 'text-white'
-    },
-    {
-      value: '$5M+',
-      label: 'Security Budget',
-      subtext: 'Managed significant budgets for enterprise security tools and compliance.',
-      icon: DollarSign,
-      className: 'md:col-span-2 bg-[#0B1C3E] text-white',
-      iconColor: 'text-[#2596be]'
-    },
-    {
-      value: '6+',
-      label: 'Countries',
-      subtext: 'Global work experience across diverse cultural landscapes.',
-      icon: Globe,
-      className: 'bg-[#001f3f] text-white',
-      iconColor: 'text-[#2596be]'
-    },
-    {
-      value: '30+',
-      label: 'Projects Delivered',
-      subtext: 'Led and delivered complex security and infrastructure projects.',
-      icon: CheckCircle,
-      className: 'bg-[#001f3f] text-white',
-      iconColor: 'text-[#2596be]'
-    },
-    {
-      value: '22+',
-      label: 'Org Consultant',
-      subtext: 'Consulted for finance, tech, and government sectors.',
-      icon: Building2,
-      className: 'bg-[#002a52] text-white',
-      iconColor: 'text-[#2596be]'
-    },
-    {
-      value: '20+',
-      label: 'Certifications',
-      subtext: 'Continuously upskilling with CISSP, CISM, and more.',
-      icon: FileBadge,
-      className: 'bg-[#002a52] text-white',
-      iconColor: 'text-[#2596be]'
-    },
-    {
-      value: '1',
-      label: 'Patent',
-      subtext: 'Innovated unique solutions in cybersecurity (Pending/Granted).',
-      icon: Award,
-      className: 'bg-[#003566] text-white',
-      iconColor: 'text-[#2596be]'
-    },
-    {
-      value: '5+',
-      label: 'Research Papers',
-      subtext: 'Contributing to the security community with research.',
-      icon: BookOpen,
-      className: 'bg-[#003566] text-white',
-      iconColor: 'text-[#2596be]'
-    },
-    {
-      value: '3+',
-      label: 'Org Collabs',
-      subtext: 'Active collaboration with industry leaders.',
-      icon: Users,
-      className: 'md:col-span-2 bg-[#003566] text-white',
-      iconColor: 'text-[#2596be]'
-    },
-    {
-      value: '200+',
-      label: 'Students Trained',
-      subtext: 'Delivered comprehensive cybersecurity education programs.',
-      icon: BookOpen,
-      className: 'md:col-span-2 bg-[#0B1C3E] text-white',
-      iconColor: 'text-[#2596be]'
-    },
-    {
-      value: '20+',
-      label: 'Workshops',
-      subtext: 'Organized and conducted hands-on technical seminars.',
-      icon: Calendar,
-      className: 'md:col-span-2 bg-[#0B1C3E] text-white',
-      iconColor: 'text-[#2596be]'
-    },
-  ];
-
   return (
     <section id="about" className="py-8 bg-gray-50 flex items-center justify-center min-h-[70vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -111,7 +33,9 @@ export function About() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 auto-rows-min">
-            {items.map((item, index) => (
+            {aboutItems.map((item, index) => {
+              const Icon = iconMap[item.icon];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -122,7 +46,7 @@ export function About() {
               >
                 <div className="flex justify-between items-start mb-2">
                   <div className="p-1.5 rounded-md bg-white/10 backdrop-blur-sm">
-                    <item.icon className={`w-5 h-5 ${item.iconColor}`} strokeWidth={1.5} />
+                    <Icon className={`w-5 h-5 ${item.iconColor}`} strokeWidth={1.5} />
                   </div>
                 </div>
                 <div>
@@ -133,7 +57,8 @@ export function About() {
                   </p>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
       </div>

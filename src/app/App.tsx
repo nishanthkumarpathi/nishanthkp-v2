@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -9,72 +10,58 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ResearchPapersPage } from './components/ResearchPapersPage';
 import { GalleryPage } from './components/GalleryPage';
-import { BackToTop } from './components/BackToTop';
 import { SectionNavigation } from './components/SectionNavigation';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export default function App() {
-  const [showResearchPapers, setShowResearchPapers] = useState(false);
-  const [showGallery, setShowGallery] = useState(false);
-  const [pendingSection, setPendingSection] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomeRoute = location.pathname === '/';
 
-  // Handle scrolling to section after navigation
   React.useEffect(() => {
-    if (pendingSection && !showGallery && !showResearchPapers) {
-      // Small delay to ensure DOM is ready
+    const state = location.state as { sectionId?: string } | null;
+    if (isHomeRoute && state?.sectionId) {
       setTimeout(() => {
-        const element = document.getElementById(pendingSection);
+        const element = document.getElementById(state.sectionId!);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-        setPendingSection(null);
+        navigate('/', { replace: true, state: null });
       }, 100);
     }
-  }, [pendingSection, showGallery, showResearchPapers]);
+  }, [isHomeRoute, location.state, navigate]);
 
   const handleNavigateHome = (sectionId?: string) => {
-    setShowGallery(false);
-    setShowResearchPapers(false);
-    if (sectionId) {
-      setPendingSection(sectionId);
-    }
+    navigate('/', { state: { sectionId: sectionId ?? 'hero' } });
   };
-
-  if (showGallery) {
-    return (
-      <div className="font-[Roboto,sans-serif]">
-        <Header onNavigateHome={handleNavigateHome} />
-        <GalleryPage onBack={() => setShowGallery(false)} />
-        <Footer />
-        <BackToTop />
-      </div>
-    );
-  }
-
-  if (showResearchPapers) {
-    return (
-      <div className="font-[Roboto,sans-serif]">
-        <Header onNavigateHome={handleNavigateHome} />
-        <ResearchPapersPage onBack={() => setShowResearchPapers(false)} />
-        <Footer />
-        <BackToTop />
-      </div>
-    );
-  }
 
   return (
     <div className="font-[Roboto,sans-serif]">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Gallery onViewFullGallery={() => setShowGallery(true)} />
-        <Publications onViewAllPapers={() => setShowResearchPapers(true)} />
-        <CollaborationsAndCommunity />
-        <Contact />
-      </main>
+      <ScrollToTop />
+      <Header onNavigateHome={!isHomeRoute ? handleNavigateHome : undefined} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <main>
+              <Hero />
+              <About />
+              <Gallery onViewFullGallery={() => navigate('/gallery')} />
+              <Publications
+                onViewAllPapers={() => navigate('/research-papers')}
+                onViewPaper={(slug) => navigate(`/research-papers/${slug}`)}
+              />
+              <CollaborationsAndCommunity />
+              <Contact />
+            </main>
+          }
+        />
+        <Route path="/gallery" element={<GalleryPage onBack={() => navigate('/')} />} />
+        <Route path="/research-papers" element={<ResearchPapersPage onBack={() => navigate('/')} />} />
+        <Route path="/research-papers/:slug" element={<ResearchPapersPage onBack={() => navigate('/')} />} />
+      </Routes>
       <Footer />
-      {/* Replaced independent scroll buttons with unified SectionNavigator */}
-      <SectionNavigation />
+      {isHomeRoute && <SectionNavigation />}
     </div>
   );
 }

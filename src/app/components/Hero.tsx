@@ -1,30 +1,12 @@
 import React from 'react';
-import { Github, Linkedin, Mail, BookOpen, ArrowRight, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, BookOpen, ArrowRight, ChevronDown } from 'lucide-react';
 import { motion } from 'motion/react';
 import headshotImage from '../../assets/nishanth_headshot.png';
+import { heroSpecializations, heroCountries } from '../data/hero';
+import { XIcon, YouTubeIcon } from './icons';
+import { scrollToId } from '../utils/scroll';
 
 export function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-
-
-  const specializations = [
-    'Cyber Security Engineering',
-    'Data Privacy Engineering',
-    'Cloud Automation Engineering',
-    'Site Reliability Engineering',
-    'Chaos Engineering',
-    'DevSecOps',
-    'DataSecOps',
-    'CloudNativeOps',
-    'FinOps'
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -83,7 +65,7 @@ export function Hero() {
             {/* Areas of Specialization */}
             <motion.div variants={itemVariants} className="mb-4 sm:mb-8">
               <div className="flex flex-wrap gap-1.5 sm:gap-2.5 justify-center lg:justify-start">
-                {specializations.map((area, index) => (
+                {heroSpecializations.map((area, index) => (
                   <motion.span
                     key={index}
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -103,10 +85,7 @@ export function Hero() {
               <div className="flex flex-col">
                 <span className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 sm:mb-3 block text-center lg:text-left">International Experience</span>
                 <div className="flex flex-wrap gap-1.5 sm:gap-2.5 justify-center lg:justify-start">
-                  {[
-                    'Algeria', 'Bahrain', 'India',
-                    'Qatar', 'Saudi Arabia', 'Singapore', 'UAE'
-                  ].map((country) => (
+                  {heroCountries.map((country) => (
                     <span key={country} className="px-2.5 sm:px-4 py-1 sm:py-2 bg-white border border-gray-200 rounded-lg text-[10px] sm:text-sm text-[#0B1C3E] shadow-sm hover:border-[#2596be]/30 hover:bg-blue-50/30 transition-colors">
                       {country}
                     </span>
@@ -120,7 +99,7 @@ export function Hero() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToId('contact')}
                 className="px-5 sm:px-8 py-2.5 sm:py-3.5 bg-[#2596be] text-white font-medium text-xs sm:text-base rounded-lg hover:bg-[#1a7a9e] transition-colors shadow-lg shadow-blue-900/10 flex items-center justify-center"
               >
                 Let's Talk
@@ -142,17 +121,9 @@ export function Hero() {
             {/* Social Links */}
             <motion.div variants={itemVariants} className="flex justify-center lg:justify-start gap-3 sm:gap-5">
               <SocialLink href="https://www.linkedin.com/in/nishanthkumarpathi" icon={<Linkedin size={18} className="sm:w-5 sm:h-5" />} label="LinkedIn" />
-              <SocialLink href="https://x.com/nishanthkumarp" icon={
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px] sm:w-5 sm:h-5">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              } label="X (Twitter)" />
+              <SocialLink href="https://x.com/nishanthkumarp" icon={<XIcon className="w-[18px] h-[18px] sm:w-5 sm:h-5" />} label="X (Twitter)" />
               <SocialLink href="https://github.com/nishanthkumarpathi" icon={<Github size={18} className="sm:w-5 sm:h-5" />} label="GitHub" />
-              <SocialLink href="https://www.youtube.com/nishanthkumarpathi" icon={
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px] sm:w-5 sm:h-5">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              } label="YouTube" />
+              <SocialLink href="https://www.youtube.com/nishanthkumarpathi" icon={<YouTubeIcon className="w-[18px] h-[18px] sm:w-5 sm:h-5" />} label="YouTube" />
             </motion.div>
           </motion.div>
 
@@ -169,6 +140,8 @@ export function Hero() {
                 <img
                   src={headshotImage}
                   alt="Nishanth Kumar Pathi"
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-full rounded-full object-cover object-top shadow-inner"
                 />
               </div>
@@ -179,12 +152,7 @@ export function Hero() {
 
         {/* Scroll Indicator - Now part of flex flow to prevent overlap */}
         <motion.button
-          onClick={() => {
-            const element = document.getElementById('about');
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}
+          onClick={() => scrollToId('about')}
           className="mt-6 lg:mt-0 text-[#2596be] hover:text-[#1a7a9e] transition-colors focus:outline-none flex flex-col items-center z-10"
           aria-label="Scroll to next section"
           initial={{ opacity: 0, y: -10 }}

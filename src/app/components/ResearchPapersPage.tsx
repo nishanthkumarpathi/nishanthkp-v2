@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import { ArrowLeft, FileText, ChevronDown, ChevronUp, ExternalLink, Image as ImageIcon, Award } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { researchPapers } from './Publications';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ArrowLeft, FileText, ExternalLink, Image as ImageIcon, Award } from 'lucide-react';
+import { motion } from 'motion/react';
+import { researchPapers, getPaperBySlug } from '../data/researchPapers';
 
 interface ResearchPapersPageProps {
   onBack: () => void;
 }
 
 export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const { slug } = useParams<{ slug?: string }>();
+  const navigate = useNavigate();
 
-  const selectedPaper = researchPapers[selectedIndex];
+  // Derive the selected paper from the URL slug; default to the first paper
+  // when the slug is missing or doesn't match any paper.
+  const selectedPaper = (slug ? getPaperBySlug(slug) : undefined) ?? researchPapers[0];
 
   return (
     <div className="min-h-screen bg-[#F8F9FA] pt-20">
@@ -52,25 +55,28 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
                 <h2 className="font-medium text-gray-900">All Papers ({researchPapers.length})</h2>
               </div>
               <div className="max-h-[60vh] overflow-y-auto">
-                {researchPapers.map((paper, index) => (
+                {researchPapers.map((paper) => {
+                  const isActive = paper.slug === selectedPaper.slug;
+                  return (
                   <button
-                    key={index}
-                    onClick={() => setSelectedIndex(index)}
+                    key={paper.slug}
+                    onClick={() => navigate(`/research-papers/${paper.slug}`)}
+                    aria-current={isActive ? 'true' : undefined}
                     className={`w-full p-4 text-left border-b border-gray-50 transition-colors ${
-                      selectedIndex === index
+                      isActive
                         ? 'bg-[#2596be]/10 border-l-4 border-l-[#2596be]'
                         : 'hover:bg-gray-50 border-l-4 border-l-transparent'
                     }`}
                   >
                     <div className="flex items-start gap-3">
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                        selectedIndex === index ? 'bg-[#2596be] text-white' : 'bg-gray-100 text-gray-500'
+                        isActive ? 'bg-[#2596be] text-white' : 'bg-gray-100 text-gray-500'
                       }`}>
                         <FileText size={16} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className={`text-sm font-medium line-clamp-2 text-left ${
-                          selectedIndex === index ? 'text-[#2596be]' : 'text-gray-900'
+                          isActive ? 'text-[#2596be]' : 'text-gray-900'
                         }`}>
                           {paper.title}
                         </h3>
@@ -82,7 +88,8 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
                       </div>
                     </div>
                   </button>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -90,7 +97,7 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
           {/* Right Side - Paper Content */}
           <div className="lg:col-span-8 xl:col-span-9">
             <motion.div
-              key={selectedIndex}
+              key={selectedPaper.slug}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
@@ -208,6 +215,17 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
                     <ExternalLink size={16} className="mr-2" />
                     View Full Paper
                   </a>
+                  {selectedPaper.doiLink && (
+                    <a
+                      href={selectedPaper.doiLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-5 py-2.5 border border-[#2596be] text-[#2596be] rounded-lg hover:bg-[#2596be]/10 transition-colors text-sm font-medium"
+                    >
+                      <ExternalLink size={16} className="mr-2" />
+                      View DOI
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { headerNavItems } from '../data/navigation';
+import { scrollToId } from '../utils/scroll';
 
 interface HeaderProps {
   onNavigateHome?: (sectionId?: string) => void;
@@ -10,11 +12,22 @@ export function Header({ onNavigateHome }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let frame = 0;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (frame === 0) {
+        frame = window.requestAnimationFrame(() => {
+          frame = 0;
+          setIsScrolled(window.scrollY > 20);
+        });
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frame !== 0) {
+        window.cancelAnimationFrame(frame);
+      }
+    };
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -25,22 +38,9 @@ export function Header({ onNavigateHome }: HeaderProps) {
       onNavigateHome(id);
       return;
     }
-    
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
-  const navItems = [
-    { label: 'Home', id: 'hero' },
-    { label: 'About', id: 'about' },
-    { label: 'Gallery', id: 'gallery' },
-    { label: 'Publications', id: 'publications' },
-    { label: 'Collaborations', id: 'collaborations-community' },
-    { label: 'Blog', id: 'blog', href: 'https://blog.nishanthkp.com/' },
-    { label: 'Contact', id: 'contact' },
-  ];
+    scrollToId(id);
+  };
 
   return (
     <header
@@ -60,7 +60,7 @@ export function Header({ onNavigateHome }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-6">
-            {navItems.map((item) => (
+            {headerNavItems.map((item) => (
               item.href ? (
                 <a
                   key={item.id}
@@ -95,7 +95,7 @@ export function Header({ onNavigateHome }: HeaderProps) {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <nav className="lg:hidden pb-4 pt-2 border-t border-gray-200">
-            {navItems.map((item) => (
+            {headerNavItems.map((item) => (
               item.href ? (
                 <a
                   key={item.id}

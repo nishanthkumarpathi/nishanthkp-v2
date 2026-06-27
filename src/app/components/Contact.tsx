@@ -1,56 +1,20 @@
-import React from 'react';
-import { Shield, Server, GraduationCap, Cloud, FileCheck, Mail, ArrowRight, Eye, Settings, Activity, Zap, GitBranch, Database, DollarSign, Linkedin } from 'lucide-react';
+import { Shield, Cloud, ArrowRight, Eye, Settings, Activity, Zap, GitBranch, Database, DollarSign, Linkedin } from 'lucide-react';
 import { motion } from 'motion/react';
+import { contactServices } from '../data/contactServices';
+
+const iconMap = {
+  shield: Shield,
+  eye: Eye,
+  settings: Settings,
+  activity: Activity,
+  zap: Zap,
+  gitBranch: GitBranch,
+  database: Database,
+  cloud: Cloud,
+  dollarSign: DollarSign,
+};
 
 export function Contact() {
-  const services = [
-    {
-      icon: Shield,
-      title: 'Cyber Security Engineering',
-      description: 'Network security, IAM, and intrusion detection systems',
-    },
-    {
-      icon: Eye,
-      title: 'Data Privacy Engineering',
-      description: 'GDPR/CCPA compliance, data masking, and privacy by design',
-    },
-    {
-      icon: Settings,
-      title: 'Cloud Automation Engineering',
-      description: 'IaC (Terraform/Ansible), CI/CD pipelines, and provisioning',
-    },
-    {
-      icon: Activity,
-      title: 'Site Reliability Engineering',
-      description: 'SLIs/SLOs, error budgeting, and performance monitoring',
-    },
-    {
-      icon: Zap,
-      title: 'Chaos Engineering',
-      description: 'Fault injection, resilience testing, and game days',
-    },
-    {
-      icon: GitBranch,
-      title: 'DevSecOps',
-      description: 'SAST/DAST, container scanning, and security gates',
-    },
-    {
-      icon: Database,
-      title: 'DataSecOps',
-      description: 'Data classification, DLP, and encryption at rest/transit',
-    },
-    {
-      icon: Cloud,
-      title: 'CloudNativeOps',
-      description: 'Kubernetes, service mesh, and serverless security',
-    },
-    {
-      icon: DollarSign,
-      title: 'FinOps',
-      description: 'Cost optimization, budget tracking, and resource tagging',
-    },
-  ];
-
   return (
     <section id="contact" className="py-10 sm:py-14 lg:py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,7 +46,9 @@ export function Contact() {
             Professional Services
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
-            {services.map((service, index) => (
+            {contactServices.map((service, index) => {
+              const ServiceIcon = iconMap[service.icon];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -92,12 +58,13 @@ export function Contact() {
                 className="group bg-white p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-[#2596be]/30 hover:shadow-lg transition-all duration-300 text-center"
               >
                 <div className="w-10 h-10 mx-auto mb-2 bg-gradient-to-br from-[#2596be]/10 to-[#2596be]/5 rounded-lg flex items-center justify-center group-hover:from-[#2596be]/20 group-hover:to-[#2596be]/10 transition-colors">
-                  <service.icon className="text-[#2596be]" size={20} />
+                  <ServiceIcon className="text-[#2596be]" size={20} />
                 </div>
                 <h4 className="font-semibold text-gray-900 text-xs sm:text-sm mb-1">{service.title}</h4>
                 <p className="text-[10px] sm:text-xs text-gray-500 leading-relaxed">{service.description}</p>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
 

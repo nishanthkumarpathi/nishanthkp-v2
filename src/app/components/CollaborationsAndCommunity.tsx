@@ -1,30 +1,12 @@
-import React from 'react';
 import { motion } from 'motion/react';
 import { Target, Lightbulb, Users } from 'lucide-react';
+import { collaborationOrgs } from '../data/collaborations';
 
-const orgs = [
-  {
-    name: 'FinOps Foundation',
-    role: 'Active Contributor',
-    description: 'Contributing to cloud financial management best practices and helping organizations optimize cloud costs while maintaining security standards.',
-    mentions: ['Global FinOps Community', 'Community Forums', 'Best Practice Documentation', 'Knowledge Sharing'],
-    icon: Target,
-  },
-  {
-    name: 'London School of Economics (LSE)',
-    role: 'Mentor',
-    description: 'Mentoring students in cybersecurity, cloud security, and data privacy, guiding them through real-world challenges and career development.',
-    mentions: ['Future Security Leaders', '1:1 Mentorship', 'Career Guidance', 'Technical Mentoring'],
-    icon: Lightbulb,
-  },
-  {
-    name: 'Bahrain Institute of Banking and Finance (BIBF)',
-    role: 'Cybersecurity Trainer',
-    description: 'Delivering specialized training programs on cybersecurity, cloud security, and compliance for banking and financial sector professionals.',
-    mentions: ['Banking Sector Professionals', 'Professional Training', 'Certification Programs', 'Workshops'],
-    icon: Users,
-  }
-];
+const iconMap = {
+  target: Target,
+  lightbulb: Lightbulb,
+  users: Users,
+};
 
 export function CollaborationsAndCommunity() {
   return (
@@ -58,7 +40,9 @@ export function CollaborationsAndCommunity() {
           </motion.h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {orgs.map((org, index) => (
+            {collaborationOrgs.map((org, index) => {
+              const OrgIcon = iconMap[org.icon];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -78,7 +62,7 @@ export function CollaborationsAndCommunity() {
 
                 <div className="mt-auto">
                   <div className="flex items-center gap-2 mb-3 text-gray-800 font-semibold text-sm">
-                    <Target size={16} className="text-[#001f3f]" />
+                    <OrgIcon size={16} className="text-[#001f3f]" />
                     {org.mentions[0]}
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -90,7 +74,8 @@ export function CollaborationsAndCommunity() {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
