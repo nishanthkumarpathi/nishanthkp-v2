@@ -4,6 +4,9 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Publications } from './components/Publications';
+import { Awards } from './components/Awards';
+import { Speaking } from './components/Speaking';
+import { Outreach } from './components/Outreach';
 import { Gallery } from './components/Gallery';
 import { CollaborationsAndCommunity } from './components/CollaborationsAndCommunity';
 import { Contact } from './components/Contact';
@@ -43,15 +46,18 @@ export default function App() {
         <Route
           path="/"
           element={
-            <main>
+            <main id="main-content">
               <Hero />
               <About />
-              <Gallery onViewFullGallery={() => navigate('/gallery')} />
+              <Awards />
+              <Speaking />
               <Publications
                 onViewAllPapers={() => navigate('/research-papers')}
                 onViewPaper={(slug) => navigate(`/research-papers/${slug}`)}
               />
+              <Outreach />
               <CollaborationsAndCommunity />
+              <Gallery onViewFullGallery={() => navigate('/gallery')} />
               <Contact />
             </main>
           }

@@ -48,6 +48,12 @@ export function Header({ onNavigateHome }: HeaderProps) {
         isScrolled ? 'bg-white shadow-md' : 'bg-white/95'
       }`}
     >
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:bg-white focus:text-[#2596be] focus:px-4 focus:py-2 focus:rounded-md focus:shadow-md"
+      >
+        Skip to content
+      </a>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -67,7 +73,7 @@ export function Header({ onNavigateHome }: HeaderProps) {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-[#007BFF] transition-colors text-sm font-medium"
+                  className="text-gray-700 hover:text-[#2596be] transition-colors text-sm font-medium"
                 >
                   {item.label}
                 </a>
@@ -75,7 +81,7 @@ export function Header({ onNavigateHome }: HeaderProps) {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-700 hover:text-[#007BFF] transition-colors text-sm font-medium"
+                  className="text-gray-700 hover:text-[#2596be] transition-colors text-sm font-medium"
                 >
                   {item.label}
                 </button>
@@ -85,8 +91,11 @@ export function Header({ onNavigateHome }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-gray-700 hover:text-[#007BFF]"
+            className="lg:hidden text-gray-700 hover:text-[#2596be]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -94,7 +103,7 @@ export function Header({ onNavigateHome }: HeaderProps) {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <nav className="lg:hidden pb-4 pt-2 border-t border-gray-200">
+          <nav id="mobile-menu" className="lg:hidden pb-4 pt-2 border-t border-gray-200">
             {headerNavItems.map((item) => (
               item.href ? (
                 <a
@@ -102,7 +111,7 @@ export function Header({ onNavigateHome }: HeaderProps) {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full text-left py-2 text-gray-700 hover:text-[#007BFF] transition-colors font-medium"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-[#2596be] transition-colors font-medium"
                 >
                   {item.label}
                 </a>
@@ -110,7 +119,7 @@ export function Header({ onNavigateHome }: HeaderProps) {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left py-2 text-gray-700 hover:text-[#007BFF] transition-colors"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-[#2596be] transition-colors"
                 >
                   {item.label}
                 </button>

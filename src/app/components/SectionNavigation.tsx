@@ -2,16 +2,7 @@ import { useState, useEffect } from 'react';
 import { ChevronUp, ChevronDown, ChevronsUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { scrollToId } from '../utils/scroll';
-
-// Define the order of sections - must match App.tsx structure
-const sections = [
-  'hero',
-  'about',
-  'gallery',
-  'publications',
-  'collaborations-community',
-  'contact',
-];
+import { sectionOrder as sections } from '../data/navigation';
 
 export function SectionNavigation() {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);

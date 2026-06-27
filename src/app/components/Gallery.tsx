@@ -29,10 +29,10 @@ export function Gallery({ onViewFullGallery }: GalleryProps) {
           viewport={{ once: true }}
           className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6">Speaking Engagements & Events</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6">Gallery</h2>
           <div className="w-24 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
           <p className="text-gray-500 text-lg max-w-3xl mx-auto font-light">
-            Sharing insights and expertise at international conferences, workshops, and panel discussions
+            A visual journey through awards, summits, workshops, and community moments
           </p>
         </motion.div>
 
