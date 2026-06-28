@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import { motion } from 'motion/react';
 import {
   Award, BookOpen, Users, Calendar, Briefcase, DollarSign,
-  Globe, CheckCircle, Building2, FileBadge, Plus,
+  Globe, CheckCircle, Building2, FileBadge,
 } from 'lucide-react';
 import { aboutItems, type AboutItem } from '../data/about';
 import { SectionHeader } from './SectionHeader';
@@ -45,18 +44,14 @@ export function About() {
 function MetricCell({ item, index }: { item: AboutItem; index: number }) {
   const Icon = iconMap[item.icon];
   const { ref, display } = useCountUp(item.value);
-  const [open, setOpen] = useState(false);
 
   return (
-    <motion.button
-      type="button"
-      onClick={() => setOpen((o) => !o)}
-      aria-expanded={open}
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: Math.min(index * 0.04, 0.4), duration: 0.5 }}
-      className={`group relative bg-surface p-4 sm:p-6 lg:p-7 flex flex-col justify-between text-left transition-colors hover:bg-surface-3 lg:cursor-default ${
+      className={`group relative bg-surface p-4 sm:p-6 lg:p-7 flex flex-col justify-between transition-colors hover:bg-surface-3 ${
         item.featured ? 'lg:col-span-2' : ''
       }`}
     >
@@ -64,34 +59,19 @@ function MetricCell({ item, index }: { item: AboutItem; index: number }) {
         <span className="kicker text-[0.55rem] sm:text-[0.6rem] text-faint leading-tight">{item.label}</span>
         <Icon className="text-brand-bright/70 group-hover:text-brand-bright transition-colors flex-shrink-0" size={16} strokeWidth={1.5} />
       </div>
-      <div>
-        <div
-          ref={ref}
-          className={`font-display font-light tracking-tight text-content tabular-nums ${
-            item.featured
-              ? 'text-4xl sm:text-5xl lg:text-7xl'
-              : 'text-3xl sm:text-4xl lg:text-5xl'
-          }`}
-        >
-          {display}
-        </div>
-        {/* Subtext: always visible from sm up; tap-to-reveal on mobile. */}
-        <p
-          className={`text-xs sm:text-sm text-muted font-light leading-relaxed max-w-xs overflow-hidden transition-all duration-300 ${
-            open ? 'mt-2 max-h-32 opacity-100' : 'mt-0 max-h-0 opacity-0'
-          } sm:mt-3 sm:max-h-32 sm:opacity-100`}
-        >
-          {item.subtext}
-        </p>
-        {/* Mobile-only "more" affordance */}
-        <span className="sm:hidden inline-flex items-center gap-1 mt-2 text-[0.6rem] font-mono text-faint">
-          <Plus size={10} className={`transition-transform ${open ? 'rotate-45' : ''}`} />
-          {open ? 'less' : 'detail'}
-        </span>
+      <div
+        ref={ref}
+        className={`font-display font-light tracking-tight text-content tabular-nums ${
+          item.featured
+            ? 'text-4xl sm:text-5xl lg:text-7xl'
+            : 'text-3xl sm:text-4xl lg:text-5xl'
+        }`}
+      >
+        {display}
       </div>
       {item.featured && (
         <span className="absolute top-0 left-0 h-full w-0.5 bg-gradient-to-b from-brand-bright to-transparent" aria-hidden />
       )}
-    </motion.button>
+    </motion.div>
   );
 }
