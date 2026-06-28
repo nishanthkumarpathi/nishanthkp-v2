@@ -6,6 +6,14 @@ dist
 dist-ssr
 *.local
 
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Cloudflare Wrangler local state & secrets
+.wrangler/
+.dev.vars
+.dev.vars.*
+
 # Environment variables
 .env
 .env.local
