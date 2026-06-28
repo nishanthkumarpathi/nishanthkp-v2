@@ -29,7 +29,6 @@ export function About() {
         <SectionHeader
           kicker="01 — Track Record"
           title={<>Leadership, <span className="text-gradient-brand">by the numbers</span></>}
-          intro="Fifteen years securing banks, governments, and enterprises across the Gulf and beyond — quantified."
           className="mb-7 sm:mb-14"
         />
 

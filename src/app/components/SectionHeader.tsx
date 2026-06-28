@@ -6,8 +6,6 @@ interface SectionHeaderProps {
   kicker: string;
   /** Main heading; supports inline markup for accent words. */
   title: ReactNode;
-  /** Optional supporting paragraph. */
-  intro?: ReactNode;
   /** Center (default) or left align. */
   align?: 'center' | 'left';
   className?: string;
@@ -15,12 +13,11 @@ interface SectionHeaderProps {
 
 /**
  * Consistent section header used across every section so the page has one
- * intentional typographic rhythm: mono kicker → display heading → intro.
+ * intentional typographic rhythm: mono kicker → display heading.
  */
 export function SectionHeader({
   kicker,
   title,
-  intro,
   align = 'center',
   className = '',
 }: SectionHeaderProps) {
@@ -41,11 +38,6 @@ export function SectionHeader({
       <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-light text-content leading-[1.05] tracking-tight">
         {title}
       </h2>
-      {intro && (
-        <p className="mt-2.5 sm:mt-4 text-sm sm:text-lg text-muted font-light leading-snug sm:leading-relaxed max-w-2xl line-clamp-2 sm:line-clamp-none">
-          {intro}
-        </p>
-      )}
     </motion.div>
   );
 }

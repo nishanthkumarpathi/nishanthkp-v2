@@ -55,8 +55,8 @@ export function Header({ onNavigateHome }: HeaderProps) {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-page/80 backdrop-blur-md border-b border-line'
+        isScrolled || isMobileMenuOpen
+          ? 'bg-page/95 backdrop-blur-md border-b border-line'
           : 'bg-transparent'
       }`}
     >
@@ -130,7 +130,7 @@ export function Header({ onNavigateHome }: HeaderProps) {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <nav id="mobile-menu" className="lg:hidden pb-4 pt-2 border-t border-line">
+          <nav id="mobile-menu" className="lg:hidden bg-page pb-4 pt-2 border-t border-line">
             {headerNavItems.map((item) =>
               item.href ? (
                 <a

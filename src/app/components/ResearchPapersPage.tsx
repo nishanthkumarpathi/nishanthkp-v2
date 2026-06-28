@@ -35,10 +35,7 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
           className="text-center mb-10 sm:mb-12"
         >
           <span className="kicker block mb-4">Research</span>
-          <h1 className="font-display text-4xl sm:text-5xl font-light text-content mb-4">Research Papers</h1>
-          <p className="text-base sm:text-lg text-muted max-w-2xl mx-auto font-light">
-            Published research in cybersecurity, cloud security, and DevSecOps.
-          </p>
+          <h1 className="font-display text-4xl sm:text-5xl font-light text-content">Research Papers</h1>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">

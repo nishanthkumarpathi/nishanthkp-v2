@@ -25,7 +25,6 @@ export function Speaking() {
         <SectionHeader
           kicker="03 — On Stage"
           title={<>Speaking &amp; <span className="text-gradient-brand">Workshops</span></>}
-          intro="Keynotes, panels, and hands-on training across summits and enterprises in the region."
           className="mb-7 sm:mb-12"
         />
 

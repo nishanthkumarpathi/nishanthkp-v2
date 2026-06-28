@@ -12,7 +12,6 @@ export function Outreach() {
         <SectionHeader
           kicker="05 — Giving Back"
           title={<>Community &amp; <span className="text-gradient-brand">Outreach</span></>}
-          intro="Service through volunteering, community forums, and mentoring the next generation."
           className="mb-7 sm:mb-12"
         />
 

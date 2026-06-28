@@ -21,7 +21,6 @@ export function Awards() {
         <SectionHeader
           kicker="02 — Recognition"
           title={<>Awards &amp; <span className="font-display italic text-award">Honours</span></>}
-          intro="Industry recognition for impact and contributions to the cybersecurity community."
           className="mb-7 sm:mb-12"
         />
 

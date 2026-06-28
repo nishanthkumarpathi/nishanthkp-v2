@@ -23,7 +23,6 @@ export function Contact() {
         <SectionHeader
           kicker="07 — Let's Build"
           title={<>Let's Work <span className="text-gradient-brand">Together</span></>}
-          intro="Ready to strengthen your organization's security posture? Here's where I can help."
           className="mb-7 sm:mb-14"
         />
 

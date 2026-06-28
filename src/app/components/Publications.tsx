@@ -22,7 +22,6 @@ export function Publications({ onViewAllPapers, onViewPaper }: PublicationsProps
         <SectionHeader
           kicker="04 — Research"
           title={<>Research &amp; <span className="font-display italic text-brand-bright">Publications</span></>}
-          intro="Advancing the field through patents, peer-reviewed papers, and published research."
           className="mb-7 sm:mb-14"
         />
 

@@ -86,10 +86,7 @@ export function GalleryPage({ onBack }: GalleryPageProps) {
           className="text-center mb-10"
         >
           <span className="kicker block mb-4">Visual Archive</span>
-          <h1 className="font-display text-4xl sm:text-5xl font-light text-content mb-4">Gallery</h1>
-          <p className="text-base sm:text-lg text-muted max-w-2xl mx-auto font-light">
-            Moments from awards, speaking engagements, workshops, and community work.
-          </p>
+          <h1 className="font-display text-4xl sm:text-5xl font-light text-content">Gallery</h1>
         </motion.div>
 
         {/* Filter chips */}

@@ -22,7 +22,6 @@ export function Gallery({ onViewFullGallery }: GalleryProps) {
           <SectionHeader
             kicker="08 — Archive"
             title="In the Field"
-            intro="A visual record of awards, summits, workshops, and community work."
             align="left"
           />
           <div className="hidden sm:flex gap-2 flex-shrink-0">

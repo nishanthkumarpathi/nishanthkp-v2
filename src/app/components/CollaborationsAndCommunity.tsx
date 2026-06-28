@@ -16,7 +16,6 @@ export function CollaborationsAndCommunity() {
         <SectionHeader
           kicker="06 — Partnerships"
           title={<>Collaborations &amp; <span className="text-gradient-brand">Community</span></>}
-          intro="Building partnerships through education, mentorship, and knowledge sharing."
           className="mb-7 sm:mb-12"
         />
 
