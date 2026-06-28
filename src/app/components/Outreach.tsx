@@ -7,13 +7,13 @@ export function Outreach() {
   if (outreach.length === 0) return null;
 
   return (
-    <section id="outreach" className="relative py-14 sm:py-20 lg:py-28 bg-surface-2">
+    <section id="outreach" className="relative py-12 sm:py-20 lg:py-28 bg-surface-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           kicker="05 — Giving Back"
           title={<>Community &amp; <span className="text-gradient-brand">Outreach</span></>}
           intro="Service through volunteering, community forums, and mentoring the next generation."
-          className="mb-10 sm:mb-14"
+          className="mb-7 sm:mb-12"
         />
 
         <SwipeRail

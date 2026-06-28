@@ -10,7 +10,7 @@ export function Awards() {
   const [spotlight, ...rest] = awards;
 
   return (
-    <section id="awards" className="relative py-14 sm:py-20 lg:py-28 bg-page overflow-hidden">
+    <section id="awards" className="relative py-12 sm:py-20 lg:py-28 bg-page overflow-hidden">
       {/* Warm award glow */}
       <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[40vh] w-[70vw] rounded-full opacity-40 blur-3xl"
@@ -22,7 +22,7 @@ export function Awards() {
           kicker="02 — Recognition"
           title={<>Awards &amp; <span className="font-display italic text-award">Honours</span></>}
           intro="Industry recognition for impact and contributions to the cybersecurity community."
-          className="mb-10 sm:mb-14"
+          className="mb-7 sm:mb-12"
         />
 
         {/* Spotlight award */}
@@ -34,7 +34,7 @@ export function Awards() {
           className="group relative grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-award/30 bg-surface mb-6"
           style={{ boxShadow: '0 20px 60px -30px var(--award-soft)' }}
         >
-          <div className="relative h-44 sm:h-64 md:h-auto overflow-hidden">
+          <div className="relative h-36 sm:h-64 md:h-auto overflow-hidden">
             <img
               src={spotlight.image}
               alt={spotlight.title}
@@ -45,23 +45,23 @@ export function Awards() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-surface/20 md:to-surface" />
           </div>
 
-          <div className="relative p-7 sm:p-10 flex flex-col justify-center">
-            <span className="inline-flex items-center gap-2 self-start rounded-full bg-award-soft px-3 py-1 mb-5 text-xs font-semibold text-award">
+          <div className="relative p-5 sm:p-10 flex flex-col justify-center">
+            <span className="inline-flex items-center gap-2 self-start rounded-full bg-award-soft px-3 py-1 mb-3 sm:mb-5 text-xs font-semibold text-award">
               <Sparkles size={13} /> Featured Recognition
             </span>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-award-soft text-award">
-                <Trophy size={20} />
+            <div className="flex items-center gap-3 mb-3 sm:mb-4">
+              <span className="inline-flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-award-soft text-award">
+                <Trophy size={18} />
               </span>
               {spotlight.year && (
                 <span className="font-mono text-sm text-award">{spotlight.year}</span>
               )}
             </div>
-            <h3 className="font-display text-2xl sm:text-3xl font-light text-content leading-tight mb-3">
+            <h3 className="font-display text-xl sm:text-3xl font-light text-content leading-tight mb-2 sm:mb-3">
               {spotlight.title}
             </h3>
             {spotlight.description && (
-              <p className="text-muted leading-relaxed mb-5">{spotlight.description}</p>
+              <p className="text-sm sm:text-base text-muted leading-relaxed mb-4 sm:mb-5 line-clamp-3 sm:line-clamp-none">{spotlight.description}</p>
             )}
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-faint">
               {spotlight.organization && (
@@ -78,7 +78,7 @@ export function Awards() {
                 href={spotlight.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center mt-5 text-sm font-medium text-award hover:underline"
+                className="inline-flex items-center mt-4 text-sm font-medium text-award hover:underline"
               >
                 <ExternalLink size={14} className="mr-1.5" /> Learn more
               </a>

@@ -17,14 +17,14 @@ const iconMap = {
 
 export function Contact() {
   return (
-    <section id="contact" className="relative py-14 sm:py-20 lg:py-28 bg-surface-2 overflow-hidden">
+    <section id="contact" className="relative py-12 sm:py-20 lg:py-28 bg-surface-2 overflow-hidden">
       <div className="glow-brand absolute bottom-0 left-1/2 -translate-x-1/2 h-[40vh] w-[60vw] rounded-full opacity-60" aria-hidden />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           kicker="07 — Let's Build"
           title={<>Let's Work <span className="text-gradient-brand">Together</span></>}
           intro="Ready to strengthen your organization's security posture? Here's where I can help."
-          className="mb-10 sm:mb-14"
+          className="mb-7 sm:mb-14"
         />
 
         {/* Services grid */}
@@ -32,7 +32,7 @@ export function Contact() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10 sm:mb-14"
+          className="mb-8 sm:mb-14"
         >
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
             {contactServices.map((service, index) => {

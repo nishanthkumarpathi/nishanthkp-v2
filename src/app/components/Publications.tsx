@@ -17,18 +17,18 @@ export function Publications({ onViewAllPapers, onViewPaper }: PublicationsProps
   const scrollNext = () => emblaApi?.scrollNext();
 
   return (
-    <section id="publications" className="relative py-14 sm:py-20 lg:py-28 bg-page">
+    <section id="publications" className="relative py-12 sm:py-20 lg:py-28 bg-page">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           kicker="04 — Research"
           title={<>Research &amp; <span className="font-display italic text-brand-bright">Publications</span></>}
           intro="Advancing the field through patents, peer-reviewed papers, and published research."
-          className="mb-10 sm:mb-14"
+          className="mb-7 sm:mb-14"
         />
 
         {/* Patents */}
-        <div className="mb-10 sm:mb-14">
-          <h3 className="flex items-center gap-2 font-display text-xl sm:text-2xl font-light text-content mb-6">
+        <div className="mb-8 sm:mb-14">
+          <h3 className="flex items-center gap-2 font-display text-lg sm:text-2xl font-light text-content mb-5">
             <Award className="text-brand-bright" size={20} /> Patents
           </h3>
           <div className="space-y-5">

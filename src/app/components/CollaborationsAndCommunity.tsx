@@ -11,13 +11,13 @@ const iconMap = {
 
 export function CollaborationsAndCommunity() {
   return (
-    <section id="collaborations-community" className="relative py-14 sm:py-20 lg:py-28 bg-page">
+    <section id="collaborations-community" className="relative py-12 sm:py-20 lg:py-28 bg-page">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           kicker="06 — Partnerships"
           title={<>Collaborations &amp; <span className="text-gradient-brand">Community</span></>}
           intro="Building partnerships through education, mentorship, and knowledge sharing."
-          className="mb-10 sm:mb-14"
+          className="mb-7 sm:mb-12"
         />
 
         <SwipeRail
@@ -34,15 +34,15 @@ export function CollaborationsAndCommunity() {
 function CollabCard({ org }: { org: CollaborationOrg }) {
   const OrgIcon = iconMap[org.icon];
   return (
-    <div className="group relative flex flex-col rounded-2xl border border-line bg-surface p-6 sm:p-7 hover:border-brand-bright/40 transition-colors overflow-hidden h-full">
+    <div className="group relative flex flex-col rounded-2xl border border-line bg-surface p-5 sm:p-7 hover:border-brand-bright/40 transition-colors overflow-hidden h-full">
       <span className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-brand-bright to-transparent" aria-hidden />
-      <Handshake className="text-brand-bright/60 mb-4" size={22} />
-      <h4 className="font-display text-lg sm:text-xl font-light text-content mb-1">{org.name}</h4>
-      <p className="text-brand-bright text-sm font-medium mb-5">{org.role}</p>
-      <p className="text-sm text-muted leading-relaxed mb-6 flex-1">{org.description}</p>
+      <Handshake className="text-brand-bright/60 mb-3" size={20} />
+      <h4 className="font-display text-lg sm:text-xl font-light text-content mb-1 leading-snug">{org.name}</h4>
+      <p className="text-brand-bright text-sm font-medium mb-3">{org.role}</p>
+      <p className="text-sm text-muted leading-relaxed mb-4 flex-1 line-clamp-3 sm:line-clamp-none">{org.description}</p>
 
       <div>
-        <div className="flex items-center gap-2 mb-3 text-content font-medium text-sm">
+        <div className="flex items-center gap-2 mb-2.5 text-content font-medium text-sm">
           <OrgIcon size={15} className="text-brand-bright" />
           {org.mentions[0]}
         </div>

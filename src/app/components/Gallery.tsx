@@ -16,9 +16,9 @@ export function Gallery({ onViewFullGallery }: GalleryProps) {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section id="gallery" className="relative py-14 sm:py-20 lg:py-28 bg-surface-2">
+    <section id="gallery" className="relative py-12 sm:py-20 lg:py-28 bg-surface-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 sm:mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-7 sm:mb-12">
           <SectionHeader
             kicker="08 — Archive"
             title="In the Field"

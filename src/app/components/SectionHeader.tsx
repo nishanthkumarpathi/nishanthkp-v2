@@ -34,15 +34,15 @@ export function SectionHeader({
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`flex flex-col ${alignment} ${className}`}
     >
-      <span className="kicker mb-4 flex items-center gap-3">
+      <span className="kicker mb-2.5 sm:mb-3 flex items-center gap-3">
         <span className="h-px w-8 bg-brand-bright/60" aria-hidden />
         {kicker}
       </span>
-      <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-content leading-[1.05] tracking-tight">
+      <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-light text-content leading-[1.05] tracking-tight">
         {title}
       </h2>
       {intro && (
-        <p className={`mt-5 text-base sm:text-lg text-muted font-light leading-relaxed ${align === 'center' ? 'max-w-2xl' : 'max-w-2xl'}`}>
+        <p className="mt-2.5 sm:mt-4 text-sm sm:text-lg text-muted font-light leading-snug sm:leading-relaxed max-w-2xl line-clamp-2 sm:line-clamp-none">
           {intro}
         </p>
       )}

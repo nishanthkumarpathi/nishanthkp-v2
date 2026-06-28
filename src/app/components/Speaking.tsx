@@ -20,13 +20,13 @@ export function Speaking() {
   if (speakingEngagements.length === 0) return null;
 
   return (
-    <section id="speaking" className="relative py-14 sm:py-20 lg:py-28 bg-surface-2">
+    <section id="speaking" className="relative py-12 sm:py-20 lg:py-28 bg-surface-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           kicker="03 — On Stage"
           title={<>Speaking &amp; <span className="text-gradient-brand">Workshops</span></>}
           intro="Keynotes, panels, and hands-on training across summits and enterprises in the region."
-          className="mb-10 sm:mb-12"
+          className="mb-7 sm:mb-12"
         />
 
         {/* Summary stat row */}
@@ -34,20 +34,20 @@ export function Speaking() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-line bg-line mb-12 sm:mb-16"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-line bg-line mb-8 sm:mb-14"
         >
           {summaryStats.map((s) => (
-            <div key={s.label} className="bg-surface px-5 py-6 text-center">
-              <div className="font-display text-3xl sm:text-4xl font-light text-content tabular-nums">{s.value}</div>
-              <div className="kicker text-[0.58rem] mt-2 text-faint">{s.label}</div>
+            <div key={s.label} className="bg-surface px-4 py-4 sm:px-5 sm:py-6 text-center">
+              <div className="font-display text-2xl sm:text-4xl font-light text-content tabular-nums">{s.value}</div>
+              <div className="kicker text-[0.55rem] sm:text-[0.58rem] mt-1.5 sm:mt-2 text-faint">{s.label}</div>
             </div>
           ))}
         </motion.div>
 
         {/* Talks & summits — horizontal rail on mobile/tablet, grid on desktop */}
         {talks.length > 0 && (
-          <div className="mb-12 sm:mb-14">
-            <h3 className="flex items-center gap-2 font-display text-xl sm:text-2xl font-light text-content mb-6 sm:mb-7">
+          <div className="mb-10 sm:mb-14">
+            <h3 className="flex items-center gap-2 font-display text-lg sm:text-2xl font-light text-content mb-5 sm:mb-7">
               <Mic className="text-brand-bright" size={20} /> Talks, Keynotes &amp; Panels
             </h3>
             <SwipeRail
@@ -62,7 +62,7 @@ export function Speaking() {
         {/* Workshops & training — 2-up rail on mobile, grid on desktop */}
         {workshops.length > 0 && (
           <div>
-            <h3 className="flex items-center gap-2 font-display text-xl sm:text-2xl font-light text-content mb-6 sm:mb-7">
+            <h3 className="flex items-center gap-2 font-display text-lg sm:text-2xl font-light text-content mb-5 sm:mb-7">
               <GraduationCap className="text-brand-bright" size={22} /> Workshops &amp; Training Delivered
             </h3>
             <SwipeRail

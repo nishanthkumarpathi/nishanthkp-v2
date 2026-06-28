@@ -23,14 +23,14 @@ const iconMap = {
 
 export function About() {
   return (
-    <section id="about" className="relative py-14 sm:py-20 lg:py-28 bg-surface-2 overflow-hidden">
+    <section id="about" className="relative py-12 sm:py-20 lg:py-28 bg-surface-2 overflow-hidden">
       <div className="bg-grid absolute inset-0 opacity-40 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]" aria-hidden />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           kicker="01 — Track Record"
           title={<>Leadership, <span className="text-gradient-brand">by the numbers</span></>}
           intro="Fifteen years securing banks, governments, and enterprises across the Gulf and beyond — quantified."
-          className="mb-10 sm:mb-14"
+          className="mb-7 sm:mb-14"
         />
 
         <dl className="grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-line bg-line">
