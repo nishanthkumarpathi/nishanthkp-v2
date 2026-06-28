@@ -19,3 +19,20 @@ export const heroCountries: string[] = [
   'Singapore',
   'UAE',
 ];
+
+/** Short, high-signal credentials surfaced directly under the name. */
+export const heroCredentials: string[] = [
+  'Award-Winning Security Leader',
+  'Keynote Speaker',
+  '7 Countries',
+  '15+ Years',
+];
+
+/** Rotating role/identity line cycled beneath the name. */
+export const heroRoles: string[] = [
+  'Cybersecurity Leader',
+  'Cloud Security Architect',
+  'Keynote Speaker & Trainer',
+  'Data Privacy Engineer',
+  'DevSecOps Practitioner',
+];

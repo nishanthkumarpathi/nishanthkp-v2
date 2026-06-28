@@ -1,100 +1,133 @@
 import { motion } from 'motion/react';
-import { Trophy, MapPin, ExternalLink } from 'lucide-react';
-import { awards } from '../data/engagements';
+import { Trophy, MapPin, ExternalLink, Sparkles } from 'lucide-react';
+import { awards, type Engagement } from '../data/engagements';
+import { SectionHeader } from './SectionHeader';
+import { SwipeRail } from './SwipeRail';
 
 export function Awards() {
   if (awards.length === 0) return null;
 
+  const [spotlight, ...rest] = awards;
+
   return (
-    <section id="awards" className="py-12 sm:py-16 lg:py-24 bg-[#F8F9FA]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+    <section id="awards" className="relative py-14 sm:py-20 lg:py-28 bg-page overflow-hidden">
+      {/* Warm award glow */}
+      <div
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[40vh] w-[70vw] rounded-full opacity-40 blur-3xl"
+        style={{ background: 'radial-gradient(closest-side, var(--award-soft), transparent)' }}
+        aria-hidden
+      />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          kicker="02 — Recognition"
+          title={<>Awards &amp; <span className="font-display italic text-award">Honours</span></>}
+          intro="Industry recognition for impact and contributions to the cybersecurity community."
+          className="mb-10 sm:mb-14"
+        />
+
+        {/* Spotlight award */}
+        <motion.article
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-16"
+          transition={{ duration: 0.6 }}
+          className="group relative grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-award/30 bg-surface mb-6"
+          style={{ boxShadow: '0 20px 60px -30px var(--award-soft)' }}
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6">
-            Awards &amp; Recognition
-          </h2>
-          <div className="w-24 h-1 bg-[#C8901F] mx-auto rounded-full mb-8"></div>
-          <p className="text-gray-500 text-lg max-w-3xl mx-auto font-light">
-            Honours recognizing impact and contributions to the cybersecurity community
-          </p>
-        </motion.div>
+          <div className="relative h-44 sm:h-64 md:h-auto overflow-hidden">
+            <img
+              src={spotlight.image}
+              alt={spotlight.title}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-surface/20 md:to-surface" />
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {awards.map((award, index) => (
-            <motion.article
-              key={award.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: Math.min(index * 0.1, 0.3) }}
-              className="group relative bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-[#C8901F]/20 flex flex-col"
-            >
-              <div className="absolute top-0 left-0 w-full h-1 bg-[#C8901F]"></div>
+          <div className="relative p-7 sm:p-10 flex flex-col justify-center">
+            <span className="inline-flex items-center gap-2 self-start rounded-full bg-award-soft px-3 py-1 mb-5 text-xs font-semibold text-award">
+              <Sparkles size={13} /> Featured Recognition
+            </span>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-award-soft text-award">
+                <Trophy size={20} />
+              </span>
+              {spotlight.year && (
+                <span className="font-mono text-sm text-award">{spotlight.year}</span>
+              )}
+            </div>
+            <h3 className="font-display text-2xl sm:text-3xl font-light text-content leading-tight mb-3">
+              {spotlight.title}
+            </h3>
+            {spotlight.description && (
+              <p className="text-muted leading-relaxed mb-5">{spotlight.description}</p>
+            )}
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-faint">
+              {spotlight.organization && (
+                <span className="font-medium text-content">{spotlight.organization}</span>
+              )}
+              {spotlight.location && (
+                <span className="inline-flex items-center gap-1">
+                  <MapPin size={13} /> {spotlight.location}
+                </span>
+              )}
+            </div>
+            {spotlight.link && (
+              <a
+                href={spotlight.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center mt-5 text-sm font-medium text-award hover:underline"
+              >
+                <ExternalLink size={14} className="mr-1.5" /> Learn more
+              </a>
+            )}
+          </div>
+        </motion.article>
 
-              {/* Photo */}
-              <div className="relative h-52 bg-gray-100">
-                <img
-                  src={award.image}
-                  alt={award.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex-1 flex flex-col">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#FBF3E0] text-[#C8901F] flex-shrink-0">
-                    <Trophy size={18} />
-                  </span>
-                  {award.year && (
-                    <span className="px-2.5 py-1 bg-[#FBF3E0] text-[#C8901F] text-xs font-semibold rounded-full">
-                      {award.year}
-                    </span>
-                  )}
-                </div>
-
-                <h3 className="text-lg font-semibold text-gray-900 leading-snug mb-2">
-                  {award.title}
-                </h3>
-
-                {award.description && (
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    {award.description}
-                  </p>
-                )}
-
-                <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#6C757D]">
-                  {award.organization && (
-                    <span className="font-medium text-gray-700">{award.organization}</span>
-                  )}
-                  {award.location && (
-                    <span className="inline-flex items-center gap-1">
-                      <MapPin size={12} /> {award.location}
-                    </span>
-                  )}
-                </div>
-
-                {award.link && (
-                  <a
-                    href={award.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center mt-4 text-sm font-medium text-[#C8901F] hover:underline"
-                  >
-                    <ExternalLink size={14} className="mr-1" /> Learn more
-                  </a>
-                )}
-              </div>
-            </motion.article>
-          ))}
-        </div>
+        {/* Remaining awards — rail on mobile/tablet, grid on desktop */}
+        {rest.length > 0 && (
+          <SwipeRail
+            items={rest}
+            getKey={(a) => a.id}
+            gridClassName="grid grid-cols-2 gap-6"
+            slideClassName="flex-[0_0_90%] sm:flex-[0_0_60%]"
+            renderItem={(award) => <SecondaryAward award={award} />}
+          />
+        )}
       </div>
     </section>
+  );
+}
+
+function SecondaryAward({ award }: { award: Engagement }) {
+  return (
+    <article className="group relative flex gap-4 sm:gap-5 rounded-2xl overflow-hidden border border-line bg-surface p-4 sm:p-5 hover:border-award/40 transition-colors h-full">
+      <div className="relative h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 rounded-xl overflow-hidden bg-surface-2">
+        <img
+          src={award.image}
+          alt={award.title}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+      <div className="min-w-0 flex flex-col">
+        <div className="flex items-center gap-2 mb-1.5">
+          <Trophy size={14} className="text-award flex-shrink-0" />
+          {award.year && <span className="font-mono text-xs text-award">{award.year}</span>}
+        </div>
+        <h3 className="font-medium text-content leading-snug mb-1.5">{award.title}</h3>
+        <div className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-faint">
+          {award.organization && <span className="text-muted">{award.organization}</span>}
+          {award.location && (
+            <span className="inline-flex items-center gap-1">
+              <MapPin size={11} /> {award.location}
+            </span>
+          )}
+        </div>
+      </div>
+    </article>
   );
 }

@@ -1,114 +1,95 @@
 import { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import { galleryPhotos, type Photo } from '../data/galleryPhotos';
+import { engagements, categoryMeta } from '../data/engagements';
+import { SectionHeader } from './SectionHeader';
 
 interface GalleryProps {
   onViewFullGallery?: () => void;
 }
 
 export function Gallery({ onViewFullGallery }: GalleryProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'center' });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' });
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section id="gallery" className="py-12 sm:py-16 lg:py-24 bg-white">
+    <section id="gallery" className="relative py-14 sm:py-20 lg:py-28 bg-surface-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-16"
-        >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6">Gallery</h2>
-          <div className="w-24 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
-          <p className="text-gray-500 text-lg max-w-3xl mx-auto font-light">
-            A visual journey through awards, summits, workshops, and community moments
-          </p>
-        </motion.div>
-
-        {/* Carousel Container with Navigation */}
-        <div className="relative px-8 sm:px-12 md:px-16 lg:px-20">
-          {/* Left Navigation Button */}
-          <button
-            onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white hover:bg-gray-50 rounded-full shadow-lg border-2 border-gray-300 transition-all hover:border-[#2596be]"
-            aria-label="Previous event"
-          >
-            <ChevronLeft size={28} className="text-gray-800" />
-          </button>
-
-          {/* Right Navigation Button */}
-          <button
-            onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white hover:bg-gray-50 rounded-full shadow-lg border-2 border-gray-300 transition-all hover:border-[#2596be]"
-            aria-label="Next event"
-          >
-            <ChevronRight size={28} className="text-gray-800" />
-          </button>
-
-          {/* Embla Carousel */}
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-6 md:gap-8">
-              {galleryPhotos.map((photo, index) => (
-                <div key={photo.id} className="flex-[0_0_100%] md:flex-[0_0_calc(50%-16px)] lg:flex-[0_0_calc(33.333%-22px)] min-w-0">
-                  <PhotoCard photo={photo} index={index} />
-                </div>
-              ))}
-            </div>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 sm:mb-12">
+          <SectionHeader
+            kicker="08 — Archive"
+            title="In the Field"
+            intro="A visual record of awards, summits, workshops, and community work."
+            align="left"
+          />
+          <div className="hidden sm:flex gap-2 flex-shrink-0">
+            <button
+              onClick={scrollPrev}
+              className="p-2.5 rounded-full border border-line text-muted hover:text-content hover:border-brand-bright transition-colors"
+              aria-label="Previous"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={scrollNext}
+              className="p-2.5 rounded-full border border-line text-muted hover:text-content hover:border-brand-bright transition-colors"
+              aria-label="Next"
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
         </div>
 
-        {/* View Full Gallery Link */}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-5">
+            {engagements.map((item, index) => (
+              <div
+                key={item.id}
+                className="flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_31%] min-w-0"
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.3) }}
+                  className="group flex flex-col rounded-2xl overflow-hidden border border-line bg-surface h-full"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-surface-3">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <span className="absolute top-3 left-3 px-2 py-0.5 rounded-full bg-page/80 backdrop-blur text-brand-bright text-[10px] font-semibold border border-line">
+                      {categoryMeta[item.category].label}
+                    </span>
+                  </div>
+                  <div className="p-4 flex-1">
+                    <h3 className="text-sm font-medium text-content leading-snug">{item.title}</h3>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {onViewFullGallery && (
-          <div className="text-center mt-10 sm:mt-12">
+          <div className="text-center mt-10">
             <button
               onClick={onViewFullGallery}
-              className="inline-flex items-center text-[#2596be] hover:text-[#1a7a9e] transition-colors"
+              className="group inline-flex items-center px-6 py-3 rounded-lg border border-line-strong text-content font-medium text-sm hover:bg-surface transition-colors"
             >
-              <ExternalLink size={16} className="mr-1" />
-              View Full Gallery Here
+              View the full gallery
+              <ArrowRight size={16} className="ml-2 group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
         )}
       </div>
     </section>
-  );
-}
-
-function PhotoCard({ photo, index }: { photo: Photo; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: Math.min(index * 0.1, 0.3) }}
-      viewport={{ once: true }}
-      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col h-full"
-    >
-      {/* Photo */}
-      <div className="relative h-48 sm:h-56 md:h-64 bg-gray-100">
-        <img
-          src={photo.src}
-          alt={photo.title}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-contain"
-        />
-      </div>
-
-      {/* Content */}
-      <div className="p-5 flex-1 flex flex-col">
-        <h3 className="text-base font-semibold text-gray-900 leading-tight">{photo.title}</h3>
-      </div>
-    </motion.div>
   );
 }

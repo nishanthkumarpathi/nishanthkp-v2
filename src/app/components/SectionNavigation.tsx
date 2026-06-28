@@ -3,22 +3,18 @@ import { ChevronUp, ChevronDown, ChevronsUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { scrollToId } from '../utils/scroll';
 import { sectionOrder as sections } from '../data/navigation';
+import { useIsDesktop } from '../utils/useMediaQuery';
 
 export function SectionNavigation() {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const isDesktop = useIsDesktop();
 
   useEffect(() => {
     let frame = 0;
-
     const update = () => {
       frame = 0;
-
-      // Show after leaving the hero area
       setIsVisible(window.scrollY > 100);
-
-      // Find current section using viewport-relative positions so the
-      // detection is independent of any positioned ancestors.
       const midpoint = window.innerHeight / 2;
       for (let i = sections.length - 1; i >= 0; i--) {
         const element = document.getElementById(sections[i]);
@@ -28,40 +24,62 @@ export function SectionNavigation() {
         }
       }
     };
-
-    // Throttle scroll handling to one update per animation frame.
     const handleScroll = () => {
-      if (frame === 0) {
-        frame = window.requestAnimationFrame(update);
-      }
+      if (frame === 0) frame = window.requestAnimationFrame(update);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
-    update(); // Initial check
+    update();
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (frame !== 0) {
-        window.cancelAnimationFrame(frame);
-      }
+      if (frame !== 0) window.cancelAnimationFrame(frame);
     };
   }, []);
 
   const scrollToSection = (index: number) => {
-    if (index >= 0 && index < sections.length) {
-      scrollToId(sections[index]);
-    }
+    if (index >= 0 && index < sections.length) scrollToId(sections[index]);
   };
 
   const handlePrev = () => scrollToSection(currentSectionIndex - 1);
   const handleNext = () => scrollToSection(currentSectionIndex + 1);
   const handleScrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Hide Up arrow at the first section, hide Down arrow at the last section
   const showUp = currentSectionIndex > 0;
   const showDown = currentSectionIndex < sections.length - 1;
-  // Offer an instant jump to the very top once past the first section
   const showJumpToTop = currentSectionIndex > 0;
 
+  const btn =
+    'w-11 h-11 flex items-center justify-center rounded-full border border-line bg-surface/80 backdrop-blur text-muted shadow-lg hover:text-content hover:border-brand-bright/50 transition-all hover:scale-105';
+
+  // Mobile: a single slim bottom-center pill that advances to the next section
+  // (and flips to "Top" on the last one) — stays clear of card content.
+  if (!isDesktop) {
+    return (
+      <AnimatePresence>
+        {isVisible && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            onClick={showDown ? handleNext : handleScrollToTop}
+            className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-1.5 rounded-full bg-brand-strong/90 backdrop-blur px-4 py-2 text-xs font-medium text-white shadow-lg shadow-brand/30"
+            aria-label={showDown ? 'Next section' : 'Back to top'}
+          >
+            {showDown ? (
+              <>
+                Next <ChevronDown size={15} />
+              </>
+            ) : (
+              <>
+                Top <ChevronsUp size={15} />
+              </>
+            )}
+          </motion.button>
+        )}
+      </AnimatePresence>
+    );
+  }
+
+  // Desktop: full control with progress dots.
   return (
     <AnimatePresence>
       {isVisible && (
@@ -69,35 +87,40 @@ export function SectionNavigation() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
-          className="fixed bottom-8 right-8 z-50 flex flex-col items-center gap-3"
+          className="fixed bottom-8 right-8 z-40 flex flex-col items-center gap-2.5"
         >
+          <div className="flex flex-col items-center gap-1.5 mb-2">
+            {sections.map((s, i) => (
+              <button
+                key={s}
+                onClick={() => scrollToSection(i)}
+                aria-label={`Go to section ${i + 1}`}
+                className={`rounded-full transition-all ${
+                  i === currentSectionIndex
+                    ? 'h-4 w-1.5 bg-brand-bright'
+                    : 'h-1.5 w-1.5 bg-line-strong hover:bg-brand-bright/60'
+                }`}
+              />
+            ))}
+          </div>
+
           {showUp && (
-            <button
-              onClick={handlePrev}
-              className="w-12 h-12 flex items-center justify-center bg-white text-[#2596be] rounded-full shadow-lg hover:bg-gray-50 transition-all focus:outline-none focus:ring-2 focus:ring-[#2596be] focus:ring-offset-2 hover:scale-110 border border-gray-100"
-              aria-label="Previous section"
-            >
-              <ChevronUp size={24} />
+            <button onClick={handlePrev} className={btn} aria-label="Previous section">
+              <ChevronUp size={22} />
             </button>
           )}
-
           {showDown && (
             <button
               onClick={handleNext}
-              className="w-12 h-12 flex items-center justify-center bg-[#2596be] text-white rounded-full shadow-lg hover:bg-[#1a7a9e] transition-all focus:outline-none focus:ring-2 focus:ring-[#2596be] focus:ring-offset-2 hover:scale-110"
+              className="w-11 h-11 flex items-center justify-center rounded-full bg-brand-strong text-white shadow-lg shadow-brand/30 hover:bg-brand-deep transition-all hover:scale-105"
               aria-label="Next section"
             >
-              <ChevronDown size={24} />
+              <ChevronDown size={22} />
             </button>
           )}
-
           {showJumpToTop && (
-            <button
-              onClick={handleScrollToTop}
-              className="w-12 h-12 flex items-center justify-center bg-white text-[#2596be] rounded-full shadow-lg hover:bg-gray-50 transition-all focus:outline-none focus:ring-2 focus:ring-[#2596be] focus:ring-offset-2 hover:scale-110 border border-gray-100"
-              aria-label="Back to top"
-            >
-              <ChevronsUp size={24} />
+            <button onClick={handleScrollToTop} className={btn} aria-label="Back to top">
+              <ChevronsUp size={22} />
             </button>
           )}
         </motion.div>

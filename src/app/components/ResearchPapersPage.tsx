@@ -11,128 +11,120 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
   const { slug } = useParams<{ slug?: string }>();
   const navigate = useNavigate();
 
-  // Derive the selected paper from the URL slug; default to the first paper
-  // when the slug is missing or doesn't match any paper.
   const selectedPaper = (slug ? getPaperBySlug(slug) : undefined) ?? researchPapers[0];
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] pt-20">
-      {/* Header */}
-      <div className="bg-white shadow-sm sticky top-16 z-40">
+    <div className="min-h-screen bg-page pt-20">
+      {/* Sub-header */}
+      <div className="bg-page/80 backdrop-blur-md border-b border-line sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <button
             onClick={onBack}
-            className="inline-flex items-center text-[#2596be] hover:text-[#1a7a9e] transition-colors font-medium"
+            className="inline-flex items-center text-brand-bright hover:text-content transition-colors font-medium text-sm"
           >
-            <ArrowLeft size={20} className="mr-2" />
+            <ArrowLeft size={18} className="mr-2" />
             Back to Portfolio
           </button>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {/* Page Title */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-8 sm:mb-12"
+          className="text-center mb-10 sm:mb-12"
         >
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4">
-            Research Papers
-          </h1>
-          <div className="w-20 h-1 bg-[#2596be] mx-auto rounded-full mb-4 sm:mb-6"></div>
-          <p className="text-base sm:text-lg text-[#6C757D] max-w-2xl mx-auto">
-            Explore my published research papers in cybersecurity, cloud security, and DevSecOps
+          <span className="kicker block mb-4">Research</span>
+          <h1 className="font-display text-4xl sm:text-5xl font-light text-content mb-4">Research Papers</h1>
+          <p className="text-base sm:text-lg text-muted max-w-2xl mx-auto font-light">
+            Published research in cybersecurity, cloud security, and DevSecOps.
           </p>
         </motion.div>
 
-        {/* Grid Layout - Papers List on Left, Content on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-          {/* Left Side - Papers List */}
+          {/* Papers list */}
           <div className="lg:col-span-4 xl:col-span-3">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden sticky top-36">
-              <div className="p-4 border-b border-gray-100 bg-gray-50">
-                <h2 className="font-medium text-gray-900">All Papers ({researchPapers.length})</h2>
+            <div className="rounded-2xl border border-line bg-surface overflow-hidden sticky top-36">
+              <div className="p-4 border-b border-line bg-surface-2">
+                <h2 className="font-medium text-content text-sm">
+                  All Papers <span className="text-faint font-mono">({researchPapers.length})</span>
+                </h2>
               </div>
-              <div className="max-h-[60vh] overflow-y-auto">
+              <div className="max-h-[60vh] overflow-y-auto scrollbar-hide">
                 {researchPapers.map((paper) => {
                   const isActive = paper.slug === selectedPaper.slug;
                   return (
-                  <button
-                    key={paper.slug}
-                    onClick={() => navigate(`/research-papers/${paper.slug}`)}
-                    aria-current={isActive ? 'true' : undefined}
-                    className={`w-full p-4 text-left border-b border-gray-50 transition-colors ${
-                      isActive
-                        ? 'bg-[#2596be]/10 border-l-4 border-l-[#2596be]'
-                        : 'hover:bg-gray-50 border-l-4 border-l-transparent'
-                    }`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                        isActive ? 'bg-[#2596be] text-white' : 'bg-gray-100 text-gray-500'
-                      }`}>
-                        <FileText size={16} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className={`text-sm font-medium line-clamp-2 text-left ${
-                          isActive ? 'text-[#2596be]' : 'text-gray-900'
-                        }`}>
-                          {paper.title}
-                        </h3>
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className="text-xs text-[#6C757D]">{paper.publisher}</span>
-                          <span className="text-xs text-[#6C757D]">•</span>
-                          <span className="text-xs text-[#6C757D]">{paper.year}</span>
+                    <button
+                      key={paper.slug}
+                      onClick={() => navigate(`/research-papers/${paper.slug}`)}
+                      aria-current={isActive ? 'true' : undefined}
+                      className={`w-full p-4 text-left border-b border-line transition-colors border-l-2 ${
+                        isActive
+                          ? 'bg-brand-soft border-l-brand-bright'
+                          : 'hover:bg-surface-3 border-l-transparent'
+                      }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div
+                          className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                            isActive ? 'bg-brand-strong text-white' : 'bg-surface-3 text-muted'
+                          }`}
+                        >
+                          <FileText size={15} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3
+                            className={`text-sm font-medium line-clamp-2 ${
+                              isActive ? 'text-brand-bright' : 'text-content'
+                            }`}
+                          >
+                            {paper.title}
+                          </h3>
+                          <p className="text-xs text-faint font-mono mt-1">
+                            {paper.publisher} · {paper.year}
+                          </p>
                         </div>
                       </div>
-                    </div>
-                  </button>
+                    </button>
                   );
                 })}
               </div>
             </div>
           </div>
 
-          {/* Right Side - Paper Content */}
+          {/* Paper content */}
           <div className="lg:col-span-8 xl:col-span-9">
             <motion.div
               key={selectedPaper.slug}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
+              className="rounded-2xl border border-line bg-surface overflow-hidden"
             >
-              {/* Paper Header */}
-              <div className="p-6 sm:p-8 border-b border-gray-100">
+              <div className="p-6 sm:p-8 border-b border-line">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-[#2596be]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <FileText className="text-[#2596be]" size={28} />
+                  <div className="w-14 h-14 rounded-xl bg-brand-soft flex items-center justify-center flex-shrink-0">
+                    <FileText className="text-brand-bright" size={26} />
                   </div>
                   <div className="flex-1">
-                    <h2 className="text-xl sm:text-2xl font-medium text-gray-900 mb-2">
+                    <h2 className="font-display text-xl sm:text-2xl font-light text-content mb-2">
                       {selectedPaper.title}
                     </h2>
                     <div className="flex flex-wrap items-center gap-2 text-sm">
-                      <span className="px-3 py-1 bg-[#2596be]/10 text-[#2596be] rounded-md font-medium">
+                      <span className="px-3 py-1 rounded-md bg-brand-soft text-brand-bright font-mono text-xs">
                         {selectedPaper.type}
                       </span>
-                      <span className="text-[#6C757D]">{selectedPaper.publisher}</span>
-                      <span className="text-[#6C757D]">•</span>
-                      <span className="text-[#6C757D]">{selectedPaper.year}</span>
+                      <span className="text-faint font-mono text-xs">
+                        {selectedPaper.publisher} · {selectedPaper.year}
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Paper Content */}
               <div className="p-6 sm:p-8">
-                {/* Authors */}
-                <div className="mb-8">
-                  <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-2">
-                    Authors
-                  </h4>
-                  <div className="flex flex-wrap gap-2 text-gray-700">
+                <Block title="Authors">
+                  <div className="flex flex-wrap gap-2 text-muted">
                     {selectedPaper.authors.map((author, i) => (
                       <span key={i} className="flex items-center">
                         {author.profileUrl ? (
@@ -140,79 +132,62 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
                             href={author.profileUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#2596be] hover:underline font-medium"
+                            className="text-brand-bright hover:underline font-medium"
                           >
                             {author.name}
                           </a>
                         ) : (
-                          <span className="font-medium">{author.name}</span>
+                          <span className="font-medium text-content">{author.name}</span>
                         )}
                         {i < selectedPaper.authors.length - 1 && <span className="mr-1">,</span>}
                       </span>
                     ))}
                   </div>
-                </div>
+                </Block>
 
-                {/* Abstract */}
-                <div className="mb-8">
-                  <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">
-                    Abstract
-                  </h4>
-                  <p className="text-gray-700 leading-relaxed">
-                    {selectedPaper.description}
-                  </p>
-                </div>
+                <Block title="Abstract">
+                  <p className="text-muted leading-relaxed">{selectedPaper.description}</p>
+                </Block>
 
-                {/* Full Content */}
                 {selectedPaper.fullContent && (
-                  <div className="mb-8">
-                    <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">
-                      Summary
-                    </h4>
-                    <p className="text-gray-700 leading-relaxed">
-                      {selectedPaper.fullContent}
-                    </p>
-                  </div>
+                  <Block title="Summary">
+                    <p className="text-muted leading-relaxed">{selectedPaper.fullContent}</p>
+                  </Block>
                 )}
 
-                {/* Images/Certificates */}
                 {(selectedPaper.images || selectedPaper.certificates) && (
-                  <div className="mb-8">
-                    <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
-                      Related Documents
-                    </h4>
+                  <Block title="Related Documents">
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                       {selectedPaper.certificates?.map((cert, i) => (
                         <div
                           key={i}
-                          className="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center hover:bg-gray-100 transition-colors"
+                          className="rounded-lg border border-line bg-surface-2 p-4 flex flex-col items-center justify-center text-center hover:bg-surface-3 transition-colors"
                         >
-                          <Award className="text-[#2596be] mb-2" size={32} />
-                          <span className="text-sm text-gray-600">{cert}</span>
+                          <Award className="text-brand-bright mb-2" size={28} />
+                          <span className="text-sm text-muted">{cert}</span>
                         </div>
                       ))}
                       {selectedPaper.images?.map((img, i) => (
                         <div
                           key={i}
-                          className="bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center hover:bg-gray-100 transition-colors"
+                          className="rounded-lg border border-line bg-surface-2 p-4 flex flex-col items-center justify-center text-center hover:bg-surface-3 transition-colors"
                         >
-                          <ImageIcon className="text-[#2596be] mb-2" size={32} />
-                          <span className="text-sm text-gray-600">{img}</span>
+                          <ImageIcon className="text-brand-bright mb-2" size={28} />
+                          <span className="text-sm text-muted">{img}</span>
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </Block>
                 )}
 
-                {/* Actions */}
-                <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-100">
+                <div className="flex flex-wrap gap-3 pt-4 border-t border-line">
                   <a
                     href={selectedPaper.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-5 py-2.5 bg-[#2596be] text-white rounded-lg hover:bg-[#1a7a9e] transition-colors text-sm font-medium"
+                    className="inline-flex items-center px-5 py-2.5 rounded-lg bg-brand-strong text-white hover:bg-brand-deep transition-colors text-sm font-medium"
                   >
-                    <ExternalLink size={16} className="mr-2" />
+                    <ExternalLink size={15} className="mr-2" />
                     View Full Paper
                   </a>
                   {selectedPaper.doiLink && (
@@ -220,9 +195,9 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
                       href={selectedPaper.doiLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-5 py-2.5 border border-[#2596be] text-[#2596be] rounded-lg hover:bg-[#2596be]/10 transition-colors text-sm font-medium"
+                      className="inline-flex items-center px-5 py-2.5 rounded-lg border border-brand-bright/50 text-brand-bright hover:bg-brand-soft transition-colors text-sm font-medium"
                     >
-                      <ExternalLink size={16} className="mr-2" />
+                      <ExternalLink size={15} className="mr-2" />
                       View DOI
                     </a>
                   )}
@@ -232,6 +207,15 @@ export function ResearchPapersPage({ onBack }: ResearchPapersPageProps) {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function Block({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="mb-8">
+      <h4 className="kicker text-[0.62rem] mb-3">{title}</h4>
+      {children}
     </div>
   );
 }

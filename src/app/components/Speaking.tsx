@@ -1,71 +1,91 @@
 import { motion } from 'motion/react';
-import { GraduationCap, MapPin } from 'lucide-react';
+import { GraduationCap, MapPin, Mic } from 'lucide-react';
 import { speakingEngagements, type Engagement } from '../data/engagements';
+import { SectionHeader } from './SectionHeader';
+import { SwipeRail } from './SwipeRail';
 
 const talks = speakingEngagements.filter(
   (e) => e.category === 'speaking' || e.category === 'summit',
 );
 const workshops = speakingEngagements.filter((e) => e.category === 'workshop');
 
+const summaryStats = [
+  { value: `${talks.length + workshops.length}+`, label: 'Sessions Delivered' },
+  { value: '7', label: 'Countries' },
+  { value: '200+', label: 'Professionals Trained' },
+  { value: `${workshops.length}+`, label: 'Workshops' },
+];
+
 export function Speaking() {
   if (speakingEngagements.length === 0) return null;
 
   return (
-    <section id="speaking" className="py-12 sm:py-16 lg:py-24 bg-white">
+    <section id="speaking" className="relative py-14 sm:py-20 lg:py-28 bg-surface-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          kicker="03 — On Stage"
+          title={<>Speaking &amp; <span className="text-gradient-brand">Workshops</span></>}
+          intro="Keynotes, panels, and hands-on training across summits and enterprises in the region."
+          className="mb-10 sm:mb-12"
+        />
+
+        {/* Summary stat row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-14"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-line bg-line mb-12 sm:mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6">
-            Speaking &amp; Workshops
-          </h2>
-          <div className="w-24 h-1 bg-[#2596be] mx-auto rounded-full mb-8"></div>
+          {summaryStats.map((s) => (
+            <div key={s.label} className="bg-surface px-5 py-6 text-center">
+              <div className="font-display text-3xl sm:text-4xl font-light text-content tabular-nums">{s.value}</div>
+              <div className="kicker text-[0.58rem] mt-2 text-faint">{s.label}</div>
+            </div>
+          ))}
         </motion.div>
 
-        {/* Talks & summits */}
+        {/* Talks & summits — horizontal rail on mobile/tablet, grid on desktop */}
         {talks.length > 0 && (
-          <div className="mb-12 sm:mb-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {talks.map((talk, index) => (
-                <TalkCard key={talk.id} talk={talk} index={index} />
-              ))}
-            </div>
+          <div className="mb-12 sm:mb-14">
+            <h3 className="flex items-center gap-2 font-display text-xl sm:text-2xl font-light text-content mb-6 sm:mb-7">
+              <Mic className="text-brand-bright" size={20} /> Talks, Keynotes &amp; Panels
+            </h3>
+            <SwipeRail
+              items={talks}
+              getKey={(t) => t.id}
+              gridClassName="grid grid-cols-3 gap-6"
+              renderItem={(talk, index) => <TalkCard talk={talk} index={index} />}
+            />
           </div>
         )}
 
-        {/* Workshops & training */}
+        {/* Workshops & training — 2-up rail on mobile, grid on desktop */}
         {workshops.length > 0 && (
           <div>
-            <h3 className="text-xl sm:text-2xl font-light text-gray-900 mb-6 sm:mb-8 flex items-center gap-2">
-              <GraduationCap className="text-[#2596be]" size={22} /> Workshops &amp; Training Delivered
+            <h3 className="flex items-center gap-2 font-display text-xl sm:text-2xl font-light text-content mb-6 sm:mb-7">
+              <GraduationCap className="text-brand-bright" size={22} /> Workshops &amp; Training Delivered
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-              {workshops.map((w, index) => (
-                <motion.div
-                  key={w.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: Math.min(index * 0.04, 0.3) }}
-                  className="flex items-start gap-3 bg-white rounded-xl p-4 border border-gray-100 hover:border-[#2596be]/30 hover:shadow-sm transition-all"
-                >
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#2596be]/10 text-[#2596be] flex-shrink-0">
+            <SwipeRail
+              items={workshops}
+              getKey={(w) => w.id}
+              gridClassName="grid grid-cols-3 gap-3"
+              slideClassName="flex-[0_0_88%] sm:flex-[0_0_48%]"
+              renderItem={(w) => (
+                <div className="flex items-start gap-3 rounded-xl p-4 border border-line bg-surface hover:border-brand-bright/40 hover:bg-surface-3 transition-colors">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-soft text-brand-bright flex-shrink-0">
                     <GraduationCap size={16} />
                   </span>
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-gray-900 leading-snug">{w.title}</p>
+                    <p className="text-sm font-medium text-content leading-snug">{w.title}</p>
                     {(w.organization || w.year) && (
-                      <p className="text-xs text-[#6C757D] mt-1">
-                        {[w.organization, w.year].filter(Boolean).join(' • ')}
+                      <p className="text-xs text-faint mt-1 font-mono">
+                        {[w.organization, w.year].filter(Boolean).join(' · ')}
                       </p>
                     )}
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              )}
+            />
           </div>
         )}
       </div>
@@ -76,13 +96,13 @@ export function Speaking() {
 function TalkCard({ talk, index }: { talk: Engagement; index: number }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: Math.min(index * 0.08, 0.3) }}
-      className="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col"
+      transition={{ delay: Math.min(index * 0.07, 0.3) }}
+      className="group flex flex-col h-full rounded-2xl overflow-hidden border border-line bg-surface hover:border-brand-bright/40 transition-all duration-300"
     >
-      <div className="relative h-48 bg-gray-100 overflow-hidden">
+      <div className="relative h-48 overflow-hidden bg-surface-2">
         <img
           src={talk.image}
           alt={talk.title}
@@ -90,28 +110,25 @@ function TalkCard({ talk, index }: { talk: Engagement; index: number }) {
           decoding="async"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-transparent to-transparent" />
         {talk.role && (
-          <span className="absolute top-3 left-3 px-2.5 py-1 bg-white/90 backdrop-blur text-[#2596be] text-xs font-semibold rounded-full shadow-sm">
+          <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-page/80 backdrop-blur text-brand-bright text-xs font-semibold border border-line">
             {talk.role}
           </span>
         )}
         {talk.year && (
-          <span className="absolute top-3 right-3 px-2.5 py-1 bg-[#2596be] text-white text-xs font-semibold rounded-full shadow-sm">
+          <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-brand-strong text-white text-xs font-semibold">
             {talk.year}
           </span>
         )}
       </div>
       <div className="p-5 flex-1 flex flex-col">
-        <h4 className="text-base font-semibold text-gray-900 leading-snug mb-2">{talk.title}</h4>
+        <h4 className="font-medium text-content leading-snug mb-2">{talk.title}</h4>
         {talk.description && (
-          <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">
-            {talk.description}
-          </p>
+          <p className="text-sm text-muted leading-relaxed mb-4 line-clamp-3">{talk.description}</p>
         )}
-        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#6C757D]">
-          {talk.organization && (
-            <span className="font-medium text-gray-700">{talk.organization}</span>
-          )}
+        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-faint">
+          {talk.organization && <span className="text-muted font-medium">{talk.organization}</span>}
           {talk.location && (
             <span className="inline-flex items-center gap-1">
               <MapPin size={12} /> {talk.location}

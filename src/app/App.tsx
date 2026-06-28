@@ -39,7 +39,7 @@ export default function App() {
   };
 
   return (
-    <div className="font-[Roboto,sans-serif]">
+    <div className="font-sans text-content bg-page min-h-screen">
       <ScrollToTop />
       <Header onNavigateHome={!isHomeRoute ? handleNavigateHome : undefined} />
       <Routes>
