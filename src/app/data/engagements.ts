@@ -346,6 +346,8 @@ const engagementsSource: Omit<Engagement, 'slug'>[] = [
     id: '77',
     title: 'Greener Algorithms, Greater Responsibility - Governing AI Ethically',
     category: 'speaking',
+    year: '2026',
+    date: '2026-06-30',
     organization: 'Global AI Show',
     role: 'Fireside Chat Participant',
     description:
