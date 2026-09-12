@@ -53,7 +53,6 @@ function OutreachCard({ item }: { item: Engagement }) {
               <Users size={12} /> {item.organization}
             </span>
           )}
-          {item.year && <span className="font-mono">{item.year}</span>}
         </div>
       </div>
     </article>

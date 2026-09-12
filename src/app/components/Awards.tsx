@@ -7,7 +7,8 @@ import { SwipeRail } from './SwipeRail';
 export function Awards() {
   if (awards.length === 0) return null;
 
-  const [spotlight, ...rest] = awards;
+  const spotlight = awards.find((award) => award.highlighted) ?? awards[0];
+  const rest = awards.filter((award) => award.id !== spotlight.id);
 
   return (
     <section id="awards" className="relative py-12 sm:py-20 lg:py-28 bg-page overflow-hidden">
@@ -20,7 +21,7 @@ export function Awards() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           kicker="02 — Recognition"
-          title={<>Awards &amp; <span className="font-display italic text-award">Honours</span></>}
+          title={<>Awards &amp; <span className="font-display italic text-award">Honors</span></>}
           className="mb-7 sm:mb-12"
         />
 
@@ -52,9 +53,6 @@ export function Awards() {
               <span className="inline-flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-award-soft text-award">
                 <Trophy size={18} />
               </span>
-              {spotlight.year && (
-                <span className="font-mono text-sm text-award">{spotlight.year}</span>
-              )}
             </div>
             <h3 className="font-display text-xl sm:text-3xl font-light text-content leading-tight mb-2 sm:mb-3">
               {spotlight.title}
@@ -72,15 +70,29 @@ export function Awards() {
                 </span>
               )}
             </div>
-            {spotlight.link && (
-              <a
-                href={spotlight.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center mt-4 text-sm font-medium text-award hover:underline"
-              >
-                <ExternalLink size={14} className="mr-1.5" /> Learn more
-              </a>
+            {(spotlight.link || spotlight.linkedinPostUrl) && (
+              <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+                {spotlight.link && (
+                  <a
+                    href={spotlight.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm font-medium text-award hover:underline"
+                  >
+                    <ExternalLink size={14} className="mr-1.5" /> Learn more
+                  </a>
+                )}
+                {spotlight.linkedinPostUrl && (
+                  <a
+                    href={spotlight.linkedinPostUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm font-medium text-award hover:underline"
+                  >
+                    <ExternalLink size={14} className="mr-1.5" /> LinkedIn post
+                  </a>
+                )}
+              </div>
             )}
           </div>
         </motion.article>
@@ -101,6 +113,8 @@ export function Awards() {
 }
 
 function SecondaryAward({ award }: { award: Engagement }) {
+  const country = award.location?.split(',').pop()?.trim();
+
   return (
     <article className="group relative flex gap-4 sm:gap-5 rounded-2xl overflow-hidden border border-line bg-surface p-4 sm:p-5 hover:border-award/40 transition-colors h-full">
       <div className="relative h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 rounded-xl overflow-hidden bg-surface-2">
@@ -115,14 +129,13 @@ function SecondaryAward({ award }: { award: Engagement }) {
       <div className="min-w-0 flex flex-col">
         <div className="flex items-center gap-2 mb-1.5">
           <Trophy size={14} className="text-award flex-shrink-0" />
-          {award.year && <span className="font-mono text-xs text-award">{award.year}</span>}
         </div>
         <h3 className="font-medium text-content leading-snug mb-1.5">{award.title}</h3>
         <div className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-faint">
           {award.organization && <span className="text-muted">{award.organization}</span>}
-          {award.location && (
+          {country && (
             <span className="inline-flex items-center gap-1">
-              <MapPin size={11} /> {award.location}
+              <MapPin size={11} /> {country}
             </span>
           )}
         </div>

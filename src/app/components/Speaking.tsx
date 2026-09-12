@@ -12,7 +12,7 @@ const workshops = speakingEngagements.filter((e) => e.category === 'workshop');
 const summaryStats = [
   { value: `${talks.length + workshops.length}+`, label: 'Sessions Delivered' },
   { value: '7', label: 'Countries' },
-  { value: '200+', label: 'Professionals Trained' },
+  { value: '1000+', label: 'Professionals Trained' },
   { value: `${workshops.length}+`, label: 'Workshops' },
 ];
 
@@ -71,9 +71,15 @@ export function Speaking() {
               slideClassName="flex-[0_0_88%] sm:flex-[0_0_48%]"
               renderItem={(w) => (
                 <div className="flex items-start gap-3 rounded-xl p-4 border border-line bg-surface hover:border-brand-bright/40 hover:bg-surface-3 transition-colors">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-soft text-brand-bright flex-shrink-0">
-                    <GraduationCap size={16} />
-                  </span>
+                  <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-lg overflow-hidden bg-surface-2 flex-shrink-0">
+                    <img
+                      src={w.image}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                   <div className="min-w-0">
                     <p className="text-sm font-medium text-content leading-snug">{w.title}</p>
                     {(w.organization || w.year) && (

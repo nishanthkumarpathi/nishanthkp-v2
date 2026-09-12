@@ -14,7 +14,7 @@ The information architecture is solved. The remaining problem is **the visual la
 |---|---------|-----------------------------------|
 | 1 | **Light, safe, generic palette** — white / `gray-50` backgrounds, single cyan accent (`#2596be`), soft rounded cards, gradient "blobs" in hero | Looks like a thousand other clean-corporate templates; no gravitas |
 | 2 | **Roboto everywhere** | System-default feel, zero typographic personality or hierarchy |
-| 3 | **Stat cards are the strongest proof but rendered as small flat tiles** (15+ yrs, $5M budget, 200+ trained, 6 countries) | The numbers that prove seniority don't *land* visually |
+| 3 | **Stat cards are the strongest proof but rendered as small flat tiles** (15+ yrs, $5M budget, 1000+ trained, 6 countries) | The numbers that prove seniority don't *land* visually |
 | 4 | **Every section is identical** — centered title, cyan underline, fade-up grid of white cards | No rhythm, no drama, nothing memorable |
 | 5 | **Hero is timid** — small headshot, pill tags, generic "Let's Talk" | First screen should feel like authority for someone who keynotes summits |
 | 6 | **One uniform motion pattern** (fade-up everywhere) | Misses high-impact orchestrated moments |
@@ -44,7 +44,7 @@ Dark editorial "command" theme. The visual confidence of a keynote stage or an e
  │ KUMAR PATHI                 │
  │ ─ Cybersecurity Leader      │
  │                             │
- │  15+    $5M   200+    6     │  ← glowing count-up
+ │  15+    $5M   1000+    6     │  ← glowing count-up
  │  yrs   budget trained  ctry │
  └────────────────────────────┘
    cyan accents · grain · grid
@@ -104,7 +104,7 @@ This is Phase 0 regardless of which direction is chosen. The only thing that cha
 - **The flagship screen.** Convert flat tiles into a **bold metrics wall**:
   - Oversized figures with **count-up animation** on scroll-into-view.
   - Monospace labels under each number.
-  - Give 2–3 anchor stats (e.g. `$5M+`, `15+`, `200+`) hero-size treatment; others secondary.
+  - Give 2–3 anchor stats (e.g. `$5M+`, `15+`, `1000+`) hero-size treatment; others secondary.
   - Optional thin grid lines between metrics for an "instrument panel" feel.
 - Keep all existing data in `about.ts` (no content change); restructure presentation only.
 - Files: `About.tsx`, small count-up hook/util.
@@ -116,7 +116,7 @@ This is Phase 0 regardless of which direction is chosen. The only thing that cha
 - Files: `Awards.tsx` (uses existing `awards` from `engagements.ts`).
 
 ### 4.4 Speaking & Workshops — "the speaker one-sheet"
-- Add a **summary stat row** at top: "30+ sessions · 7 countries · 200+ professionals trained."
+- Add a **summary stat row** at top: "30+ sessions · 7 countries · 1000+ professionals trained."
 - Refined **timeline / grouped-by-year list** with role badges (Keynote / Trainer / Panel), venue, date emphasized.
 - Emphasize logos/venues — this is exactly what conference organizers and training clients assess.
 - Files: `Speaking.tsx`, possibly `engagements.ts` (ensure dates/roles present).

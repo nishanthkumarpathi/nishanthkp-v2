@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * Splits a metric string like "$5M+" or "200+" into a numeric part to animate
+ * Splits a metric string like "$5M+" or "1000+" into a numeric part to animate
  * and the surrounding prefix/suffix to render verbatim.
  */
 function parseMetric(value: string) {

@@ -20,13 +20,13 @@ export const aboutItems: AboutItem[] = [
     featured: true,
   },
   {
-    value: '200+',
+    value: '1000+',
     label: 'Professionals Trained',
     icon: 'bookOpen',
     featured: true,
   },
   {
-    value: '6+',
+    value: '7+',
     label: 'Countries',
     icon: 'globe',
   },
@@ -51,7 +51,7 @@ export const aboutItems: AboutItem[] = [
     icon: 'calendar',
   },
   {
-    value: '5+',
+    value: '11+',
     label: 'Research Papers',
     icon: 'bookOpen',
   },

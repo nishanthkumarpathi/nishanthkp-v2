@@ -50,8 +50,7 @@ export function SectionNavigation() {
   const btn =
     'w-11 h-11 flex items-center justify-center rounded-full border border-line bg-surface/80 backdrop-blur text-muted shadow-lg hover:text-content hover:border-brand-bright/50 transition-all hover:scale-105';
 
-  // Mobile: a single slim bottom-center pill that advances to the next section
-  // (and flips to "Top" on the last one) — stays clear of card content.
+  // Mobile: compact bottom-right control that avoids covering wide card content.
   if (!isDesktop) {
     return (
       <AnimatePresence>
@@ -61,17 +60,13 @@ export function SectionNavigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             onClick={showDown ? handleNext : handleScrollToTop}
-            className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-1.5 rounded-full bg-brand-strong/90 backdrop-blur px-4 py-2 text-xs font-medium text-white shadow-lg shadow-brand/30"
+            className="fixed bottom-5 right-5 z-40 inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-strong/90 text-white shadow-lg shadow-brand/30 transition-transform hover:scale-105"
             aria-label={showDown ? 'Next section' : 'Back to top'}
           >
             {showDown ? (
-              <>
-                Next <ChevronDown size={15} />
-              </>
+              <ChevronDown size={20} />
             ) : (
-              <>
-                Top <ChevronsUp size={15} />
-              </>
+              <ChevronsUp size={20} />
             )}
           </motion.button>
         )}

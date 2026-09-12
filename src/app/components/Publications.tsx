@@ -1,8 +1,9 @@
-import { FileText, Award, ExternalLink, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import { FileText, Award, ExternalLink, BookOpen, ChevronLeft, ChevronRight, BookMarked } from 'lucide-react';
 import { motion } from 'motion/react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { researchPapers } from '../data/researchPapers';
 import { patents } from '../data/patents';
+import { bookReviews } from '../data/bookReviews';
 import { SectionHeader } from './SectionHeader';
 
 interface PublicationsProps {
@@ -59,6 +60,61 @@ export function Publications({ onViewAllPapers, onViewPaper }: PublicationsProps
                   View Patent Application
                 </a>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Book reviews */}
+        <div className="mb-8 sm:mb-14">
+          <h3 className="flex items-center gap-2 font-display text-lg sm:text-2xl font-light text-content mb-5">
+            <BookMarked className="text-brand-bright" size={20} /> Book Reviews
+          </h3>
+          <div className="grid gap-5 md:grid-cols-2">
+            {bookReviews.map((review) => (
+              <article
+                key={review.title}
+                className="group flex gap-4 sm:gap-5 rounded-2xl border border-line bg-surface p-4 sm:p-5 hover:border-brand-bright/40 transition-colors"
+              >
+                <div className="h-20 w-16 sm:h-24 sm:w-20 flex-shrink-0 overflow-hidden rounded-lg bg-surface-2">
+                  <img
+                    src={review.image}
+                    alt={review.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="min-w-0 flex flex-col">
+                  <span className="text-xs font-mono text-brand-bright mb-1.5">{review.role}</span>
+                  <h4 className="font-medium text-content leading-snug mb-2">{review.title}</h4>
+                  <p className="text-sm text-muted leading-relaxed mb-3">{review.description}</p>
+                  <p className="text-xs text-faint mb-3">
+                    {review.publisher} · Published {new Intl.DateTimeFormat('en-GB', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    }).format(new Date(`${review.publicationDate}T00:00:00`))}
+                  </p>
+                  <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2">
+                    <a
+                      href={review.bookUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm font-medium text-brand-bright hover:underline"
+                    >
+                      <ExternalLink size={14} className="mr-1.5" /> View book
+                    </a>
+                    <a
+                      href={review.linkedinPostUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm font-medium text-brand-bright hover:underline"
+                    >
+                      <ExternalLink size={14} className="mr-1.5" /> LinkedIn post
+                    </a>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>

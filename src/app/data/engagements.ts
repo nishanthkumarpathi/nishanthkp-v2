@@ -1,47 +1,57 @@
-import photo1 from '../../assets/1 Arab International Cyber Security Summit.jpg';
-import photo2 from '../../assets/2 Digital Executive Development Program - BBK.jpg';
-import photo3 from '../../assets/3 AI and ChatGPT Session.jpg';
-import photo4 from '../../assets/4 Project Management and Team Building Activity - HSBC.jpg';
-import photo5 from '../../assets/5 NASSCOM Delegation Visit.jpg';
-import photo6 from '../../assets/6 ChatGPT Integration Workshop.jpg';
-import photo7 from '../../assets/7 Personal Data Protection Workshop - Gramco.jpg';
-import photo8 from '../../assets/8 ISACA Volunteer Group Photo.jpg';
-import photo9 from '../../assets/9 Food Distribution as an ISACA Volunteer.jpg';
-import photo10 from '../../assets/10 Food Distribution as an ISACA Volunteer for Ramadan.jpg';
-import photo11 from '../../assets/11 ISACA Ghabga Event - Kahoot Quiz Winner.jpg';
-import photo12 from '../../assets/12 Vulnerability and Penetration Testing Workshop.jpg';
-import photo13 from '../../assets/13 AWS Technical Essentials Training.jpg';
-import photo14 from '../../assets/14 AWS Solutions Architect Workshop for IGA.jpg';
-import photo15 from '../../assets/15 Data Analysis with Python Workhshop.jpg';
-import photo16 from '../../assets/16 Lessons Learnt from Bahrain FinTech Eco System.jpg';
-import photo17 from '../../assets/17 Data Engineering Workshop on AWS Cloud.jpg';
-import photo18 from '../../assets/18 AI & Robotic Process Automation Workshop.jpg';
-import photo19 from '../../assets/19 IGA Graudates AWS CP Workshop.jpg';
-import photo20 from '../../assets/20 Certified Ethical Hacker Program.jpg';
-import photo21 from '../../assets/21 AWS Certified Cloud Practitioner Workshop.jpg';
-import photo22 from '../../assets/22 Arab International Cyber Security Summit 2023.jpg';
-import photo23 from '../../assets/23 Software Development with Springboot.jpg';
-import photo24 from '../../assets/24 ITILv4.jpg';
-import photo25 from '../../assets/25 Python Automation for Software Testing.jpg';
-import photo26 from '../../assets/26 AWS DevOps Professional.jpg';
-import photo27 from '../../assets/27 ISACA Cloud Auditing Forum 2024.jpg';
-import photo28 from '../../assets/28 CyberX Bahrain Cyber Security Excellence Award 2024.jpg';
-import photo29 from '../../assets/29 Cloud Security Tends at CyberX Summit.png';
-import photo30 from '../../assets/30 AI in Action for Eskan Bank.jpg';
-import photo31 from '../../assets/31 Cyber Security Awareness Session for Pilots - Gulf Air Group 2025.jpg';
-import photo32 from '../../assets/32 On Job Training Program for Nasser Center for Science & Technology - Gulf Air Group 2025.jpg';
-import photo33 from '../../assets/33 Data Privacy Training Program in Parternship with BIBF & IAPP.jpg';
-import photo34 from '../../assets/34 Safeguarding Payments Data and Identity in Fintech Age.jpg';
-import photo35 from '../../assets/35 Is AI Threat or a Reward for Risk Leaders.webp';
-import photo36 from '../../assets/36 Top 50 Agentic AI Leaders KSA 2026 Award.jpg';
-import photo38 from '../../assets/38 AI & Automation Security Excellence Award.jpg';
+import photo1 from '../../assets/02 Arab International Cyber Security Summit.jpg';
+import photo2 from '../../assets/04 Digital Executive Development Program - BBK.jpg';
+import photo3 from '../../assets/06 AI and ChatGPT Session.jpg';
+import photo4 from '../../assets/08 Project Management and Team Building Activity - HSBC.jpg';
+import photo5 from '../../assets/10 NASSCOM Delegation Visit.jpg';
+import photo6 from '../../assets/12 ChatGPT Integration Workshop.jpg';
+import photo7 from '../../assets/14 Personal Data Protection Workshop - Gramco.jpg';
+import photo8 from '../../assets/16 ISACA Volunteer Group Photo.jpg';
+import photo9 from '../../assets/18 Food Distribution as an ISACA Volunteer.jpg';
+import photo10 from '../../assets/20 Food Distribution as an ISACA Volunteer for Ramadan.jpg';
+import photo11 from '../../assets/22 ISACA Ghabga Event - Kahoot Quiz Winner.jpg';
+import photo12 from '../../assets/24 Vulnerability and Penetration Testing Workshop.jpg';
+import photo13 from '../../assets/26 AWS Technical Essentials Training.jpg';
+import photo14 from '../../assets/28 AWS Solutions Architect Workshop for IGA.jpg';
+import photo15 from '../../assets/30 Data Analysis with Python Workhshop.jpg';
+import photo16 from '../../assets/32 Lessons Learnt from Bahrain FinTech Eco System.jpg';
+import photo17 from '../../assets/34 Data Engineering Workshop on AWS Cloud.jpg';
+import photo18 from '../../assets/36 AI & Robotic Process Automation Workshop.jpg';
+import photo19 from '../../assets/38 IGA Graudates AWS CP Workshop.jpg';
+import photo20 from '../../assets/40 Certified Ethical Hacker Program.jpg';
+import photo21 from '../../assets/42 AWS Certified Cloud Practitioner Workshop.jpg';
+import photo22 from '../../assets/44 Arab International Cyber Security Summit 2023.jpg';
+import photo23 from '../../assets/46 Software Development with Springboot.jpg';
+import photo24 from '../../assets/48 ITILv4.jpg';
+import photo25 from '../../assets/50 Python Automation for Software Testing.jpg';
+import photo26 from '../../assets/52 AWS DevOps Professional.jpg';
+import photo27 from '../../assets/54 ISACA Cloud Auditing Forum 2024.jpg';
+import photo28 from '../../assets/56 CyberX Bahrain Cyber Security Excellence Award 2024.jpg';
+import photo29 from '../../assets/58 Cloud Security Tends at CyberX Summit.png';
+import photo30 from '../../assets/60 AI in Action for Eskan Bank.jpg';
+import photo31 from '../../assets/62 Cyber Security Awareness Session for Pilots - Gulf Air Group 2025.jpg';
+import photo32 from '../../assets/64 On Job Training Program for Nasser Center for Science & Technology - Gulf Air Group 2025.jpg';
+import photo33 from '../../assets/66 Data Privacy Training Program in Parternship with BIBF & IAPP.jpg';
+import photo34 from '../../assets/68 Safeguarding Payments Data and Identity in Fintech Age.jpg';
+import photo35 from '../../assets/70 Is AI Threat or a Reward for Risk Leaders.webp';
+import photo36 from '../../assets/72 Top 50 Agentic AI Leaders KSA 2026 Award.jpg';
+import photo38 from '../../assets/76 AI & Automation Security Excellence Award.jpg';
+import photo39 from '../../assets/39 FinTech Innovation 2.0 Powered by AI.jpg';
+import photo67 from '../../assets/67 Cybersecurity in the Age of AI.jpg';
+import photo80 from '../../assets/80 Careers in AI and Cyber Security.jpg';
+import photo84 from '../../assets/84 Zero Trust GRC for Autonomous AI Agents.jpg';
+import photo86 from '../../assets/86 Is AI Threat or Reward for Risk Leaders.jpg';
+import photo90 from '../../assets/90 Global Cyber Playbook Governance Defense Trusty.jpeg';
+import photo92 from '../../assets/92 Kill Your Darlings The Security Tools Probably You Should Turn Off.jpeg';
+import photo96 from '../../assets/96 Redefining the Future of Cybersecurity – Agentic AI & Quantum Computing.jpg';
+import photo98 from '../../assets/98 Zero Trust Implementation Excellence Award.jpg';
+import photo100 from '../../assets/100 MENAs Most Influential Cybersecurity Leaders 2026.jpg';
 
 /**
  * Category of an engagement. Drives which section renders it and how it is
  * labelled. Add a new category here and to `categoryMeta` below.
  */
 export type EngagementCategory =
-  | 'award' // recognition / honours
+  | 'award' // recognition / Honors
   | 'speaking' // talks, keynotes, panels, awareness sessions
   | 'workshop' // training delivered
   | 'volunteer' // community service / outreach
@@ -72,9 +82,13 @@ export interface Engagement {
   image: string;
   /** External link (event page, slides, recording, certificate). */
   link?: string;
+  /** LinkedIn post associated with this engagement. */
+  linkedinPostUrl?: string;
   metrics?: EngagementMetric[];
   /** Surface this item in highlight/teaser areas. */
   featured?: boolean;
+  /** Use this engagement as the primary spotlight in its section. */
+  highlighted?: boolean;
 }
 
 /**
@@ -111,6 +125,36 @@ function slugify(title: string): string {
  * the original photo titles and are safe to edit/enrich over time.
  */
 const engagementsSource: Omit<Engagement, 'slug'>[] = [
+  {
+    id: '100',
+    title: "MENA's Most Influential Cybersecurity Leaders - 2026",
+    category: 'award',
+    year: '2026',
+    date: '2026-09-07',
+    organization: 'Indian Startup Times',
+    role: 'Recipient',
+    description:
+      "Recognized among MENA's Most Influential Cybersecurity Leaders for 2026.",
+    image: photo100,
+    link: 'https://www.indianstartuptimes.com/news/the-cybersecurity-100-menas-most-influential-cybersecurity-leaders-2026/',
+    linkedinPostUrl: 'https://lnkd.in/p/dcRnVXJ2',
+    featured: true,
+    highlighted: true,
+  },
+  {
+    id: '98',
+    title: 'Zero Trust Implementation Excellence Award',
+    category: 'award',
+    year: '2026',
+    date: '2026-09-08',
+    location: 'Saudi Arabia',
+    organization: 'MENA Cyber Security Conference - 5th Edition',
+    role: 'Recipient',
+    description:
+      'Received the Zero Trust Implementation Excellence Award at the MENA Cyber Security Conference - 5th Edition.',
+    image: photo98,
+    featured: true,
+  },
   {
     id: '36',
     title: 'Top 50 Agentic AI Leaders KSA 2026 Award',
@@ -197,6 +241,81 @@ const engagementsSource: Omit<Engagement, 'slug'>[] = [
     featured: true,
   },
   {
+    id: '96',
+    title: 'Redefining the Future of Cybersecurity - Agentic AI & Quantum Computing',
+    category: 'speaking',
+    year: '2026',
+    date: '2026-09-08',
+    location: 'Riyadh, Saudi Arabia',
+    organization: 'MENA Cyber Security Conference - 5th Edition',
+    description:
+      'Panel discussion on redefining the future of cybersecurity through agentic AI and quantum computing.',
+    image: photo96,
+    featured: true,
+  },
+  {
+    id: '92',
+    title: 'Kill Your Darlings - The Security Tools You Should Probably Turn Off',
+    category: 'speaking',
+    year: '2026',
+    date: '2026-09-03',
+    location: 'Riyadh, Saudi Arabia',
+    organization: 'LEAP 2026',
+    description:
+      'Session on the security tools organizations should critically reassess and potentially retire.',
+    image: photo92,
+    featured: true,
+  },
+  {
+    id: '90',
+    title: 'Global Cyber Playbook - Governance, Defense & Trust',
+    category: 'speaking',
+    year: '2026',
+    date: '2026-09-02',
+    location: 'Riyadh, Saudi Arabia',
+    organization: 'LEAP 2026',
+    description: 'Session on global cybersecurity governance, defense, and trust.',
+    image: photo90,
+    featured: true,
+  },
+  {
+    id: '86',
+    title: 'Is AI a Threat or a Reward for Risk Leaders?',
+    category: 'speaking',
+    year: '2026',
+    date: '2026-08-27',
+    location: 'Dubai, UAE',
+    organization: 'GPRC Summit 2026 - Dubai Edition',
+    role: 'Panelist',
+    description: 'Panel discussion on whether AI is a threat or a reward for risk leaders.',
+    image: photo86,
+    featured: true,
+  },
+  {
+    id: '84',
+    title: 'Zero Trust GRC for Autonomous AI Agents',
+    category: 'speaking',
+    year: '2026',
+    date: '2026-08-27',
+    location: 'Dubai, UAE',
+    organization: 'GPRC Summit 2026 - Dubai Edition',
+    description: 'Session on Zero Trust governance, risk, and compliance for autonomous AI agents.',
+    image: photo84,
+    featured: true,
+  },
+  {
+    id: '80',
+    title: 'Exploring Careers in AI and Cybersecurity',
+    category: 'speaking',
+    year: '2026',
+    date: '2026-08-22',
+    organization: 'University of San Diego',
+    description: 'Session exploring career paths in artificial intelligence and cybersecurity.',
+    image: photo80,
+    link: 'https://lnkd.in/p/dRbinHM3',
+    featured: true,
+  },
+  {
     id: '35',
     title: 'Is AI a Threat or a Reward for Risk Leaders?',
     category: 'speaking',
@@ -207,6 +326,19 @@ const engagementsSource: Omit<Engagement, 'slug'>[] = [
     description:
       'Panel exploring whether AI is a threat or a reward for risk leaders.',
     image: photo35,
+    featured: true,
+  },
+  {
+    id: '67',
+    title: 'Cybersecurity in the Age of AI',
+    category: 'speaking',
+    year: '2025',
+    location: 'Bahrain',
+    organization: 'FinTech Series: From Threat to Strategy - Cybersecurity in the Age of AI',
+    role: 'Panelist',
+    description: 'Panel discussion on cybersecurity in the age of AI.',
+    image: photo67,
+    linkedinPostUrl: 'https://www.linkedin.com/posts/febrahim_fintechseries-cybersecurity-bahrain-activity-7406288212635267073-frJH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAVDtoYBhVL6sl9nep9ZrDXWfMBSnbUON3Y',
     featured: true,
   },
   {
@@ -255,6 +387,18 @@ const engagementsSource: Omit<Engagement, 'slug'>[] = [
     role: 'Speaker',
     description: 'Delivered a tailored cybersecurity awareness session for pilots at Gulf Air Group.',
     image: photo31,
+  },
+  {
+    id: '39',
+    title: 'FinTech Innovation 2.0 Powered by AI',
+    category: 'speaking',
+    year: '2024',
+    location: 'Bahrain',
+    organization: 'Cedar-IBSi Digital Banking & AI Summit',
+    role: 'Panelist',
+    description: 'Panel discussion on FinTech Innovation 2.0 powered by AI.',
+    image: photo39,
+    featured: true,
   },
   {
     id: '2',
@@ -466,11 +610,23 @@ const engagementsSource: Omit<Engagement, 'slug'>[] = [
   },
 ];
 
-/** All engagements with generated slugs. */
-export const engagements: Engagement[] = engagementsSource.map((e) => ({
-  ...e,
-  slug: slugify(e.title),
-}));
+/** Sort by exact date when available, falling back to the display year. */
+function byDateDesc(
+  a: Pick<Engagement, 'date' | 'year'>,
+  b: Pick<Engagement, 'date' | 'year'>,
+): number {
+  const aDate = a.date ?? a.year ?? '';
+  const bDate = b.date ?? b.year ?? '';
+  return bDate.localeCompare(aDate);
+}
+
+/** All engagements with generated slugs, newest first for archive displays. */
+export const engagements: Engagement[] = [...engagementsSource]
+  .sort(byDateDesc)
+  .map((e) => ({
+    ...e,
+    slug: slugify(e.title),
+  }));
 
 /** Return all engagements in one of the given categories. */
 export function getEngagementsByCategory(
@@ -479,28 +635,18 @@ export function getEngagementsByCategory(
   return engagements.filter((e) => categories.includes(e.category));
 }
 
-/** Sort helper: by year descending, undated items last, stable otherwise. */
-function byYearDesc(a: Engagement, b: Engagement): number {
-  const ay = a.year ?? '';
-  const by = b.year ?? '';
-  if (ay && by) return by.localeCompare(ay);
-  if (ay) return -1;
-  if (by) return 1;
-  return 0;
-}
-
 /** Awards & recognition. */
-export const awards: Engagement[] = getEngagementsByCategory('award').sort(byYearDesc);
+export const awards: Engagement[] = getEngagementsByCategory('award').sort(byDateDesc);
 
 /** Speaking engagements, summits, and workshops/training delivered. */
 export const speakingEngagements: Engagement[] = getEngagementsByCategory(
   'speaking',
   'summit',
   'workshop',
-).sort(byYearDesc);
+).sort(byDateDesc);
 
 /** Community work — volunteering and committee/forum roles. */
 export const outreach: Engagement[] = getEngagementsByCategory(
   'volunteer',
   'committee',
-).sort(byYearDesc);
+).sort(byDateDesc);
