@@ -37,6 +37,7 @@ import photo36 from '../../assets/72 Top 50 Agentic AI Leaders KSA 2026 Award.jp
 import photo38 from '../../assets/76 AI & Automation Security Excellence Award.jpg';
 import photo39 from '../../assets/39 FinTech Innovation 2.0 Powered by AI.jpg';
 import photo67 from '../../assets/67 Cybersecurity in the Age of AI.jpg';
+import photo77 from '../../assets/77 Greener Algorithms, Greater Responsibility – Governing AI Ethically.jpg';
 import photo80 from '../../assets/80 Careers in AI and Cyber Security.jpg';
 import photo84 from '../../assets/84 Zero Trust GRC for Autonomous AI Agents.jpg';
 import photo86 from '../../assets/86 Is AI Threat or Reward for Risk Leaders.jpg';
@@ -339,6 +340,18 @@ const engagementsSource: Omit<Engagement, 'slug'>[] = [
     description: 'Panel discussion on cybersecurity in the age of AI.',
     image: photo67,
     linkedinPostUrl: 'https://www.linkedin.com/posts/febrahim_fintechseries-cybersecurity-bahrain-activity-7406288212635267073-frJH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAVDtoYBhVL6sl9nep9ZrDXWfMBSnbUON3Y',
+    featured: true,
+  },
+  {
+    id: '77',
+    title: 'Greener Algorithms, Greater Responsibility - Governing AI Ethically',
+    category: 'speaking',
+    organization: 'Global AI Show',
+    role: 'Fireside Chat Participant',
+    description:
+      'Fireside chat on governing AI ethically through greener algorithms and greater responsibility.',
+    image: photo77,
+    linkedinPostUrl: 'https://www.linkedin.com/posts/global-ai-show_fireside-chat-greener-algorithms-greater-activity-7478077628634214400-EU2S?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAVDtoYBhVL6sl9nep9ZrDXWfMBSnbUON3Y',
     featured: true,
   },
   {

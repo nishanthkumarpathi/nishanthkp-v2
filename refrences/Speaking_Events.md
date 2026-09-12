@@ -144,6 +144,16 @@ hands-on session. The source image name connects an entry to `src/assets/`.
 
 ### Date To Confirm
 
+#### Greener Algorithms, Greater Responsibility - Governing AI Ethically
+
+- **Event:** Global AI Show
+- **Role:** Fireside Chat Participant
+- **Location:** N/A
+- **Date:** N/A
+- **Description:** Fireside chat on governing AI ethically through greener algorithms and greater responsibility.
+- **Source image:** `77 Greener Algorithms, Greater Responsibility – Governing AI Ethically.jpg`
+- **LinkedIn post:** https://www.linkedin.com/posts/global-ai-show_fireside-chat-greener-algorithms-greater-activity-7478077628634214400-EU2S?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAVDtoYBhVL6sl9nep9ZrDXWfMBSnbUON3Y
+
 #### Arab International Cyber Security Summit
 
 - **Event:** Arab International Cyber Security Summit
