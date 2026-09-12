@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Github, Linkedin, BookOpen, ArrowRight, ChevronDown, Award } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import headshotImage from '../../assets/nishanth_headshot.png';
+import headshotImage from '../../assets/nishanth_headshot.webp';
 import { heroSpecializations, heroCountries, heroRoles, heroCredentials } from '../data/hero';
 import { XIcon, YouTubeIcon } from './icons';
 import { scrollToId } from '../utils/scroll';

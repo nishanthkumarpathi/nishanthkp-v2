@@ -43,8 +43,8 @@ import photo84 from '../../assets/84 Zero Trust GRC for Autonomous AI Agents.jpg
 import photo86 from '../../assets/86 Is AI Threat or Reward for Risk Leaders.jpg';
 import photo90 from '../../assets/90 Global Cyber Playbook Governance Defense Trusty.jpeg';
 import photo92 from '../../assets/92 Kill Your Darlings The Security Tools Probably You Should Turn Off.jpeg';
-import photo96 from '../../assets/96 Redefining the Future of Cybersecurity – Agentic AI & Quantum Computing.jpg';
-import photo98 from '../../assets/98 Zero Trust Implementation Excellence Award.jpg';
+import photo96 from '../../assets/96 Redefining the Future of Cybersecurity – Agentic AI & Quantum Computing.webp';
+import photo98 from '../../assets/98 Zero Trust Implementation Excellence Award.webp';
 import photo100 from '../../assets/100 MENAs Most Influential Cybersecurity Leaders 2026.jpg';
 
 /**
